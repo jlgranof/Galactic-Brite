@@ -22,10 +22,10 @@ const RightHeaderLinks = () => {
                     <NavLink to="/" activeclass="active">Home</NavLink>
                 </Button>
                 <Button>
-                    <NavLink to="/users" activeclass="active">Users</NavLink>
+                    <NavLink to="/login-page" activeclass="active">login</NavLink>
                 </Button>
                 <Button>
-                    <NavLink to="/test-page" activeclass="active">Test Page</NavLink>
+                    <NavLink to="/signup-page" activeclass="active">signup</NavLink>
                 </Button>
             </div>
         </>
