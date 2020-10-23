@@ -67,7 +67,7 @@ git clone https://github.com/appacademy-starters/react-project-starter.git --bra
    ```bash
    heroku container:push web -a {NAME_OF_HEROKU_APP}
    ```
-8. Release your docker container to heroku
+8. Release your dherocker container to heroku
    ```bash
    heroku container:release web -a {NAME_OF_HEROKU_APP}
    ```
