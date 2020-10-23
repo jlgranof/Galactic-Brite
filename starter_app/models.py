@@ -43,7 +43,7 @@ class Event(db.Model):
   event_picture_url = db.Column(db.String(100))
   category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable = False)
 
-  host = db.relationship("User", back_populates="events")
+  user = db.relationship("User", back_populates="events")
   category = db.relationship("Category", back_populates="events")
   bookmarked_events = db.relationship("BookmarkedEvent", back_populates="event")
 
