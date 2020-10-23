@@ -4,10 +4,10 @@ from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 
 
-from starter_app.models import db, User
-from starter_app.api.user_routes import user_routes
+from backend.models import db, User
+from backend.api.user_routes import user_routes
 
-from starter_app.config import Config
+from backend.config import Config
 
 app = Flask(__name__)
 
