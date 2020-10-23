@@ -8,7 +8,7 @@ class User(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
-  avatar_url = db.Column(db.String(100))
+  avatar_url = db.Column(db.String(255))
   hashed_password = db.Column(db.String(100))
 
   events = db.relationship("Event", back_populates="user")
