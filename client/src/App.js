@@ -14,11 +14,11 @@ function App() {
         <BrowserRouter>
             <Header/>
             <Switch>
-                <Route exact path="/"><h1>My Home Page</h1></Route>
                 <Route exact path="/users"><UserList /></Route>
                 <Route exact path="/test-page"><TestPage/></Route>
                 <Route exact path="/login-page"><LoginPage/></Route>
                 <Route exact path="/signup-page"><SignupPage/></Route>
+                <Route exact path="/"><h1>My Home Page</h1></Route>
             </Switch>
         </BrowserRouter>
     );
