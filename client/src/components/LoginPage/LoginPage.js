@@ -15,7 +15,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 
 const useStyles = makeStyles({
-    login: {
+    fallenJedi: {
         position: "fixed",
         width: "100vw",
         height: "100vh",
@@ -52,9 +52,11 @@ const LoginPage = () => {
     const classes = useStyles()
     return (
         <>
-            <CustomInput/>
-            <div className={classes.login}>
-                <img className={classes.login} src={fallenJedi} alt="fighter.gif" />
+            <div>
+                <CustomInput/>
+            </div>
+            <div className={classes.fallenJedi}>
+                <img className={classes.fallenJedi} src={fallenJedi} alt="fighter.gif" />
                 <div>
                     <img className={classes.rain} src={raining} alt="fighter.gif" />
                 </div>

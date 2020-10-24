@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const initialState = {
-  email: 'fellowStacker@stacker.com',
+  email: 'hanSolo@gmail.com',
   password: 'password'
 }
 const store = ReduxStore()
