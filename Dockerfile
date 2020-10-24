@@ -23,7 +23,7 @@ RUN ["cp", "-r", "backend/static/static/css", "backend/static"]
 ENV FLASK_APP=backend
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
-ENV REACT_APP_BASE_URL=https://stormy-oasis-14210.herokuapp.com/
+ENV REACT_APP_BASE_URL=https://galactic-brite.herokuapp.com/
 
 EXPOSE 8000
 

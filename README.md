@@ -1,6 +1,6 @@
 # Galactic-Brite
 
- ![version](https://img.shields.io/badge/version-1.0.0-blue.svg) 
+ ![version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 
   # Checkout out this Project's wiki!
 https://github.com/jlgranof/Galactic-Brite/wiki
@@ -18,23 +18,20 @@ https://github.com/jlgranof/Galactic-Brite/wiki
 ### Contributing Developer's Social Media
 Jeff Granof
 
-    Twitter:
-    Facebook: 
-    GitHub: 
-    Instagram: 
+    GitHub: <https://github.com/jlgranof>
 
 James White
 
-    Twitter: 
-    Facebook: 
-    GitHub: 
-    Instagram: 
+    Twitter:
+    Facebook:
+    GitHub:
+    Instagram:
 
 Alec Garcia
 
     Twitter:
-    Facebook: 
-    GitHub: 
+    Facebook:
+    GitHub:
     Instagram:
 
 Kasey McGee
