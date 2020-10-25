@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
+// core components
+import Header from '../Header/Header'
+
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 
@@ -48,6 +52,7 @@ const TestPage = () => {
 
     return (
         <>
+            <Header/>
             {gifLoading ?
                     <div>
                         <img className={classes.warZone} src={xWing} alt="fighter.gif" />

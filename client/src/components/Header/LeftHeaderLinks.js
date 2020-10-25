@@ -27,6 +27,9 @@ const LeftHeaderLinks = () => {
                 <Button>
                     <NavLink to="/test-page" activeclass="active">Test Page</NavLink>
                 </Button>
+                <Button>
+                    <NavLink to="/secondTest-page" activeclass="active">Second Test</NavLink>
+                </Button>
             </div>
         </>
     );
