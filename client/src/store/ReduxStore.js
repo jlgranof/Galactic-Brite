@@ -17,8 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 const ReducerMerger = combineReducers({auth})
 
 const configureStore = (initialState) => {
-    return createStore
-        (
+    return createStore (
             ReducerMerger,
             initialState,
             storeEnhancer

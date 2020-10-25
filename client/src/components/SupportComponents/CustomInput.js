@@ -28,14 +28,11 @@ const CustomInput = (props) => {
     const {
         setStateFunc,
         inputValue,
-        formControlProps,
         labelText,
         id,
-        labelProps,
         inputProps,
         error,
         white,
-        inputRootCustomClasses,
         success
     } = props;
     const underlineClasses = classNames({

@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react';
+import React  from 'react';
 
 // core components
 
@@ -39,20 +39,6 @@ const useStyles = makeStyles({
         flexDirection: "column",
         padding: "10px",
         margin: "10px",
-    },
-    Sabers: {
-        justifySelf: "center",        
-        gridColumn: "2/3",
-        gridRow: "1/2",
-        height: "80px",
-        margin: "30px"
-    },
-    leftSaber: {
-        position: "absolute",
-        transform: "rotate(-105deg)",
-    },
-    rightSaber: {
-        transform: "rotate(-25deg)",
     },
     inputIconsColor: {
         color: "white",

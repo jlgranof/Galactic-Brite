@@ -11,24 +11,24 @@ const useStyles = makeStyles({
     leftLinkBox: {
         padding: "30px",
     },
+    eachLink: {
+        clipPath: "polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%)"
+    }
 })
 
-const LeftHeaderLinks = () => {
+const LeftHeaderLinks = ({inherit}) => {
     const classes = useStyles()
     return (
         <>
             <div className={classes.leftLinkBox}>
                 <Button>
-                    <NavLink to="/" activeclass="active">Home</NavLink>
+                    <NavLink className={inherit} to="/users" activeclass="active">Users</NavLink>
                 </Button>
                 <Button>
-                    <NavLink to="/users" activeclass="active">Users</NavLink>
+                    <NavLink className={inherit} to="/test-page" activeclass="active">Test Page</NavLink>
                 </Button>
                 <Button>
-                    <NavLink to="/test-page" activeclass="active">Test Page</NavLink>
-                </Button>
-                <Button>
-                    <NavLink to="/secondTest-page" activeclass="active">Second Test</NavLink>
+                    <NavLink className={inherit} to="/secondTest-page" activeclass="active">Second Test</NavLink>
                 </Button>
             </div>
         </>

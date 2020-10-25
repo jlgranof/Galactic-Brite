@@ -13,7 +13,7 @@ import hanger from '../../assets/images/hanger.jpg'
 
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
-import Zoom from '@material-ui/core/Zoom';
+// import Zoom from '@material-ui/core/Zoom';
 import Fade from '@material-ui/core/Fade';
 
 
@@ -25,8 +25,6 @@ const useStyles = makeStyles({
         right: 0,
         left: 0,
         bottom: 0,
-        padding: 0,
-        margin: 0,
         width: "100vw",
         height: "100vh",
     },
