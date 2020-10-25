@@ -22,9 +22,6 @@ const LeftHeaderLinks = ({inherit}) => {
         <>
             <div className={classes.leftLinkBox}>
                 <Button>
-                    <NavLink className={inherit} to="/" activeclass="active">Home</NavLink>
-                </Button>
-                <Button>
                     <NavLink className={inherit} to="/users" activeclass="active">Users</NavLink>
                 </Button>
                 <Button>

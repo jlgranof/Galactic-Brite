@@ -26,192 +26,253 @@ const LandingPage = () => {
             <Header/>
             <CarouselComponent/>
 
-            <div classeName={classes.extrasTemporary}>
+            <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
                     Events 
                 </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                Events 
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                About the Site Maybe
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                About the Site Maybe
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                About the Site Maybe
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                About the Site Maybe
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                About the Site Maybe
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                About the Site Maybe
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                About the Site Maybe
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                About the Site Maybe
+            <div className={classes.extrasTemporary}>
+                Featured Events
+                <div>
+                    Events 
+                </div>
             </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
-            <div>
-                About the Site Maybe
-            </div>
+
 
         </>
     );
