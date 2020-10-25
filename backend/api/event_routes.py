@@ -23,7 +23,8 @@ def index():
 @event_routes.route('/<id>')
 def one_event(id):
     event = Event.query.get(id)
-    return jsonify({
+    if event:
+        return jsonify({
             "name": event.name,
             "event_description": event.event_description,
             "host": event.user.username,
@@ -33,3 +34,4 @@ def one_event(id):
             "category": event.category.type,
             "is_featured": event.is_featured
         })
+    return "There is no event"
