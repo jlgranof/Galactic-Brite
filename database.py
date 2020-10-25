@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from backend import app, db
-from backend.models import User
+from backend.models import User, Category
 
 with app.app_context():
   db.drop_all()
@@ -21,6 +21,15 @@ with app.app_context():
   dooku = User(username = 'Count Dooku', email = 'darthtyranus@sith.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQALITa_iwn6z77Xr6RMHDJG-0l8pvFYI--tA&usqp=CAU')
   boba = User(username = 'Boba Fett', email = 'boba@clones.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTYj2Rw2Crz24sNcXZ9v9KfnlEZupa_ZdmMKQ&usqp=CAU')
   han = User(username = 'Han Solo', email = 'scruffynerfherder@smugglers.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS9TwNUBH0EbzmUt6OWZ4XhjIsiIQ84jf3tg&usqp=CAU')
+  luke = User(username = 'Luke Skywalker', email = 'sluke@jediacademy.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSczQtK1E0AgyUchH_Ov7hj5xHnQr69LT7O2g&usqp=CAU')
+
+  party = Category(type = 'Surprise Party')
+  production = Category(type = 'Live Productions')
+  exectution = Category(type = 'Live Executions')
+  sport = Category(type = 'Sports')
+  tour = Category(type = 'Tours')
+  launch = Category(type = 'Product Launches')
+  seminar = Category(type = 'Seminars')
 
   db.session.add(ian)
   db.session.add(javier)
@@ -35,5 +44,13 @@ with app.app_context():
   db.session.add(dooku)
   db.session.add(boba)
   db.session.add(han)
+  db.session.add(luke)
+  db.session.add(party)
+  db.session.add(production)
+  db.session.add(exectution)
+  db.session.add(sport)
+  db.session.add(tour)
+  db.session.add(launch)
+  db.session.add(seminar)
 
   db.session.commit()
