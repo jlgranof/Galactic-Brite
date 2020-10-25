@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 
 const RightHeaderLinks = () => {
     const [isLoginOpen, setIsLoginOpen] = useState(false)
-    const [isSignupOpen, setIsSignupOpen] = useState(true)
+    const [isSignupOpen, setIsSignupOpen] = useState(false)
     const classes = useStyles()
     return (
         <>
