@@ -1,7 +1,6 @@
 import React  from 'react';
 
 // core components
-
 import CustomInput from '../SupportComponents/CustomInput'
 
 
@@ -59,7 +58,7 @@ const LoginComponent = () => {
                                 labelText="Email..."
                                 id="email"
                                 inputProps={{
-                                    type: "text",
+                                    type: "email",
                                     endAdornment: (
                                         <InputAdornment>
                                             <Icon className={classes.inputIconsColor}>
@@ -75,7 +74,7 @@ const LoginComponent = () => {
                                 labelText="password"
                                 id="password"
                                 inputProps={{
-                                    type: "text",
+                                    type: "password",
                                     endAdornment: (
                                         <InputAdornment>
                                             <Icon className={classes.inputIconsColor}>
