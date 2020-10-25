@@ -42,20 +42,6 @@ const useStyles = makeStyles({
         padding: "10px",
         margin: "10px",
     },
-    Sabers: {
-        justifySelf: "center",
-        gridColumn: "2/3",
-        gridRow: "1/2",
-        height: "80px",
-        margin: "30px"
-    },
-    leftSaber: {
-        position: "absolute",
-        transform: "rotate(-105deg)",
-    },
-    rightSaber: {
-        transform: "rotate(-25deg)",
-    },
     inputIconsColor: {
         color: "white",
     }
@@ -69,6 +55,22 @@ const LoginComponent = () => {
             <div className={classes.LoginCard}>
                 <div className={classNames(classes.centerContent, classes.inputGrid)}>
                     <div className={classes.inputs}>
+                        <CustomInput
+                            // inputValue={firstName}
+                            // setStateFunc={setFirstName}
+                            labelText="username..."
+                            id="password"
+                            inputProps={{
+                                type: "text",
+                                endAdornment: (
+                                    <InputAdornment>
+                                        <Icon className={classes.inputIconsColor}>
+                                            <LockIcon />
+                                        </Icon>
+                                    </InputAdornment>
+                                )
+                            }}
+                        />
                         <CustomInput
                             // inputValue={firstName}
                             // setStateFunc={setFirstName}
@@ -104,24 +106,8 @@ const LoginComponent = () => {
                         <CustomInput
                             // inputValue={firstName}
                             // setStateFunc={setFirstName}
-                            labelText="password"
-                            id="password"
-                            inputProps={{
-                                type: "text",
-                                endAdornment: (
-                                    <InputAdornment>
-                                        <Icon className={classes.inputIconsColor}>
-                                            <LockIcon />
-                                        </Icon>
-                                    </InputAdornment>
-                                )
-                            }}
-                        />
-                        <CustomInput
-                            // inputValue={firstName}
-                            // setStateFunc={setFirstName}
-                            labelText="password"
-                            id="password"
+                            labelText="confirm password"
+                            id="confirmPassword"
                             inputProps={{
                                 type: "text",
                                 endAdornment: (

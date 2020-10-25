@@ -17,21 +17,19 @@ const SignupPage = ({isOpen, setIsOpen}) => {
             onClose={() => setIsOpen(false)}
         >
             <DialogTitle
-                id="login"
+                id="signup"
                 onClose={() => setIsOpen(false)}>
                 Sign up
             </DialogTitle>
             <DialogContent dividers>
                 <SignupModal />
             </DialogContent>
-            <DialogActions>
                 <Button
                     autoFocus
                     onClick={() => setIsOpen(false)}
                     color="primary">
-                    sign up
+                    create an account
                 </Button>
-            </DialogActions>
         </Dialog>
     );
 };

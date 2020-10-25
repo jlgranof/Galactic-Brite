@@ -11,10 +11,11 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 
 
-const LoginDialog = ({isLoginOpen, setIsLoginOpen}) => {
+const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
 
     const transitionToSignup = () => {
-        console.log("hello")
+        setIsLoginOpen(false)
+        setIsSignupOpen(true)
     }
     return (
         <Dialog

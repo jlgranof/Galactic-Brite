@@ -20,8 +20,8 @@ const useStyles = makeStyles({
 
 
 const RightHeaderLinks = () => {
-    const [isLoginOpen, setIsLoginOpen] = useState(true)
-    const [isSignupOpen, setIsSignupOpen] = useState(false)
+    const [isLoginOpen, setIsLoginOpen] = useState(false)
+    const [isSignupOpen, setIsSignupOpen] = useState(true)
     const classes = useStyles()
     return (
         <>
@@ -36,6 +36,7 @@ const RightHeaderLinks = () => {
                     <LoginDialog 
                     isLoginOpen={isLoginOpen} 
                     setIsLoginOpen={setIsLoginOpen}
+                    setIsSignupOpen={setIsSignupOpen}
                     />
                     <Button onClick={() => setIsSignupOpen(true)}>
                         Signup
