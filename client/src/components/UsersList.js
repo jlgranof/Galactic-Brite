@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import User from './User';
+import Header from './Header/Header'
 
 function UsersList (props) {
     const [users, setUsers] = useState([]);
@@ -17,6 +18,7 @@ function UsersList (props) {
     const userComponents = users.map((user) => <User key={user.id} user={user} />)
     return (
         <>
+            <Header/>
             <h1>User List: </h1>
             {userComponents}
         </>
