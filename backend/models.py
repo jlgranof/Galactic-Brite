@@ -38,7 +38,7 @@ class Event(db.Model):
   name = db.Column(db.String(50), nullable = False)
   event_description = db.Column(db.String(5000), nullable = False)
   host_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = False)
-  event_date = db.Column(db.Date, nullable = False)
+  event_date = db.Column(db.String(100), nullable = False)
   event_planet = db.Column(db.String(50), nullable = False)
   event_picture_url = db.Column(db.String(100))
   category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable = False)

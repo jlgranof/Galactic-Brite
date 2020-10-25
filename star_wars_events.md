@@ -37,7 +37,7 @@
     * user: Count Dooku
     * description:
     * date:
-    * planet: Geonsis
+    * planet: Geonosis
     * picture_url:
     * category: executions
 
