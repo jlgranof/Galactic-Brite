@@ -34,8 +34,8 @@ const RightHeaderLinks = () => {
                         Login
                     </Button>
                     <LoginDialog 
-                    isOpen={isLoginOpen} 
-                    setIsOpen={setIsLoginOpen}
+                    isLoginOpen={isLoginOpen} 
+                    setIsLoginOpen={setIsLoginOpen}
                     />
                     <Button onClick={() => setIsSignupOpen(true)}>
                         Signup
