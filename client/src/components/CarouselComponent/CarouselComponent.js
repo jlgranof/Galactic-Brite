@@ -20,9 +20,9 @@ const useStyles = makeStyles({
         transform: "scale(3) rotate(90deg)",
         width: "200px",
         right: 0,
-        padding: "50px",
+        padding: 0,
         zIndex: 1000,
-        top: "40%",
+        top: "30%",
     },
 })
 
