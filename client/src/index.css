@@ -7,5 +7,14 @@
 }
 html {
     background-color: rgba(6,6,6,.8);
+    background-image: url('./assets/images/star.jpg')
+}
 
+html::-webkit-scrollbar {
+    width: 20px;
+
+}
+html::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 20px;
 }
