@@ -19,25 +19,26 @@ const useStyles = makeStyles({
 })
 
 
-const RightHeaderLinks = () => {
-    const [isLoginOpen, setIsLoginOpen] = useState(true)
+const RightHeaderLinks = ({inherit}) => {
+    const [isLoginOpen, setIsLoginOpen] = useState(false)
     const [isSignupOpen, setIsSignupOpen] = useState(false)
     const classes = useStyles()
     return (
         <>
             <div className={classes.leftLinkBox}>
                     <Button>
-                        <NavLink to="/" activeclass="active">Home</NavLink>
+                        <NavLink className={inherit} to="/" activeclass="active">Home</NavLink>
                     </Button>
 
-                    <Button onClick={()=>setIsLoginOpen(true)}>
+                <Button className={inherit} onClick={()=>setIsLoginOpen(true)}>
                         Login
                     </Button>
                     <LoginDialog 
-                    isOpen={isLoginOpen} 
-                    setIsOpen={setIsLoginOpen}
+                    isLoginOpen={isLoginOpen} 
+                    setIsLoginOpen={setIsLoginOpen}
+                    setIsSignupOpen={setIsSignupOpen}
                     />
-                    <Button onClick={() => setIsSignupOpen(true)}>
+                    <Button className={inherit} onClick={() => setIsSignupOpen(true)}>
                         Signup
                     </Button>
                     <SignupDialog

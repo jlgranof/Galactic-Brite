@@ -11,15 +11,20 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 
 
-const LoginDialog = ({isOpen, setIsOpen}) => {
+const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
+
+    const transitionToSignup = () => {
+        setIsLoginOpen(false)
+        setIsSignupOpen(true)
+    }
     return (
         <Dialog
-            open={isOpen}
-            onClose={() => setIsOpen(false)}
+            open={isLoginOpen}
+            onClose={() => setIsLoginOpen(false)}
         >
             <DialogTitle
                 id="login"
-                onClose={() => setIsOpen(false)}>
+                onClose={() => setIsLoginOpen(false)}>
                 Login
             </DialogTitle>
             <DialogContent dividers>
@@ -28,16 +33,23 @@ const LoginDialog = ({isOpen, setIsOpen}) => {
             <DialogActions>
                 <Button
                     autoFocus
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => setIsLoginOpen(false)}
                     color="primary">
                     login
                 </Button>
-            </DialogActions>
-            <DialogActions>
                 <Button
-                    onClick={() => setIsOpen(false)}
-                    color="black">
+                    onClick={() => setIsLoginOpen(false)}
+                    color="secondary"
+                    >
                 </Button>
+                    <i>don't have an</i> 
+                    <i>account?</i>
+                    <Button
+                        onClick={transitionToSignup}
+                        color="secondary"
+                        >
+                    <i>Signup</i>
+                    </Button>
             </DialogActions>
         </Dialog>
     );

@@ -13,10 +13,10 @@ if (process.env.NODE_ENV !== 'production') {
   // getCSRFToken();
 }
 
-const initialState = {
-  email: 'hanSolo@gmail.com',
-  password: 'password'
-}
+// const initialState = {
+//   email: 'hanSolo@gmail.com',
+//   password: 'password'
+// }
 const store = ReduxStore()
 
 

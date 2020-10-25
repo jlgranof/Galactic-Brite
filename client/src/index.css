@@ -3,5 +3,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+}
+html {
+    background-color: rgba(6,6,6,.8);
 
 }
