@@ -1,5 +1,8 @@
 import React from 'react';
 
+// core components
+import Header from '../Header/Header'
+
 // assets
 import fallenJedi from '../../assets/images/fallenJedi2.jpg'
 import raining from '../../assets/images/raining.gif'
@@ -45,6 +48,7 @@ const LoginPageBackground = () => {
     const classes = useStyles()
     return (
         <>
+        <Header/>
         <div className={classes.overlay}>
         </div>
             <div className={classes.background}>

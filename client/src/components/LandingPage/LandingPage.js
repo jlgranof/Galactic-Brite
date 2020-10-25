@@ -2,40 +2,16 @@ import React from 'react';
 
 // core components
 import Header from '../Header/Header'
-import TestPurposesLandingPageBackground from  './TestingPurposesLandingPageBackground'
+import CarouselComponent from '../CarouselComponent/CarouselComponent'
+
 
 const LandingPage = () => {
+
+    
     return (
         <>
             <Header/>
-            <TestPurposesLandingPageBackground/>
-            <div>
-                Bottom
-            </div>
-            <div>
-                Bottom
-            </div>
-            <div>
-                Bottom
-            </div>
-            <div>
-                Bottom
-            </div>
-            <div>
-                Bottom
-            </div>
-            <div>
-                Bottom
-            </div>
-            <div>
-                Bottom
-            </div>
-            <div>
-                Bottom
-            </div>
-            <div>
-                Bottom
-            </div>
+            <CarouselComponent/>
         </>
     );
 };

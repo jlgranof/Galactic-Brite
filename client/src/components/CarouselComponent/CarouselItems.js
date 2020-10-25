@@ -1,14 +1,11 @@
 import React from 'react';
 
-
-//assets
-import trooper from '../../assets/images/falcon.jpg'
-
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 
+
 const useStyles = makeStyles({
-    trooper: {
+    image: {
         top: 0,
         right: 0,
         left: 0,
@@ -19,13 +16,15 @@ const useStyles = makeStyles({
     },
 })
 
-const TestingPurposesLandingPageBackground = () => {
+const CarouselComponent = ({ url}) => {
     const classes = useStyles()
     return (
         <div>
-            <img className={classes.trooper} src={trooper}/>
+            <img 
+            className={classes.image}
+            src={url}/>
         </div>
     );
 };
 
-export default TestingPurposesLandingPageBackground;
+export default CarouselComponent;
