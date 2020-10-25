@@ -11,11 +11,18 @@ def index():
         events.append({
             "name": event.name,
             "event_description": event.event_description,
-            "host": event.user.username,
+            "host": {
+                "id": event.user.id,
+                "username": event.user.username,
+                "email": event.user.email
+            },
             "event_date": event.event_date,
             "event_planet": event.event_planet,
             "event_picture_url": event.event_picture_url,
-            "category": event.category.type,
+            "category": {
+                "id": event.category.id,
+                "type": event.category.type
+                },
             "is_featured": event.is_featured
         })
     return jsonify(events)
@@ -27,11 +34,18 @@ def one_event(id):
         return jsonify({
             "name": event.name,
             "event_description": event.event_description,
-            "host": event.user.username,
+            "host": {
+                "id": event.user.id,
+                "username": event.user.username,
+                "email": event.user.email
+            },
             "event_date": event.event_date,
             "event_planet": event.event_planet,
             "event_picture_url": event.event_picture_url,
-            "category": event.category.type,
+            "category": {
+                "id": event.category.id,
+                "type": event.category.type
+                },
             "is_featured": event.is_featured
         })
     return "There is no event"
