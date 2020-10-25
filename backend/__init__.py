@@ -7,12 +7,14 @@ from flask_migrate import Migrate
 
 from backend.models import db, User
 from backend.api.user_routes import user_routes
+from backend.api.event_routes import event_routes
 
 from backend.config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
+app.register_blueprint(event_routes, url_prefix='/api/events')
 db.init_app(app)
 Migrate(app, db)
 

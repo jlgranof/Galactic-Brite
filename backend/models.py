@@ -42,6 +42,7 @@ class Event(db.Model):
   event_planet = db.Column(db.String(50), nullable = False)
   event_picture_url = db.Column(db.String(100))
   category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable = False)
+  is_featured = db.Column(db.Boolean, nullable = False)
 
   user = db.relationship("User", back_populates="events")
   category = db.relationship("Category", back_populates="events")
