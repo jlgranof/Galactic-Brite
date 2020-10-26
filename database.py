@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from backend import app, db
-from backend.models import User, Category
+from backend.models import User, Category, Event
 
 with app.app_context():
   db.drop_all()
@@ -32,6 +32,9 @@ with app.app_context():
   launch = Category(type = 'Product Launches')
   seminar = Category(type = 'Seminars')
 
+  order_66 = Event(name = 'Order 66', event_description = 'Enjoy a fun night at the Jedi Temple! We will all meet outside on the front steps, and then go in and surprise all the younglings!', host_id = 9, event_date = 'May 27, 19BBY @ 21:00', event_planet = 'Corusant', event_picture_url = 'https://i.ytimg.com/vi/lBbQg8r8tdc/maxresdefault.jpg', category_id =  1, is_featured = True)
+
+
   db.session.add(demo)
   db.session.add(ian)
   db.session.add(javier)
@@ -54,5 +57,6 @@ with app.app_context():
   db.session.add(tour)
   db.session.add(launch)
   db.session.add(seminar)
+  db.session.add(order_66)
 
   db.session.commit()
