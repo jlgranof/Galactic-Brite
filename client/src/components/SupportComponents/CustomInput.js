@@ -23,6 +23,7 @@ const useStyles = makeStyles({
 
     }
 })
+
 const CustomInput = (props) => {
     const classes = useStyles();
     const {
@@ -54,7 +55,8 @@ const CustomInput = (props) => {
                     required={true}
                     className={classNames(
                         id, 
-                        classes.input
+                        classes.input,
+                        underlineClasses
                         )} 
                     {...inputProps}
                     onChange={(e) => setStateFunc(e.target.value)}
