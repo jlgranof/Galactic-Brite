@@ -20,6 +20,7 @@ import CreateEventForm from './components/Create-New-Events/CreateEvent'
 
 
 function App() {
+    // const [fetchWithCSRF, setFetchWithCSRF] = useState(()=> fetch)
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
 
@@ -27,11 +28,11 @@ function App() {
     
     useEffect(()=>{
         const generateSession = async () => {
-            const res = await fetch("/api/session/login")
+            const res = await fetch("/api/session/")
             if (res.ok) {
                 const data = await res.json()
                 console.log(data)
-                // dispatch(setUser(res.data.user))
+                // dispatch(setUser(data.user))
             }
             setLoading(false);
         }
