@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 export const GET_EVENTS = "GET EVENTS";
 export const ADD_TICKET = "ADD TICKET";
-export const CREATE_EVENT = "CREATE EVENT";
+export const CREATE_EVENT = "CREATE_EVENT"
 
 // might swap over to have tickets as a separate action
 
@@ -16,10 +16,8 @@ export const getEvents = (events) => {
     }
 }
 export const createEvent = (event) =>{
-    return {
-        type: CREATE_EVENT,
-        event
-
+    return{
+        type: CREATE_EVENT
     }
 }
 export const addTicketForEvent = (ticket) => {
@@ -37,7 +35,7 @@ export const addTicketForEvent = (ticket) => {
 export const fetchEvents = (id) => {
     return async dispatch => {
         // fetch tickets for user id
-        // const res = await fetch(`/api/events/${id}`)
+        const res = await fetch(`/api/events/${id}`)
         if (res.ok) {
             const data = await res.json();
             dispatch(getEvents(data));

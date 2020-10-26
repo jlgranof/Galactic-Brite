@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 
 // core components
 import Header from '../Header/Header'
@@ -34,6 +34,12 @@ const useStyles = makeStyles({
 const CreateEventForm = () => {
     const classes = useStyles()
 
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
+    const [date, setDate] = useState("")
+    const [planet, setPlanet] = useState("")
+    const [category, setCategory] = useState("")
+
     return (
         <>
             <div>
@@ -42,19 +48,24 @@ const CreateEventForm = () => {
             <div className={classes.container}>
                 <div className={classes.middle}>
                     <div>
-                        <CustomInput labelText={'Name Event'}/>
+                        <CustomInput labelText={'Name Event'} setStateFunc={setName}/>
                     </div>
                     <div>
-                        <CustomInput labelText={'Description'}/>
+                        <CustomInput labelText={'Description'} setStateFunc={setDescription}/>
                     </div>
                     <div>
-                        <CustomInput labelText={'Date'}/>
+                        <CustomInput labelText={'Date'} setStateFunc={setDate}/>
                     </div>
                     <div>
-                        <CustomInput labelText={'Planet'}/>
+                        <CustomInput labelText={'Planet'} setStateFunc={setPlanet}/>
                     </div>
                     <div>
-                        <CustomInput labelText={'Category'}/>
+                        <CustomInput labelText={'Category'} setStateFunc={setCategory}/>
+                    </div>
+                    <div>
+                        <button type='submit'>
+                        Create New Event
+                        </button>
                     </div>
                     {/* id = db.Column(db.Integer, primary_key = True)
                     name = db.Column(db.String(100), nullable = False)
