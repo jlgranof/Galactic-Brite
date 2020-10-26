@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv()
+from werkzeug.security import generate_password_hash
 
 from backend import app, db
 from backend.models import User, Category, Event
@@ -8,7 +9,7 @@ with app.app_context():
   db.drop_all()
   db.create_all()
 
-  demo = User(username = 'Jar Jar', email = 'therealsithleader@gungan.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThQUnhWZqYrbaRtrvH6uUJxiF64UMXBWO3XQ&usqp=CAU')
+  demo = User(username = 'Jar Jar', email = 'therealsithleader@gungan.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThQUnhWZqYrbaRtrvH6uUJxiF64UMXBWO3XQ&usqp=CAU', hashed_password = generate_password_hash("password"))
   palpatine = User(username = 'The Senate', email = 'darthsidious@sith.com', avatar_url = 'https://pm1.narvii.com/6989/837a8e36313c4a026a2f5acb9fe0a9f255d93a92r1-1080-1920v2_hq.jpg')
   anakin = User(username = 'Anakin Skywalker', email = 'darthvader@sith.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_sDERiegE5BSNiwpioOjCt5ndx89W1t4XNw&usqp=CAU')
   jabba = User(username = 'Jabba the Hutt', email = 'jabba@hutt.com', avatar_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Jabba_the_Hutt.jpg/498px-Jabba_the_Hutt.jpg')

@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles";
 
 // assets
-import idontknowhisname from '../../assets/images/pageNotFound.gif'
+import bb8 from '../../assets/images/pageNotFound.gif'
 
 
 
@@ -35,15 +35,11 @@ const PageNotFound = () => {
     const classes = useStyles()
 
     const [isRedirect, setIsRedirect] = useState(false)
-    const [isTimer, setIsTimer] = useState(false)
 
     useEffect(()=> {
         const timer = setTimeout(()=> setIsRedirect(true), 4400)
-        if(isTimer){
-            setIsRedirect(true)
-        }
         return (() => {clearTimeout(timer)})
-    },[isTimer])
+    },[isRedirect])
 
     if(isRedirect){
         return <Redirect to="/"/>
@@ -55,7 +51,7 @@ const PageNotFound = () => {
                 <div>Page Not Found!</div>
             </h1>
             <div className={classes.notFound}>
-                <img src={idontknowhisname}/>
+                <img src={bb8}/>
             </div>
         </>
     );

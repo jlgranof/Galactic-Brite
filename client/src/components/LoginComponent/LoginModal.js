@@ -1,7 +1,6 @@
-import React  from 'react';
+import React, {useState}  from 'react';
 
 // core components
-
 import CustomInput from '../SupportComponents/CustomInput'
 
 
@@ -46,48 +45,51 @@ const useStyles = makeStyles({
 
 })
 
-const LoginComponent = () => {
+const LoginComponent = ({email, setEmail, password, setPassword}) => {
     const classes = useStyles()
+
     return (
         <>
-                <div className={classes.LoginCard}>
-                    <div className={classNames(classes.centerContent, classes.inputGrid)}>
-                        <div className={classes.inputs}>
-                            <CustomInput
-                                // inputValue={firstName}
-                                // setStateFunc={setFirstName}
-                                labelText="Email..."
-                                id="email"
-                                inputProps={{
-                                    type: "text",
-                                    endAdornment: (
-                                        <InputAdornment>
-                                            <Icon className={classes.inputIconsColor}>
-                                                <Email/>
-                                                </Icon>
-                                        </InputAdornment>
-                                    )
-                                }}
-                            />
-                            <CustomInput
-                                // inputValue={firstName}
-                                // setStateFunc={setFirstName}
-                                labelText="password"
-                                id="password"
-                                inputProps={{
-                                    type: "text",
-                                    endAdornment: (
-                                        <InputAdornment>
-                                            <Icon className={classes.inputIconsColor}>
-                                                <LockIcon/>
-                                                </Icon>
-                                        </InputAdornment>
-                                    )
-                                }}
-                            />
+                <form>
+                    <div className={classes.LoginCard}>
+                        <div className={classNames(classes.centerContent, classes.inputGrid)}>
+                            <div className={classes.inputs}>
+                                <CustomInput
+                                    inputValue={email}
+                                    setStateFunc={setEmail}
+                                    labelText="Email..."
+                                    id="email"
+                                    inputProps={{
+                                        type: "email",
+                                        endAdornment: (
+                                            <InputAdornment>
+                                                <Icon className={classes.inputIconsColor}>
+                                                    <Email/>
+                                                    </Icon>
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                />
+                                <CustomInput
+                                    inputValue={password}
+                                    setStateFunc={setPassword}
+                                    labelText="password"
+                                    id="password"
+                                    inputProps={{
+                                        type: "password",
+                                        endAdornment: (
+                                            <InputAdornment>
+                                                <Icon className={classes.inputIconsColor}>
+                                                    <LockIcon/>
+                                                    </Icon>
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
         </>
     );
 };

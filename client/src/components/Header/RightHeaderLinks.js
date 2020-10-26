@@ -33,13 +33,16 @@ const RightHeaderLinks = ({inherit}) => {
                 <Button className={inherit} onClick={()=>setIsLoginOpen(true)}>
                         Login
                     </Button>
-                    <LoginDialog 
-                    isLoginOpen={isLoginOpen} 
+                    <LoginDialog
+                    isLoginOpen={isLoginOpen}
                     setIsLoginOpen={setIsLoginOpen}
                     setIsSignupOpen={setIsSignupOpen}
                     />
                     <Button className={inherit} onClick={() => setIsSignupOpen(true)}>
                         Signup
+                    </Button>
+                    <Button className={inherit} to="/create-event" activeclass="active">
+                        <NavLink className={inherit} to="/create-event" activeclass="active">+</NavLink>
                     </Button>
                     <SignupDialog
                     isOpen={isSignupOpen}

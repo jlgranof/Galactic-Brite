@@ -5,8 +5,18 @@ import React from 'react';
 function User(props) {
     return (
         <>
-            <strong>Username:</strong> {props.user.username}<br />
-            <strong>Email:</strong> {props.user.email}<br />
+
+            <strong style={{color:"white"}}>
+                Username:
+                {props.user.username}
+            </strong>
+
+            <br />
+            <strong style={{ color: "white" }}>
+                Email:
+                {props.user.email}
+                </strong>
+                <br />
             <hr />
         </>
     );

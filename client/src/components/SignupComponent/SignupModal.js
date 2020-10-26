@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 // core components
 
@@ -13,6 +13,7 @@ import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
 import LockIcon from '@material-ui/icons/Lock';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 
 
 
@@ -50,14 +51,24 @@ const useStyles = makeStyles({
 
 const LoginComponent = () => {
     const classes = useStyles()
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+
+    const checkPassword = () => {
+        
+    }
+
+
     return (
         <>
             <div className={classes.LoginCard}>
                 <div className={classNames(classes.centerContent, classes.inputGrid)}>
                     <div className={classes.inputs}>
                         <CustomInput
-                            // inputValue={firstName}
-                            // setStateFunc={setFirstName}
+                            inputValue={username}
+                            setStateFunc={setUsername}
                             labelText="username..."
                             id="password"
                             inputProps={{
@@ -65,15 +76,15 @@ const LoginComponent = () => {
                                 endAdornment: (
                                     <InputAdornment>
                                         <Icon className={classes.inputIconsColor}>
-                                            <LockIcon />
+                                            <PeopleAltIcon/>
                                         </Icon>
                                     </InputAdornment>
                                 )
                             }}
                         />
                         <CustomInput
-                            // inputValue={firstName}
-                            // setStateFunc={setFirstName}
+                            inputValue={email}
+                            setStateFunc={setEmail}
                             labelText="Email..."
                             id="email"
                             inputProps={{
@@ -81,15 +92,15 @@ const LoginComponent = () => {
                                 endAdornment: (
                                     <InputAdornment>
                                         <Icon className={classes.inputIconsColor}>
-                                            <Email />
+                                            <Email/>
                                         </Icon>
                                     </InputAdornment>
                                 )
                             }}
                         />
                         <CustomInput
-                            // inputValue={firstName}
-                            // setStateFunc={setFirstName}
+                            inputValue={password}
+                            setStateFunc={setPassword}
                             labelText="password"
                             id="password"
                             inputProps={{
@@ -97,15 +108,15 @@ const LoginComponent = () => {
                                 endAdornment: (
                                     <InputAdornment>
                                         <Icon className={classes.inputIconsColor}>
-                                            <LockIcon />
+                                            <LockIcon/>
                                         </Icon>
                                     </InputAdornment>
                                 )
                             }}
                         />
                         <CustomInput
-                            // inputValue={firstName}
-                            // setStateFunc={setFirstName}
+                            inputValue={confirmPassword}
+                            setStateFunc={setConfirmPassword}
                             labelText="confirm password"
                             id="confirmPassword"
                             inputProps={{
@@ -113,7 +124,7 @@ const LoginComponent = () => {
                                 endAdornment: (
                                     <InputAdornment>
                                         <Icon className={classes.inputIconsColor}>
-                                            <LockIcon />
+                                            <LockIcon/>
                                         </Icon>
                                     </InputAdornment>
                                 )
