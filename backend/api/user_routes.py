@@ -36,7 +36,7 @@ def sign_up():
   user = new_user.to_dict()
   user.pop('hashed_password')
 
-  return {**user}
+  return {'access_token': token.decode('UTF-8'), **user}
 
 
 @user_routes.route('/<id>', methods=['DELETE'])
