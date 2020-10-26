@@ -30,12 +30,18 @@ const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
             <DialogContent dividers>
                 <LoginModal />
             </DialogContent>
-            <DialogActions>
                 <Button
                     autoFocus
                     onClick={() => setIsLoginOpen(false)}
                     color="primary">
                     login
+                </Button>
+            <DialogActions>
+                <Button
+                    autoFocus
+                    onClick={() => setIsLoginOpen(false)}
+                    color="primary">
+                    demo
                 </Button>
                 <Button
                     onClick={() => setIsLoginOpen(false)}

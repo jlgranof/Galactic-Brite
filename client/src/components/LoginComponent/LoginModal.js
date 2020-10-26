@@ -1,7 +1,6 @@
-import React  from 'react';
+import React, {useState}  from 'react';
 
 // core components
-
 import CustomInput from '../SupportComponents/CustomInput'
 
 
@@ -48,18 +47,20 @@ const useStyles = makeStyles({
 
 const LoginComponent = () => {
     const classes = useStyles()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     return (
         <>
                 <div className={classes.LoginCard}>
                     <div className={classNames(classes.centerContent, classes.inputGrid)}>
                         <div className={classes.inputs}>
                             <CustomInput
-                                // inputValue={firstName}
-                                // setStateFunc={setFirstName}
+                                inputValue={email}
+                                setStateFunc={setEmail}
                                 labelText="Email..."
                                 id="email"
                                 inputProps={{
-                                    type: "text",
+                                    type: "email",
                                     endAdornment: (
                                         <InputAdornment>
                                             <Icon className={classes.inputIconsColor}>
@@ -70,12 +71,12 @@ const LoginComponent = () => {
                                 }}
                             />
                             <CustomInput
-                                // inputValue={firstName}
-                                // setStateFunc={setFirstName}
+                                inputValue={password}
+                                setStateFunc={setPassword}
                                 labelText="password"
                                 id="password"
                                 inputProps={{
-                                    type: "text",
+                                    type: "password",
                                     endAdornment: (
                                         <InputAdornment>
                                             <Icon className={classes.inputIconsColor}>

@@ -6,12 +6,12 @@ import ReduxStore from './store/ReduxStore'
 import { Provider } from 'react-redux'
 
 
-if (process.env.NODE_ENV !== 'production') {
-  // const getCSRFToken = () => {
-  //   return fetch("api/csrf/token")
-  // }
-  // getCSRFToken();
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   const getCSRFToken = () => {
+//     return fetch("api/csrf/token")
+//   }
+//   getCSRFToken();
+// }
 
 // const initialState = {
 //   email: 'hanSolo@gmail.com',
