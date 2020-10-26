@@ -1,10 +1,11 @@
 from flask import Blueprint, jsonify
 from backend.models import Event
+from backend.api.custom_events.event_randomizer import get_random_event
 
 event_routes = Blueprint('events', __name__)
 
-@event_routes.route('/')
-def index():
+@event_routes.route('/featured')
+def featured_events():
     response = Event.query.all()
     events = []
     for event in response:
@@ -48,4 +49,12 @@ def one_event(id):
                 },
             "is_featured": event.is_featured
         })
-    return "There is no event"
+    return "There is not an event with that ID"
+
+
+@event_routes.route('/random')
+def random_events():
+    events = []
+    for i in range(1,11):
+        events.append(get_random_event())
+    return jsonify(events)
