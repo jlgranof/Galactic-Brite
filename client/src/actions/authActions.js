@@ -1,8 +1,8 @@
 import Cookies from "js-cookie";
 
-export const SET_USER = "SET USER";
-export const REMOVE_USER = "REMOVE USER";
-
+export const SET_USER = "SET_USER";
+export const REMOVE_USER = "REMOVE_USER";
+export const CREATE_USER = "CREATE_USER";
 
 //!ACTIONS
 export const setUser = (user) => {
@@ -15,6 +15,13 @@ export const setUser = (user) => {
 export const removeUser = () => {
     return {
         type: REMOVE_USER
+    }
+}
+
+export const createUser = (user) => {
+    return {
+        type: CREATE_USER,
+        user
     }
 }
 
@@ -45,11 +52,28 @@ export const logout = () => async dispatch => {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
-            "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
+            // "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
         }
     });
     if (res.ok) {
         dispatch(removeUser());
+    }
+}
+
+
+export const signup = (username, email, password) => async dispatch => {
+    const csrfToken = Cookies.get("XSRF-TOKEN");
+    const response = await fetch('/api/users', {
+        method: 'post',
+        headers: { 
+            'Content-Type': 'application/json',
+            // "XSRF-TOKEN": csrfToken 
+        },
+        body: JSON.stringify({ username, email, password }),
+    });
+    if (response.ok) {
+        const { user } = await response.json();
+        dispatch(createUser(user));
     }
 }
 

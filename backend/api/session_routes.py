@@ -1,20 +1,38 @@
-from flask import Blueprint, jsonify, request,make_response
+from flask import Blueprint, jsonify, request, make_response
 from backend.models import User
 import jwt
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from functools import wraps
+
+
 session_routes = Blueprint('session', __name__)
 
-@session_routes.route("/")
-def restoreUser():
-    token = request.cookies.get("session", False)
-    decoded = jwt.decode(token, algorithm="sha256")
-    print(decoded)
-    if(token):
-        return jsonify({"token": decoded})
-    return {}
 
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+
+        token = request.cookies.get('x-access-token')
+
+        if not token:
+            return jsonify({'message' : 'Token is missing!'}), 401
+
+        try: 
+            data = jwt.decode(token, os.environ.get('SECRET_KEY'))
+            current_user = User.query.filter_by(id=data['userId']).first()
+        except:
+            return jsonify({'message' : 'Token is invalid!'}), 401
+
+        return f(current_user, *args, **kwargs)
+
+    return decorated
+
+# @session_routes.route("/")
+# @token_required
+# def restoreUser(current_user):
+#     return {}
 
 @session_routes.route("/login", methods=["GET", "POST"])
 def login():
@@ -25,10 +43,9 @@ def login():
         return jsonify({'message': 'No login information provided'})
 
     response = User.query.filter_by(email=data["email"]).first()
-    print("="*20)
+
     user = response.to_dict()
-    print("="*20)
-    print(user)
+
     if not user:
         return jsonify({'message': 'No user found!'})
 
@@ -38,34 +55,25 @@ def login():
             "userId": user["id"],
             "exp": datetime.utcnow() + timedelta(minutes=30)
             }, os.environ.get('SECRET_KEY'))
+        
+        resp = make_response('Setting cookie')
+        resp.set_cookie('x-access-token', token.decode('UTF-8'))
 
-        # # token = jwt.encode(
-        # #     payload, 
-        # #     secret, 
-        # #     algorithm=algorithm, 
-        # #     headers=headers
-        # #     )
-            
+        response = jwt.decode(token, os.environ.get('SECRET_KEY'))
+        print(response['userId'])
+        print("******")
+        current_user = User.query.filter_by(id=response['userId']).first()
+        value = current_user.to_dict()
+        value.pop('hashed_password')
 
-        return jsonify({'token': token.decode('UTF-8')})
+        return {**value}
 
-    return jsonify({'message': 'final return'})
+    return jsonify({'message': 'incomplete'})
 
 
 @session_routes.route("/logout")
 def logout():
     resp = make_response("del success")
-    resp.delete_cookie("session")
+    resp.delete_cookie("token")
     return resp
 
-
-# @app.route('/delete-cookie/')
-# def delete_cookie():
-#     res = make_response("Cookie Removed")
-#     res.set_cookie('foo', 'bar', max_age=0)
-#     return res
-
-# router.delete('/', asyncHandler(async (req, res)= > {
-#     res.clearCookie('token')
-#     res.json({message: 'success'})
-# }))
