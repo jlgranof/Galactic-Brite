@@ -1,9 +1,11 @@
 import React from 'react';
 
 
+
 function User(props) {
     return (
         <>
+
             <strong style={{color:"white"}}>
                 Username:
                 {props.user.username}

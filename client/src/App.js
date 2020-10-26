@@ -16,6 +16,7 @@ import PageNotFound from './components/PageNotFound/PageNotFound'
 import TestPage from './components/TestPage/TestPage'
 import SecondTestPage from './components/TestPage/SecondTestPage'
 
+import CreateEventForm from './components/Create-New-Events/CreateEvent'
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
                 <Route exact path="/test-page"><TestPage/></Route>
                 <Route exact path="/secondTest-page"><SecondTestPage/></Route>
                 <Route exact path="/"><LandingPage/></Route>
+                <Route exact path="/create-event"><CreateEventForm/></Route>
                 <Route component={PageNotFound}/>
             </Switch>
         </BrowserRouter>

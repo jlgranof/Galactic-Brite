@@ -33,6 +33,7 @@ const useStyles = makeStyles({
 
 const LandingPage = () => {
     const classes = useStyles()
+
     const dispatch = useDispatch()
 
     //preload featured events
@@ -40,10 +41,12 @@ const LandingPage = () => {
     console.log(featuredEvents)
     
     const fakeList = [1, 2, 3, 2, "pulled from database", "random events stuff"]
+
     return (
         <>
             <Header/>
             <CarouselComponent/>
+
                 {featuredEvents? featuredEvents.map((event, i)=> (
                         <FeaturedEventsComponent  key={i} event={event}/>
                 )):null}
@@ -55,6 +58,7 @@ const LandingPage = () => {
                     <EventsComponent />
                     </div>
                 ))}
+
             </div>
 
 
