@@ -4,35 +4,25 @@ import jwt
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
-from functools import wraps
+
 
 
 session_routes = Blueprint('session', __name__)
 
+@session_routes.route("/")
+def restoreUser():
+    token = request.cookies.get('access_token')
 
-def token_required(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
+    if not token:
+        return jsonify({'message' : 'Token is missing!'}), 401
 
-        token = request.cookies.get('x-access-token')
+    response = jwt.decode(token, os.environ.get('SECRET_KEY'))
+    
+    current_user = User.query.filter_by(id=response['userId']).first()
+    value = current_user.to_dict()
+    value.pop('hashed_password')
 
-        if not token:
-            return jsonify({'message' : 'Token is missing!'}), 401
-
-        try: 
-            data = jwt.decode(token, os.environ.get('SECRET_KEY'))
-            current_user = User.query.filter_by(id=data['userId']).first()
-        except:
-            return jsonify({'message' : 'Token is invalid!'}), 401
-
-        return f(current_user, *args, **kwargs)
-
-    return decorated
-
-# @session_routes.route("/")
-# @token_required
-# def restoreUser(current_user):
-#     return {}
+    return {**value}
 
 @session_routes.route("/login", methods=["GET", "POST"])
 def login():
@@ -56,8 +46,6 @@ def login():
             "exp": datetime.utcnow() + timedelta(minutes=30)
             }, os.environ.get('SECRET_KEY'))
         
-        resp = make_response('Setting cookie')
-        resp.set_cookie('x-access-token', token.decode('UTF-8'))
 
         response = jwt.decode(token, os.environ.get('SECRET_KEY'))
         print(response['userId'])
@@ -66,7 +54,7 @@ def login():
         value = current_user.to_dict()
         value.pop('hashed_password')
 
-        return {**value}
+        return {'access_token': token.decode('UTF-8'), **value}
 
     return jsonify({'message': 'incomplete'})
 
@@ -74,6 +62,6 @@ def login():
 @session_routes.route("/logout")
 def logout():
     resp = make_response("del success")
-    resp.delete_cookie("token")
+    resp.delete_cookie("access_token")
     return resp
 
