@@ -17,19 +17,20 @@ import SecondTestPage from './components/TestPage/SecondTestPage'
 
 
 function App() {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
 
     useEffect(()=>{
         const generateSession = async () => {
-            const res = await fetch("/api/session")
+            const res = await fetch("/api/session/login")
             if (res.ok) {
-                res.data = await res.json()
-                dispatch(setUser(res.data.user))
+                const data = await res.json()
+                console.log(data)
+                // dispatch(setUser(res.data.user))
             }
             setLoading(false);
         }
-        // generateSession();
+        generateSession();
     }, [])
 
     if(loading) return null

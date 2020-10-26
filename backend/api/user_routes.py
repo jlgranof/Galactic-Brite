@@ -20,3 +20,12 @@ def sign_up():
 
   return jsonify({'message': 'New user created!'})
 
+
+@user_routes.route('/<id>', methods=['DELETE'])
+def delete_user(id):
+    user = User.query.filter_by(id=id).first()
+    if not user:
+        return jsonify({'message': 'Not user found!'})
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({'message': 'User has been deleted!'})

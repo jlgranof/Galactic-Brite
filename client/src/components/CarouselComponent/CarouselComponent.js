@@ -42,8 +42,8 @@ const CarouselComponent = () => {
             autoPlay={true}
             interval={3000}
             animation={"fade"}
-            next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
-            prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
+            // next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
+            // prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
         >
             {
                 items.map((url, i) => <CarouselItems key={i} url={url} />)
