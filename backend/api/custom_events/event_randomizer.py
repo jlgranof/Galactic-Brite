@@ -1,8 +1,8 @@
 from random import randint
 import requests
-from description import random_description
-from date import random_date
-from name import random_name
+from backend.api.custom_events.description import random_description
+from backend.api.custom_events.date import random_date
+from backend.api.custom_events.name import random_name
 
 def get_random_event():
     return {
