@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
 const LandingPage = () => {
     const classes = useStyles()
-    
+
     return (
         <>
             <Header/>
@@ -29,247 +29,247 @@ const LandingPage = () => {
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
             <div className={classes.extrasTemporary}>
                 Featured Events
                 <div>
-                    Events 
+                    Events
                 </div>
             </div>
 
