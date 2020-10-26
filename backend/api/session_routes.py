@@ -9,14 +9,12 @@ from functools import wraps
 
 session_routes = Blueprint('session', __name__)
 
-@session_routes.route("/")
+
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        token = None
 
-        if 'x-access-token' in request.headers:
-            token = request.headers['x-access-token']
+        token = request.cookies.get('x-access-token')
 
         if not token:
             return jsonify({'message' : 'Token is missing!'}), 401
@@ -31,10 +29,13 @@ def token_required(f):
 
     return decorated
 
+# @session_routes.route("/")
+# @token_required
+# def restoreUser(current_user):
+#     return {}
 
 @session_routes.route("/login", methods=["GET", "POST"])
-@token_required
-def login(current_user):
+def login():
     data = request.get_json()
 
 
@@ -58,14 +59,14 @@ def login(current_user):
         resp = make_response('Setting cookie')
         resp.set_cookie('x-access-token', token.decode('UTF-8'))
 
-        # response = jwt.decode(token, os.environ.get('SECRET_KEY'))
-        # print(response['userId'])
-        # print("******")
-        # current_user = User.query.filter_by(id=response['userId']).first()
-        # value = current_user.to_dict()
-        # value.pop('hashed_password')
+        response = jwt.decode(token, os.environ.get('SECRET_KEY'))
+        print(response['userId'])
+        print("******")
+        current_user = User.query.filter_by(id=response['userId']).first()
+        value = current_user.to_dict()
+        value.pop('hashed_password')
 
-        # return {**value}
+        return {**value}
 
     return jsonify({'message': 'incomplete'})
 
