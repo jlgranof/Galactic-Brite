@@ -1,5 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+// redux
+import { useDispatch } from 'react-redux'
+import { setUser } from './actions/authActions'
 
 // core components
 import UserList from './components/UsersList';
@@ -11,7 +15,24 @@ import TestPage from './components/TestPage/TestPage'
 import SecondTestPage from './components/TestPage/SecondTestPage'
 
 
+
 function App() {
+    const [loading, setLoading] = useState(false)
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        const generateSession = async () => {
+            const res = await fetch("/api/session")
+            if (res.ok) {
+                res.data = await res.json()
+                dispatch(setUser(res.data.user))
+            }
+            setLoading(false);
+        }
+        // generateSession();
+    }, [])
+
+    if(loading) return null
     return (
         <BrowserRouter>
             <Switch>
