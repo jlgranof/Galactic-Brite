@@ -14,7 +14,7 @@ def restoreUser():
     token = request.cookies.get('access_token')
 
     if not token:
-        return jsonify({'message' : 'Token is missing!'}), 401
+        return {}
 
     response = jwt.decode(token, os.environ.get('SECRET_KEY'))
     
@@ -28,8 +28,7 @@ def restoreUser():
 def login():
     data = request.get_json()
 
-
-    if not data or not data['email'] or not data['password']:
+    if not data:
         return jsonify({'message': 'No login information provided'})
 
     response = User.query.filter_by(email=data["email"]).first()
@@ -51,10 +50,10 @@ def login():
         print(response['userId'])
         print("******")
         current_user = User.query.filter_by(id=response['userId']).first()
-        value = current_user.to_dict()
-        value.pop('hashed_password')
+        user = current_user.to_dict()
+        user.pop('hashed_password')
 
-        return {'access_token': token.decode('UTF-8'), **value}
+        return {'access_token': token.decode('UTF-8'), "user":user}
 
     return jsonify({'message': 'incomplete'})
 

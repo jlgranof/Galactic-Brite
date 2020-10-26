@@ -49,7 +49,7 @@ const useStyles = makeStyles({
 
 
 const EventsComponent = ({event}) => {
-    console.log(event)
+    // console.log(event)
     const classes = useStyles()
 
     return (
@@ -73,9 +73,9 @@ const EventsComponent = ({event}) => {
                 title="Paella dish"
             />
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" component="p">
                     {event.event_description}
-        </Typography classes={classes.body}>
+                </Typography>
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">

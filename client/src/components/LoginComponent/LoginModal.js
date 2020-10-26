@@ -45,50 +45,51 @@ const useStyles = makeStyles({
 
 })
 
-const LoginComponent = () => {
+const LoginComponent = ({email, setEmail, password, setPassword}) => {
     const classes = useStyles()
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+
     return (
         <>
-                <div className={classes.LoginCard}>
-                    <div className={classNames(classes.centerContent, classes.inputGrid)}>
-                        <div className={classes.inputs}>
-                            <CustomInput
-                                inputValue={email}
-                                setStateFunc={setEmail}
-                                labelText="Email..."
-                                id="email"
-                                inputProps={{
-                                    type: "email",
-                                    endAdornment: (
-                                        <InputAdornment>
-                                            <Icon className={classes.inputIconsColor}>
-                                                <Email/>
-                                                </Icon>
-                                        </InputAdornment>
-                                    )
-                                }}
-                            />
-                            <CustomInput
-                                inputValue={password}
-                                setStateFunc={setPassword}
-                                labelText="password"
-                                id="password"
-                                inputProps={{
-                                    type: "password",
-                                    endAdornment: (
-                                        <InputAdornment>
-                                            <Icon className={classes.inputIconsColor}>
-                                                <LockIcon/>
-                                                </Icon>
-                                        </InputAdornment>
-                                    )
-                                }}
-                            />
+                <form>
+                    <div className={classes.LoginCard}>
+                        <div className={classNames(classes.centerContent, classes.inputGrid)}>
+                            <div className={classes.inputs}>
+                                <CustomInput
+                                    inputValue={email}
+                                    setStateFunc={setEmail}
+                                    labelText="Email..."
+                                    id="email"
+                                    inputProps={{
+                                        type: "email",
+                                        endAdornment: (
+                                            <InputAdornment>
+                                                <Icon className={classes.inputIconsColor}>
+                                                    <Email/>
+                                                    </Icon>
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                />
+                                <CustomInput
+                                    inputValue={password}
+                                    setStateFunc={setPassword}
+                                    labelText="password"
+                                    id="password"
+                                    inputProps={{
+                                        type: "password",
+                                        endAdornment: (
+                                            <InputAdornment>
+                                                <Icon className={classes.inputIconsColor}>
+                                                    <LockIcon/>
+                                                    </Icon>
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
         </>
     );
 };

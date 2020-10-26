@@ -40,8 +40,9 @@ export const login = (email, password) => {
 
         if (res.ok) {
             const data = await res.json();
-            console.log(data)
-            // dispatch(setUser(data.user));
+            console.log(data.access_token)
+            Cookies.set("access_token", data.access_token)
+            dispatch(setUser(data.user));
         }
         return res;
     };
