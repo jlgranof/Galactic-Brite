@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 export const GET_EVENTS = "GET EVENTS";
 export const ADD_TICKET = "ADD TICKET";
+export const CREATE_EVENT = "CREATE EVENT";
 
 // might swap over to have tickets as a separate action
 
@@ -12,6 +13,13 @@ export const getEvents = (events) => {
     return {
         type: GET_EVENTS,
         events
+    }
+}
+export const createEvent = (event) =>{
+    return {
+        type: CREATE_EVENT,
+        event
+
     }
 }
 export const addTicketForEvent = (ticket) => {
@@ -61,4 +69,3 @@ export const addTicketsToUser = (ticket, userId) => {
         return res;
     };
 };
-
