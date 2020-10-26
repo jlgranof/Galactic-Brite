@@ -4,7 +4,8 @@ from description import random_description
 from date import random_date
 from name import random_name
 
-event = {
+def get_random_event():
+    return {
     "name": random_name(),
     "event_description": random_description(),
     "host_id": randint(1,9),
@@ -13,4 +14,4 @@ event = {
     "is_featured": False
 }
 
-print(event)
+print(get_random_event())
