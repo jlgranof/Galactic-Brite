@@ -39,6 +39,7 @@ const CreateEventForm = () => {
     const [date, setDate] = useState("")
     const [planet, setPlanet] = useState("")
     const [category, setCategory] = useState("")
+    const [details, setDetails] = useState("")
 
     return (
         <>
@@ -47,26 +48,33 @@ const CreateEventForm = () => {
             </div>
             <div className={classes.container}>
                 <div className={classes.middle}>
-                    <div>
-                        <CustomInput labelText={'Name Event'} setStateFunc={setName}/>
-                    </div>
-                    <div>
-                        <CustomInput labelText={'Description'} setStateFunc={setDescription}/>
-                    </div>
-                    <div>
-                        <CustomInput labelText={'Date'} setStateFunc={setDate}/>
-                    </div>
-                    <div>
-                        <CustomInput labelText={'Planet'} setStateFunc={setPlanet}/>
-                    </div>
-                    <div>
-                        <CustomInput labelText={'Category'} setStateFunc={setCategory}/>
-                    </div>
-                    <div>
-                        <button type='submit'>
-                        Create New Event
-                        </button>
-                    </div>
+                    <form method='post' action=''>
+                        <div>
+                            <button type='submit'>
+                            Create New Event
+                            </button>
+                        </div>
+
+                        <div>
+                            <CustomInput labelText={'Name Event'} setStateFunc={setName}/>
+                        </div>
+                        <div>
+                            {/* custom react component for calnedar */}
+                            <CustomInput labelText={'Date'} setStateFunc={setDate}/>
+                        </div>
+                        <div>
+                            <CustomInput labelText={'Planet'} setStateFunc={setPlanet}/>
+                        </div>
+                        <div>
+                            <CustomInput labelText={'Category'} setStateFunc={setCategory}/>
+                        </div>
+                        <div>
+                            <CustomInput labelText={'Details'} setStateFunc={setDetails} multiline={true} rows={3}/>
+                        </div>
+                        <div>
+                            <CustomInput labelText={'Description'} setStateFunc={setDescription} multiline={true} rows={3}/>
+                        </div>
+                    </form>
                     {/* id = db.Column(db.Integer, primary_key = True)
                     name = db.Column(db.String(100), nullable = False)
                     event_description = db.Column(db.String(5000), nullable = False)
