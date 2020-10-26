@@ -72,15 +72,15 @@ def random_description():
     paragraph_number = randint(3,6)
 
     description = {}
-    description["paragraph_1"] = paragraphs[randint(1,3)][randint(0,19)]
-    description["paragraph_2"] = paragraphs[randint(1,3)][randint(0,19)]
-    description["paragraph_3"] = paragraphs[randint(1,3)][randint(0,19)]
+    description["description"] = paragraphs[randint(1,3)][randint(0,19)]
+    description["details_1"] = paragraphs[randint(1,3)][randint(0,19)]
+    description["details_2"] = paragraphs[randint(1,3)][randint(0,19)]
 
     if paragraph_number > 3:
-        description["paragraph_4"] = paragraphs[randint(1,3)][randint(0,19)]
+        description["details_3"] = paragraphs[randint(1,3)][randint(0,19)]
     if paragraph_number > 4:
-        description["paragraph_5"] = paragraphs[randint(1,3)][randint(0,19)]
+        description["details_4"] = paragraphs[randint(1,3)][randint(0,19)]
     if paragraph_number > 5:
-        description["paragraph_6"] = paragraphs[randint(1,3)][randint(0,19)]
+        description["details_5"] = paragraphs[randint(1,3)][randint(0,19)]
 
     return description
