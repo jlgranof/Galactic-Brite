@@ -4,6 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // redux
 import { useDispatch } from 'react-redux'
 import { setUser } from './actions/authActions'
+import { fetchFeaturedEvents } from './actions/featuredActions'
+// import {fetchEvents } from './actions/eventsActions'
 
 // core components
 import UserList from './components/UsersList';
@@ -20,6 +22,8 @@ function App() {
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
 
+
+    
     useEffect(()=>{
         const generateSession = async () => {
             const res = await fetch("/api/session/login")
@@ -30,8 +34,14 @@ function App() {
             }
             setLoading(false);
         }
+        
+        //preload ALL events in redux
+        const preloadAllEvents = async () => {
+            dispatch(fetchFeaturedEvents())
+        }
         generateSession();
-    }, [])
+        preloadAllEvents()
+    }, [loading])
 
     if(loading) return null
     return (

@@ -10,16 +10,6 @@ html {
     background-image: url('./assets/images/star.jpg')
 }
 
-/* html::-webkit-scrollbar {
-    width: 20px;
-
-}
-html::-webkit-scrollbar-thumb {
-    position: fixed;
-    background-position: fixed;
-    background-color: white;
-    border-radius: 20px;
-} */
 
 ::-webkit-scrollbar {
     width: 33px;
@@ -41,8 +31,8 @@ html::-webkit-scrollbar-thumb {
 }
  
 ::-webkit-scrollbar-thumb:vertical {
-    background:transparent url('./assets/images/lightsaber.png') no-repeat;
+    background:transparent url('./assets/images/darth.png') no-repeat;
     background-size:100%; 
-    height: 301px;
+    height: 210px;
 
 }

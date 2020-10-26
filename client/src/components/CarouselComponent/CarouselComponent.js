@@ -17,12 +17,13 @@ import falcon from '../../assets/images/falcon.jpg'
 const useStyles = makeStyles({
     indicators: {
         position: "absolute",
-        transform: "scale(3) rotate(90deg)",
+        transform: "scale(2) rotate(90deg)",
         width: "200px",
         right: 0,
         padding: 0,
         zIndex: 1000,
         top: "30%",
+        boxSizing: "border-box"
     },
 })
 
