@@ -28,6 +28,7 @@ export const createUser = (user) => {
 //! THUNKS
 //login
 export const login = (email, password) => {
+    console.log(email, password    )
     return async dispatch => {
         const res = await fetch(`/api/session/token/auth`, {
             method: 'post',
@@ -40,9 +41,7 @@ export const login = (email, password) => {
 
         if (res.ok) {
             const data = await res.json();
-            console.log(data.access_token)
-            Cookies.set("access_token", data.access_token)
-            dispatch(setUser(data.user));
+            dispatch(setUser(data))
         }
         return res;
     };

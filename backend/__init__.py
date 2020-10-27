@@ -22,8 +22,6 @@ from backend.config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
-app.config['JWT_ACCESS_COOKIE_PATH'] = '/api/session/token/auth'
-app.config['JWT_REFRESH_COOKIE_PATH'] = '/api/session/token/refresh'
 app.config['JWT_COOKIE_CSRF_PROTECT'] = False
 app.config['JWT_SECRET_KEY'] = 'C1D55AF87585F574A7C7566ED281D'
 app.register_blueprint(user_routes, url_prefix='/api/users')
