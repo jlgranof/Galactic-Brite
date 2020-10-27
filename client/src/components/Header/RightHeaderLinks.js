@@ -70,7 +70,10 @@ const RightHeaderLinks = ({inherit, expanded, setExpanded}) => {
             <div className={classes.rightLinkBox}>
                 {id === undefined ?
                     <>
-                    <div>
+                        <NavLink className={classNames(inherit, classes.alignPlus)} to="/create-event" activeclass="active">
+                            <AddCircleIcon className={classes.roundIcon} />
+                            Create Event
+                        </NavLink>
                         <Button className={inherit} onClick={()=>setIsLoginOpen(true)}>
                             Login
                         </Button>
@@ -82,17 +85,12 @@ const RightHeaderLinks = ({inherit, expanded, setExpanded}) => {
                         <Button className={inherit} onClick={() => setIsSignupOpen(true)}>
                             Signup
                         </Button>
-                        <Button className={inherit} to="/create-event" activeclass="active">
-                            <NavLink className={classNames(inherit, classes.alignPlus)} to="/create-event" activeclass="active">
-                                <AddCircleIcon className={classes.roundIcon} />
-                                    Create Event
-                            </NavLink>
-                        </Button>
+
+
                         <SignupDialog
                         isOpen={isSignupOpen}
                         setIsOpen={setIsSignupOpen}
                         />
-                    </div>
                     </>
                 : null }
                 {id !== undefined ?
@@ -101,6 +99,7 @@ const RightHeaderLinks = ({inherit, expanded, setExpanded}) => {
                                 <AddCircleIcon className={classes.roundIcon}/>
                                 Create Event
                         </NavLink>
+
                         <div>
                         </div>
                             <IconButton
