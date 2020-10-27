@@ -43,6 +43,7 @@ const CarouselComponent = () => {
             autoPlay={true}
             interval={3000}
             animation={"fade"}
+            navButtonsAlwaysVisible={true}
             // next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
             // prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
         >

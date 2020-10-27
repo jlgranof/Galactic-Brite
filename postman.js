@@ -6,8 +6,8 @@ POST http://localhost:5000/api/users/
 content-type: application/json
 
 {
-    "username": "alecbrand",
-    "email": "alecbgarcia@gmail.com",
+    "username": "kasey",
+    "email": "kasey@gmail.com",
     "password": "password"
 }
 ###
@@ -30,3 +30,11 @@ content-type: application/json
 ###
 GET http://localhost:5000/api/session/logout
 
+###
+POST http://localhost:5000/api/session/token/auth
+content-type: application/json
+
+{
+    "email": "kasey@gmail.com",
+    "password": "password"
+}
