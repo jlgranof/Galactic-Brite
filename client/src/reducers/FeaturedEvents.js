@@ -1,6 +1,6 @@
 import { CREATE_EVENT } from '../actions/eventsActions'
 import { GET_FEATURED_EVENTS } from '../actions/featuredActions'
-import { CREATE_EVENT} from '../actions/eventsActions'
+// import { CREATE_EVENT} from '../actions/eventsActions'
 
 
 
