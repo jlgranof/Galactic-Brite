@@ -56,7 +56,7 @@ def one_event(id):
 @event_routes.route('/random')
 def random_events():
     events = []
-    for i in range(1,2):
+    for i in range(1,11):
         events.append(get_random_event())
     return jsonify(events)
 
