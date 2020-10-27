@@ -14,4 +14,3 @@ def get_random_event():
     "is_featured": False
 }
 
-print(get_random_event())
