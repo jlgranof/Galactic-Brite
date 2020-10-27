@@ -13,4 +13,3 @@ def get_random_event():
     "event_planet": requests.get(f"http://swapi.dev/api/planets/{randint(1,60)}/").json()['name'],
     "is_featured": False
 }
-
