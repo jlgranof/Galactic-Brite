@@ -34,7 +34,9 @@ const CustomInput = (props) => {
         inputProps,
         error,
         white,
-        success
+        success,
+        multiline,
+        rows
     } = props;
     const underlineClasses = classNames({
         [classes.underlineError]: error,
@@ -53,11 +55,13 @@ const CustomInput = (props) => {
                     <Input
                     fullWidth={true}
                     required={true}
+                    multiline={multiline}
+                    rows={rows}
                     className={classNames(
-                        id, 
+                        id,
                         classes.input,
                         underlineClasses
-                        )} 
+                        )}
                     {...inputProps}
                     onChange={(e) => setStateFunc(e.target.value)}
                     value={inputValue}
@@ -72,7 +76,3 @@ const CustomInput = (props) => {
 };
 
 export default CustomInput;
-
-
-
-
