@@ -42,10 +42,14 @@ const TestPage = () => {
     const [profileVisible, setProfileVisible] = useState(false)
 
     useEffect(() => {
-        setTimeout(() => setGifLoading(()=> false), 1400)
-        setTimeout(() => setProfileVisible(()=> true), 1400)
-    }, [gifLoading])
+        const firstTimer = setTimeout(() => setGifLoading(()=> false), 1400)
+        const secondTimer = setTimeout(() => setProfileVisible(()=> true), 1400)
 
+        return () => {
+            clearTimeout(firstTimer)
+            clearTimeout(secondTimer)
+        }
+    }, [gifLoading])
 
 
     return (

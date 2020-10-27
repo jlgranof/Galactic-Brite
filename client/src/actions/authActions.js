@@ -48,7 +48,13 @@ export const login = (email, password) => {
 };
 //logout
 export const logout = () => async dispatch => {
-    const res = await fetch('/api/session/token/remove');
+    const res = await fetch('/api/session/token/remove', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            // "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
+        }
+    });
     if (res.ok) {
         dispatch(removeUser());
     }

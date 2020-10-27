@@ -20,8 +20,8 @@ const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
     const [email, setEmail] = useState("therealsithleader@gungan.com")
     const [password, setPassword] = useState("password")
 
-    const handleLogin = async () => {
-        await dispatch(login(email, password))
+    const handleLogin = () => {
+        dispatch(login(email, password))
         setIsLoginOpen(false)
     }
 
