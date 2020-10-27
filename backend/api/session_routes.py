@@ -4,63 +4,63 @@ import jwt
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
-
+from flask_jwt_extended import (
+    JWTManager, jwt_required, create_access_token,
+    jwt_refresh_token_required, create_refresh_token,
+    get_jwt_identity, set_access_cookies,
+    set_refresh_cookies, unset_jwt_cookies
+)
 
 
 session_routes = Blueprint('session', __name__)
 
-@session_routes.route("/")
-def restoreUser():
-    token = request.cookies.get('access_token')
+# Same thing as login here, except we are only setting a new cookie
+# for the access token.
+@session_routes.route('/token/refresh', methods=['POST'])
+@jwt_refresh_token_required
+def refresh():
+    # Create the new access token
+    current_user = get_jwt_identity()
+    access_token = create_access_token(identity=current_user)
 
-    if not token:
-        return {}
-
-    response = jwt.decode(token, os.environ.get('SECRET_KEY'))
-    
-    current_user = User.query.filter_by(id=response['userId']).first()
-    value = current_user.to_dict()
-    value.pop('hashed_password')
-
-    return {**value}
-
-@session_routes.route("/login", methods=["GET", "POST"])
-def login():
-    data = request.get_json()
-
-    if not data:
-        return jsonify({'message': 'No login information provided'})
-
-    response = User.query.filter_by(email=data["email"]).first()
-
+    response = User.query.filter_by(username=current_user).first()
+    # Set the JWT access cookie in the response
     user = response.to_dict()
+    user.pop('hashed_password')
+    resp = jsonify({'refresh': True, **user})
+    set_access_cookies(resp, access_token)
+    return resp, 200
 
+@session_routes.route('/token/auth', methods=['POST'])
+def login():
+    username = request.json.get('username', None)
+    password = request.json.get('password', None)
+    if not username or not password:
+        return jsonify({'login': False}), 401
+    response = User.query.filter_by(username=username).first()
+    user = response.to_dict()
     if not user:
         return jsonify({'message': 'No user found!'})
-
-
-    if check_password_hash(user['hashed_password'], data['password']):
-        token = jwt.encode({
-            "userId": user["id"],
-            "exp": datetime.utcnow() + timedelta(minutes=30)
-            }, os.environ.get('SECRET_KEY'))
-        
-
-        response = jwt.decode(token, os.environ.get('SECRET_KEY'))
-        print(response['userId'])
-        print("******")
-        current_user = User.query.filter_by(id=response['userId']).first()
-        user = current_user.to_dict()
+    if check_password_hash(user['hashed_password'], password):
+        # Create the tokens we will be sending back to the user
+        access_token = create_access_token(identity=username)
+        refresh_token = create_refresh_token(identity=username)
         user.pop('hashed_password')
+        # Set the JWT cookies in the response
+        resp = jsonify({'login': True, **user})
+        set_access_cookies(resp, access_token)
+        set_refresh_cookies(resp, refresh_token)
+        return resp, 200
+    return jsonify({"message": "failed"})
 
-        return {'access_token': token.decode('UTF-8'), "user":user}
-
-    return jsonify({'message': 'incomplete'})
-
-
-@session_routes.route("/logout")
+# Because the JWTs are stored in an httponly cookie now, we cannot
+# log the user out by simply deleting the cookie in the frontend.
+# We need the backend to send us a response to delete the cookies
+# in order to logout. unset_jwt_cookies is a helper function to
+# do just that.
+@session_routes.route('/token/remove', methods=['POST'])
 def logout():
-    resp = make_response("del success")
-    resp.delete_cookie("access_token")
-    return resp
+    resp = jsonify({'logout': True})
+    unset_jwt_cookies(resp)
+    return resp, 200
 
