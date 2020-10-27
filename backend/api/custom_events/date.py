@@ -56,6 +56,3 @@ def get_era():
         return 'BBY'
     else:
         return 'ABY'
-
-
-
