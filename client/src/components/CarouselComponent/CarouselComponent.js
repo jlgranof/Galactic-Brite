@@ -18,11 +18,11 @@ const useStyles = makeStyles({
     indicators: {
         position: "absolute",
         transform: "scale(2) rotate(90deg)",
-        width: "200px",
+        width: "100px",
         right: 0,
         padding: 0,
         zIndex: 1000,
-        top: "30%",
+        top: "80%",
         boxSizing: "border-box"
     },
 })
@@ -44,6 +44,7 @@ const CarouselComponent = () => {
             interval={3000}
             animation={"fade"}
             navButtonsAlwaysVisible={true}
+            fullHeightHover={false}
             // next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
             // prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
         >

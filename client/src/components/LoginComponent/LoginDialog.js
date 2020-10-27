@@ -21,8 +21,6 @@ const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
     const [password, setPassword] = useState("password")
 
     const handleLogin = async () => {
-        console.log(email)
-        console.log(password)
         await dispatch(login(email, password))
         setIsLoginOpen(false)
     }
