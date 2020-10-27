@@ -6,7 +6,6 @@ from backend.api.custom_events.name import random_name
 from backend.models import Picture
 
 def get_random_event():
-    print(Picture.query.get(randint(1,37)).url)
     return {
     "name": random_name(),
     "event_description": random_description(),
