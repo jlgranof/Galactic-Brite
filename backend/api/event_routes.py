@@ -72,7 +72,7 @@ def add_custom_event():
         host_id=data['host_id'],
         event_date=data['event_date'],
         event_planet=data['event_planet'],
-        event_picture_url='placeholder.com',
+        event_picture_url='event_picture_url',
         category_id=data['category_id'],
         is_featured=True
     )
