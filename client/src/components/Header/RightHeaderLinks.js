@@ -64,9 +64,7 @@ const RightHeaderLinks = ({inherit, expanded, setExpanded}) => {
     const [isLoginOpen, setIsLoginOpen] = useState(false)
     const [isSignupOpen, setIsSignupOpen] = useState(false)
     const user = useSelector(state => state.auth)
-    console.log(user)
     const id = useSelector((state) => state.auth.id)
-    console.log(id)
     return (
         <>
             <div className={classes.rightLinkBox}>
