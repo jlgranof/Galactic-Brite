@@ -12,7 +12,7 @@ content-type: application/json
 }
 ###
 
-DELETE http://localhost:5000/api/users/16
+DELETE http://localhost:5000/api/users/24
 
 ###
 
