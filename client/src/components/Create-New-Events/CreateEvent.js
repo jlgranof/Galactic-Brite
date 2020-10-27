@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import {useDispatch} from 'react-redux';
 
+import deathstar from './death-star.jpg'
+import coruscant from './Coruscant_03db43b4.jpeg'
 // core components
 import Header from '../Header/Header'
 import CustomInput from '../SupportComponents/CustomInput'
@@ -20,15 +22,20 @@ const useStyles = makeStyles({
         // backgroundColor: "blue",
         display:"grid",
         gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
-        gridTemplateRows: " 1fr 2fr 1fr",
+        gridTemplateRows: " 220px 2fr 1fr",
         width:"100vw",
         height:"100vh",
-        backgroundColor: "yellow"
+        backgroundImage: ` url(${coruscant})`,
+        // backgroundRepeat: 'no-repeat, repeat'
     },
     middle: {
         gridRow: "2/3",
         gridColumn: "4/5"
-
+    },
+    deathStar:{
+        width: '100vw',
+        height: '100vh',
+        opacity: '0.33'
     }
 })
 
@@ -70,6 +77,7 @@ const CreateEventForm = () => {
             </div>
             <div className={classes.container}>
                 <div className={classes.middle}>
+                {/* <img className={classes.deathStar} src={deathstar}></img> */}
                     <form method='post' action=''>
                         <div>
                             <button type='submit' onClick={handleSubmit}>
