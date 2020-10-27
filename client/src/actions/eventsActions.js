@@ -15,7 +15,7 @@ export const getEvents = (events) => {
         events
     }
 }
-export const createEvent = (event) =>{
+export const createEvent = () =>{
     return{
         type: CREATE_EVENT
     }
@@ -39,6 +39,25 @@ export const fetchEvents = (id) => {
         if (res.ok) {
             const data = await res.json();
             dispatch(getEvents(data));
+        }
+        return res;
+    };
+};
+
+export const createEventThunk = (event) => {
+    return async dispatch => {
+        // Post request for creating events
+        const res = await fetch(`/api/events`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
+            },
+            body: JSON.stringify(event),
+        });
+        if (res.ok) {
+            const data = await res.json();
+            dispatch(createEvent());
         }
         return res;
     };
