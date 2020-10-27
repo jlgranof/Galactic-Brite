@@ -28,7 +28,9 @@ function App() {
     
     useEffect(()=>{
         const generateSession = async () => {
-            const res = await fetch("/api/session/")
+            const res = await fetch("/api/session/token/refresh", {
+                method: 'post',
+            })
             if (res.ok) {
                 const data = await res.json()
                 console.log(data)

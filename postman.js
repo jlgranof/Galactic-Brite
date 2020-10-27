@@ -29,8 +29,4 @@ content-type: application/json
 
 ###
 GET http://localhost:5000/api/session/logout
-content-type: application/json
 
-{
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE3LCJleHAiOjE2MDM2ODQ4MTZ9.Qc4t9cxnynet-OkAioKNqI9hd_XePZXCc6tFoG_3kc8"
-}

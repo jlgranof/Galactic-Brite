@@ -60,7 +60,9 @@ def login():
 
 @session_routes.route("/logout")
 def logout():
-    resp = make_response("del success")
-    resp.delete_cookie("access_token")
-    return resp
+    # token = request.cookies.get('access_token')
+    res = make_response("Cookie Removed")   
+    res.delete_cookie("access_token") 
+    # res.set_cookie('foo', 'bar', max_age=0)    
+    return res
 
