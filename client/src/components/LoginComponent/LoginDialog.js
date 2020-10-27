@@ -17,18 +17,11 @@ import Dialog from '@material-ui/core/Dialog';
 
 const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
     const dispatch = useDispatch()
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("therealsithleader@gungan.com")
+    const [password, setPassword] = useState("password")
 
-    const handleLogin = () => {
-        dispatch(login(email, password))
-        setIsLoginOpen(false)
-    }
-
-    const handleLoginDemo = () => {
-        setEmail(() => ("therealsithleader@gungan.com"))
-        setPassword(() => ("password"))
-        handleLogin()
+    const handleLogin = async () => {
+        await dispatch(login(email, password))
         setIsLoginOpen(false)
     }
 
@@ -43,7 +36,7 @@ const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
         >
             <DialogTitle
                 id="login"
-                onClose={handleLogin}>
+            >
                 Login
             </DialogTitle>
             <DialogContent dividers>
@@ -56,14 +49,14 @@ const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
             </DialogContent>
                 <Button
                     autoFocus
-                    onClick={() => (setIsLoginOpen(false))}
+                    onClick={handleLogin}
                     color="primary">
                     login
                 </Button>
             <DialogActions>
                 <Button
                     autoFocus
-                    onClick={handleLoginDemo}
+                    onClick={handleLogin}
                     color="primary">
                     demo
                 </Button>
