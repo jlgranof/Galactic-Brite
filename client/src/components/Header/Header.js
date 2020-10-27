@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { useHistory } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 
 // core components
 import HeaderLogo from './HeaderLogo'
@@ -87,6 +87,7 @@ const useStyles = makeStyles({
         listStyle: "none",
     },
     navItem: {
+        textDecoration: "none",
         color: "white",
         width: "100%",
         "&:hover": {
@@ -119,9 +120,9 @@ const Header = () => {
     return (
         <>
         <div className={classes.headerCenter}>
-            <div>
-            </div>
-            <HeaderLogo/>
+            <NavLink to="/" activeclass="active">
+                <HeaderLogo/>
+            </NavLink>
         </div>
         <div className={classes.bar}>
             <div className={classes.leftHeader}>
@@ -143,13 +144,19 @@ const Header = () => {
                     unmountOnExit
                 >
                     <nav className={classes.navMenu}>
-                        <ul className={classes.navMenuLinks}>
-                            <li className={classes.navItem}>
-                                hello
-                            </li>
-                            <li className={classes.navItem}>
-                                hello
-                            </li>
+                        <div className={classes.navMenuLinks}>
+                            <NavLink 
+                            className={classes.navItem}
+                            to="/dashboard" 
+                            >
+                            Dashboard
+                            </NavLink>
+                            <NavLink 
+                            to="/aboutUs"
+                            className={classes.navItem}
+                            >
+                            AboutUs
+                            </NavLink>
                             <div className={classes.navItem}>
                                 <Button 
                                 className={classNames(classes.navItem, classes.signout)}
@@ -160,7 +167,7 @@ const Header = () => {
                                     </i>
                                 </Button>
                             </div>
-                        </ul>
+                        </div>
                     </nav>
                 </Collapse>
             </div>

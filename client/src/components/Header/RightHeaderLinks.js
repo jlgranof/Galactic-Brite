@@ -102,16 +102,13 @@ const RightHeaderLinks = ({inherit, expanded, setExpanded}) => {
 
                         <div>
                         </div>
-                            <IconButton
-                                onClick={()=> setExpanded(!expanded)}
-                                aria-expanded={expanded}
-                                aria-label="show more"
-                            >
-                                <Avatar alt={user.username} src={user.avatar_url} className={classes.avatar}/>
-                            </IconButton>
-                        <div>
-                            
-                        </div>
+                        <IconButton
+                            onClick={()=> setExpanded(!expanded)}
+                            aria-expanded={expanded}
+                            aria-label="show more"
+                        >
+                            <Avatar alt={user.username} src={user.avatar_url} className={classes.avatar}/>
+                        </IconButton>
                     </>
                 : null }  
         </div>

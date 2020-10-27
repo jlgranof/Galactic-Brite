@@ -12,9 +12,10 @@ import { fetchFeaturedEvents } from './actions/featuredActions'
 import UserList from './components/UsersList';
 import LandingPage from './components/LandingPage/LandingPage'
 import PageNotFound from './components/PageNotFound/PageNotFound'
+import Dashboard from './components/Dashboard/Dashboard'
+import AboutUsPage from './components/AboutUsPage/AboutUsPage'
 
 //? ideas
-import TestPage from './components/TestPage/TestPage'
 import SecondTestPage from './components/TestPage/SecondTestPage'
 
 import CreateEventForm from './components/Create-New-Events/CreateEvent'
@@ -57,10 +58,11 @@ function App() {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/users"><UserList /></Route>
-                <Route exact path="/test-page"><TestPage/></Route>
+                <Route exact path="/dashboard"><Dashboard/></Route>
                 <Route exact path="/secondTest-page"><SecondTestPage/></Route>
                 <Route exact path="/"><LandingPage/></Route>
                 <Route exact path="/create-event"><CreateEventForm/></Route>
+                <Route exact path="/AboutUs"><AboutUsPage/></Route>
                 <Route component={PageNotFound}/>
             </Switch>
         </BrowserRouter>
