@@ -26,7 +26,6 @@ def refresh():
     response = User.query.filter_by(email=email).first()
     # Set the JWT access cookie in the response
     user = response.to_dict()
-    user.pop('hashed_password')
     resp = jsonify({'refresh': True, **user})
     set_access_cookies(resp, access_token)
     return resp, 200
@@ -39,13 +38,13 @@ def login():
         return jsonify({'login': False}), 401
     response = User.query.filter_by(email=email).first()
     user = response.to_dict()
+    print(user)
     if not user:
         return jsonify({'message': 'No user found!'})
-    if check_password_hash(user['hashed_password'], password):
+    if check_password_hash(response.hashed_password, password):
         # Create the tokens we will be sending back to the user
         access_token = create_access_token(identity=email)
         refresh_token = create_refresh_token(identity=email)
-        user.pop('hashed_password')
         # Set the JWT cookies in the response
         resp = jsonify({'login': True, **user})
         set_access_cookies(resp, access_token)
