@@ -87,6 +87,7 @@ const useStyles = makeStyles({
         listStyle: "none",
     },
     navItem: {
+        textDecoration: "none",
         color: "white",
         width: "100%",
         "&:hover": {
@@ -143,21 +144,19 @@ const Header = () => {
                     unmountOnExit
                 >
                     <nav className={classes.navMenu}>
-                        <ul className={classes.navMenuLinks}>
-                            <li className={classes.navItem}>
-                                <NavLink 
-                                to="/dashboard" 
-                                >
-                                Dashboard
-                                </NavLink>
-                            </li>
-                            <li className={classes.navItem}>
-                                <NavLink 
-                                to="/aboutUs" 
-                                >
-                                AboutUs
-                                </NavLink>
-                            </li>
+                        <div className={classes.navMenuLinks}>
+                            <NavLink 
+                            className={classes.navItem}
+                            to="/dashboard" 
+                            >
+                            Dashboard
+                            </NavLink>
+                            <NavLink 
+                            to="/aboutUs"
+                            className={classes.navItem}
+                            >
+                            AboutUs
+                            </NavLink>
                             <div className={classes.navItem}>
                                 <Button 
                                 className={classNames(classes.navItem, classes.signout)}
@@ -168,7 +167,7 @@ const Header = () => {
                                     </i>
                                 </Button>
                             </div>
-                        </ul>
+                        </div>
                     </nav>
                 </Collapse>
             </div>
