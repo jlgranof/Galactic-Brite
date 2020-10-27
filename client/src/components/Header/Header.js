@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { useHistory } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 
 // core components
 import HeaderLogo from './HeaderLogo'
@@ -119,9 +119,9 @@ const Header = () => {
     return (
         <>
         <div className={classes.headerCenter}>
-            <div>
-            </div>
-            <HeaderLogo/>
+            <NavLink to="/" activeclass="active">
+                <HeaderLogo/>
+            </NavLink>
         </div>
         <div className={classes.bar}>
             <div className={classes.leftHeader}>
@@ -145,10 +145,18 @@ const Header = () => {
                     <nav className={classes.navMenu}>
                         <ul className={classes.navMenuLinks}>
                             <li className={classes.navItem}>
-                                hello
+                                <NavLink 
+                                to="/dashboard" 
+                                >
+                                Dashboard
+                                </NavLink>
                             </li>
                             <li className={classes.navItem}>
-                                hello
+                                <NavLink 
+                                to="/aboutUs" 
+                                >
+                                AboutUs
+                                </NavLink>
                             </li>
                             <div className={classes.navItem}>
                                 <Button 
