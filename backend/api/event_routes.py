@@ -1,7 +1,7 @@
+from random import randint
 from flask import Blueprint, jsonify, request
 from backend.models import Event, Picture, db
 from backend.api.custom_events.event_randomizer import get_random_event
-from random import randint
 
 
 event_routes = Blueprint('events', __name__)
