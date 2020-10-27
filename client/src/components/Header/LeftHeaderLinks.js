@@ -21,15 +21,12 @@ const LeftHeaderLinks = ({inherit}) => {
     const classes = useStyles()
     return (
         <>
-            <div className={classes.leftLinkBox, classes.headerOptions}>
-                <Button variant="contained">
-                    <NavLink className={inherit} to="/" activeclass="active">Home</NavLink>
-                </Button>
-                <Button variant="contained">
+            <div className={classes.leftLinkBox}>
+                <Button>
                     <NavLink className={inherit} to="/users" activeclass="active">Users</NavLink>
                 </Button>
-                <Button variant="contained">
-                    <NavLink className={inherit} to="/test-page" activeclass="active">Test Page</NavLink>
+                <Button>
+                    <NavLink className={inherit} to="/dashboard" activeclass="active">Dashboard</NavLink>
                 </Button>
                 <Button variant="contained">
                     <NavLink className={inherit} to="/secondTest-page" activeclass="active">Second Test</NavLink>
