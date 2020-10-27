@@ -38,7 +38,6 @@ def sign_up():
     access_token = create_access_token(identity=username)
     refresh_token = create_refresh_token(identity=username)
     user = new_user.to_dict()
-    user.pop('hashed_password')
     # Set the JWT cookies in the response
     resp = jsonify({'login': True, **user})
     set_access_cookies(resp, access_token)

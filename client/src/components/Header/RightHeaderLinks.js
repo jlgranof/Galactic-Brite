@@ -14,16 +14,21 @@ import classNames from "classnames";
 
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
 
 // @material-ui/icons
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 const useStyles = makeStyles({
     rightLinkBox: {
-        padding: "30px",
+        display: "flex",
+        flexDirection: "row",
+        height: "100px",
     },
     roundIcon: {
         color: "white",
@@ -38,61 +43,75 @@ const useStyles = makeStyles({
     alignPlus: {
         display: "flex",
         alignItems: "center",
-        flexDirection: "row",
+        justifyContent: "center",
+        flexDirection: "column",
         padding: "10px"
     },
     avatar: {
-        height: "60px",
-        width: "60px",
-    }
-
+        margin: "15px",
+        height: "50px",
+        width: "50px",
+        "&:hover": {
+            opacity: 1,
+            transform: "scale(1.2)"
+        }
+    },
 })
 
 
-const RightHeaderLinks = ({inherit}) => {
+const RightHeaderLinks = ({inherit, expanded, setExpanded}) => {
     const classes = useStyles()
     const [isLoginOpen, setIsLoginOpen] = useState(false)
     const [isSignupOpen, setIsSignupOpen] = useState(false)
     const user = useSelector(state => state.auth)
-    console.log(user)
     const id = useSelector((state) => state.auth.id)
-    console.log(id)
     return (
         <>
             <div className={classes.rightLinkBox}>
-                        {id === undefined ?
-                            <>
-                                <Button className={inherit} onClick={()=>setIsLoginOpen(true)}>
-                                    Login
-                                </Button>
-                                <LoginDialog
-                                isLoginOpen={isLoginOpen}
-                                setIsLoginOpen={setIsLoginOpen}
-                                setIsSignupOpen={setIsSignupOpen}
-                                />
-                                <Button className={inherit} onClick={() => setIsSignupOpen(true)}>
-                                    Signup
-                                </Button>
-                                <Button className={inherit} to="/create-event" activeclass="active">
-                                    <NavLink className={inherit} to="/create-event" activeclass="active">+</NavLink>
-                                </Button>
-                                <SignupDialog
-                                isOpen={isSignupOpen}
-                                setIsOpen={setIsSignupOpen}
-                                />
-                            </>
-                        : null }
-                        {id !== undefined ?
-                            <>
-                            <NavLink className={classNames(inherit, classes.alignPlus)} to="/create-event" activeclass="active">
-                                    <AddCircleIcon className={classes.roundIcon}/>
-                                    Create Event
-                            </NavLink>
-                            <Avatar alt={user.username} src={user.avatar_url} className={classes.avatar}/>
-                            </>
-                        : null }
+                {id === undefined ?
+                    <>
+                        <NavLink className={classNames(inherit, classes.alignPlus)} to="/create-event" activeclass="active">
+                            <AddCircleIcon className={classes.roundIcon} />
+                            Create Event
+                        </NavLink>
+                        <Button className={inherit} onClick={()=>setIsLoginOpen(true)}>
+                            Login
+                        </Button>
+                        <LoginDialog
+                        isLoginOpen={isLoginOpen}
+                        setIsLoginOpen={setIsLoginOpen}
+                        setIsSignupOpen={setIsSignupOpen}
+                        />
+                        <Button className={inherit} onClick={() => setIsSignupOpen(true)}>
+                            Signup
+                        </Button>
 
-            </div>
+
+                        <SignupDialog
+                        isOpen={isSignupOpen}
+                        setIsOpen={setIsSignupOpen}
+                        />
+                    </>
+                : null }
+                {id !== undefined ?
+                    <>
+                        <NavLink className={classNames(inherit, classes.alignPlus)} to="/create-event" activeclass="active">
+                                <AddCircleIcon className={classes.roundIcon}/>
+                                Create Event
+                        </NavLink>
+
+                        <div>
+                        </div>
+                        <IconButton
+                            onClick={()=> setExpanded(!expanded)}
+                            aria-expanded={expanded}
+                            aria-label="show more"
+                        >
+                            <Avatar alt={user.username} src={user.avatar_url} className={classes.avatar}/>
+                        </IconButton>
+                    </>
+                : null }  
+        </div>
         </>
     );
 };
