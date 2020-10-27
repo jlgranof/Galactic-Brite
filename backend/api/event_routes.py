@@ -1,5 +1,6 @@
+from random import randint
 from flask import Blueprint, jsonify, request
-from backend.models import Event, db
+from backend.models import Event, Picture, db
 from backend.api.custom_events.event_randomizer import get_random_event
 
 
@@ -66,13 +67,15 @@ def add_custom_event():
     errors = []
     event_description = data['event_description']
     event_details = data['event_details']
+    event_picture_url = Picture.query.get(randint(1,37)).url
+    data['event_picture_url'] = event_picture_url
     custom_event = Event(
         name=data['name'],
         event_description=f'{event_description}\n{event_details}',
         host_id=data['host_id'],
         event_date=data['event_date'],
         event_planet=data['event_planet'],
-        event_picture_url='event_picture_url',
+        event_picture_url=event_picture_url,
         category_id=data['category_id'],
         is_featured=True
     )
