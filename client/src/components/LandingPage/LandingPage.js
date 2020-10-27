@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import CarouselComponent from '../CarouselComponent/CarouselComponent'
 import EventsComponent from '../EventsComponent/EventsComponent'
 import FeaturedEventsComponent from '../FeaturedEventsComponent/FeaturedEventsComponent'
+import SnackBar from '../SnackBar/SnackBar'
 
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
@@ -45,11 +46,12 @@ const LandingPage = () => {
     return (
         <>
             <Header/>
+            {/* <SnackBar/> */}
             <CarouselComponent/>
 
                 {featuredEvents? featuredEvents.map((event, i)=> (
-                        <FeaturedEventsComponent  key={i} event={event}/>
-                )):null}
+                    <FeaturedEventsComponent  key={i} event={event}/>
+                    )):null}
             <div>
                 {fakeList.map((value, i)=> (
                     <div 
