@@ -73,9 +73,9 @@ const EventsComponent = ({event}) => {
                 title="Paella dish"
             />
             <CardContent>
-                <Typography variant="body2" component="p">
+                <Typography variant="body2" color="textSecondary" component="p" classes={classes.body}>
                     {event.event_description}
-                </Typography>
+                </Typography >
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">

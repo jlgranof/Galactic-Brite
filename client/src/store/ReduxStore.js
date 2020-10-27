@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunk from 'redux-thunk';
 import {auth} from '../reducers/Authentication'
 import { featuredSlice } from '../reducers/FeaturedEvents'
+import {event} from '../reducers/Events'
 
 let storeEnhancer;
 
@@ -25,4 +26,3 @@ const configureStore = (initialState) => {
 };
 
 export default configureStore;
-

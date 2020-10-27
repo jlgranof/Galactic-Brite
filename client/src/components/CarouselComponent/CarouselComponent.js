@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 // core components
 import CarouselItems from '../CarouselComponent/CarouselItems'
@@ -12,6 +12,7 @@ import trooper from '../../assets/images/trooper.jpg'
 import fadedTrooper from '../../assets/images/fadedTrooper.jpg'
 import crashlanding from '../../assets/images/crashlanding.jpg'
 import falcon from '../../assets/images/falcon.jpg'
+
 
 
 const useStyles = makeStyles({
@@ -37,6 +38,11 @@ const CarouselComponent = () => {
         crashlanding
     ]
 
+    // clean up timeout with abort controller
+    const controller = new AbortController()
+    useEffect(()=>{
+        return () => controller.abort()
+    },[])
     return (
         <Carousel
             indicatorContainerProps={{className:classes.indicators}}
