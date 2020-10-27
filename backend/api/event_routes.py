@@ -56,7 +56,7 @@ def one_event(id):
 @event_routes.route('/random')
 def random_events():
     events = []
-    for i in range(1,11):
+    for i in range(1,2):
         events.append(get_random_event())
     return jsonify(events)
 
@@ -72,7 +72,7 @@ def add_custom_event():
         host_id=data['host_id'],
         event_date=data['event_date'],
         event_planet=data['event_planet'],
-        event_picture_url='placeholder.com',
+        event_picture_url='event_picture_url',
         category_id=data['category_id'],
         is_featured=True
     )
