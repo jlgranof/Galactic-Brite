@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 
 // @material-ui/core
@@ -27,7 +28,7 @@ const LeftHeaderLinks = ({inherit}) => {
                 <Button>
                     <NavLink className={inherit} to="/dashboard" activeclass="active">Dashboard</NavLink>
                 </Button>
-                <Button>
+                <Button variant="contained">
                     <NavLink className={inherit} to="/secondTest-page" activeclass="active">Second Test</NavLink>
                 </Button>
             </div>

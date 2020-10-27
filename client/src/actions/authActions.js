@@ -48,7 +48,12 @@ export const login = (email, password) => {
 };
 //logout
 export const logout = () => async dispatch => {
-    const res = await fetch('/api/session/token/remove');
+    const res = await fetch('/api/session/token/remove', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
     if (res.ok) {
         dispatch(removeUser());
     }
