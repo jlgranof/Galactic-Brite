@@ -49,7 +49,7 @@ const useStyles = makeStyles({
 
 
 const EventsComponent = ({event}) => {
-    console.log(event)
+    // console.log(event)
     const classes = useStyles()
 
     return (

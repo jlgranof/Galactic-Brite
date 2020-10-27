@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
+
+// redux
+import { useDispatch } from 'react-redux'
+import {login} from '../../actions/authActions'
 
 // Core Components
 import LoginModal from '../LoginComponent/LoginModal'
@@ -12,6 +16,14 @@ import Dialog from '@material-ui/core/Dialog';
 
 
 const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
+    const dispatch = useDispatch()
+    const [email, setEmail] = useState("therealsithleader@gungan.com")
+    const [password, setPassword] = useState("password")
+
+    const handleLogin = () => {
+        dispatch(login(email, password))
+        setIsLoginOpen(false)
+    }
 
     const transitionToSignup = () => {
         setIsLoginOpen(false)
@@ -24,22 +36,27 @@ const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
         >
             <DialogTitle
                 id="login"
-                onClose={() => setIsLoginOpen(false)}>
+            >
                 Login
             </DialogTitle>
             <DialogContent dividers>
-                <LoginModal />
+                <LoginModal 
+                    email={email}
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                />
             </DialogContent>
                 <Button
                     autoFocus
-                    onClick={() => setIsLoginOpen(false)}
+                    onClick={handleLogin}
                     color="primary">
                     login
                 </Button>
             <DialogActions>
                 <Button
                     autoFocus
-                    onClick={() => setIsLoginOpen(false)}
+                    onClick={handleLogin}
                     color="primary">
                     demo
                 </Button>

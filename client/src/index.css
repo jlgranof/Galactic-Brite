@@ -34,5 +34,7 @@ html {
     background:transparent url('./assets/images/darth.png') no-repeat;
     background-size:100%; 
     height: 210px;
+    padding: 0;
+    margin: 0;
 
 }

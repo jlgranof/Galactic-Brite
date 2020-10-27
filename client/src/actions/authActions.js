@@ -28,8 +28,9 @@ export const createUser = (user) => {
 //! THUNKS
 //login
 export const login = (email, password) => {
+    console.log(email, password    )
     return async dispatch => {
-        const res = await fetch(`/api/session/login`, {
+        const res = await fetch(`/api/session/token/auth`, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,16 +41,15 @@ export const login = (email, password) => {
 
         if (res.ok) {
             const data = await res.json();
-            console.log(data)
-            // dispatch(setUser(data.user));
+            dispatch(setUser(data))
         }
         return res;
     };
 };
 //logout
 export const logout = () => async dispatch => {
-    const res = await fetch('/api/session', {
-        method: "DELETE",
+    const res = await fetch('/api/session/token/remove', {
+        method: "POST",
         headers: {
             'Content-Type': 'application/json',
             // "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")

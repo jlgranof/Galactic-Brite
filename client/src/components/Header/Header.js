@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom'
 
 // core components
 import HeaderLogo from './HeaderLogo'
 import LeftHeaderLinks from './LeftHeaderLinks';
 import RightHeaderLinks from './RightHeaderLinks';
 
+//redux
+import {useDispatch} from 'react-redux'
+import {logout} from '../../actions/authActions'
 
 
 // nodejs library that concatenates classes
-// import classNames from "classnames";
+import classNames from "classnames";
 
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from '@material-ui/core/Toolbar';
-// import AppBar from '@material-ui/core/AppBar';
-// import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
-// import Typography from '@material-ui/core/Typography';
-// import Button from '@material-ui/core/Button';
+import Collapse from '@material-ui/core/Collapse';
+import Button from '@material-ui/core/Button';
+import { Redirect } from 'react-router-dom';
+
 
 
 
@@ -65,10 +67,55 @@ const useStyles = makeStyles({
         textDecoration: "none",
         color: "white"
     },
+    navMenu: {
+        position: "absolute",
+        backgroundColor: "rgba(30,30,30, 1)",
+        borderRadius: "10px",
+        zIndex: 100,
+        top: "90px",
+        right: 20,
+        width: "200px",
+        height: "auto",
+        boxShadow: "0 0 3px 0 grey"
+    },
+    navMenuLinks: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent:"center",
+        zIndex: 100,
+        color: "white",
+        listStyle: "none",
+    },
+    navItem: {
+        color: "white",
+        width: "100%",
+        "&:hover": {
+            backgroundColor: "rgba(80, 80, 80, 1)",
+            
+        }
+    },
+    signout: {
+        alignItems:"flex-end", 
+        bottom: 0
+    }
 })
 
 const Header = () => {
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const [expanded, setExpanded] = useState(true);
+
+    useEffect(() => {
+
+        return setExpanded(false)
+    },[])
+
+    const handleLogout = () => {
+        setExpanded(false)
+        dispatch(logout())
+        history.push('/')
+    }
     return (
         <>
         <div className={classes.headerCenter}>
@@ -81,9 +128,43 @@ const Header = () => {
                 <LeftHeaderLinks inherit={classes.inherit}/>
             </div>
             <div className={classes.rightHeader}>
-                <RightHeaderLinks inherit={classes.inherit}/>
+                <RightHeaderLinks 
+                inherit={classes.inherit}
+                expanded={expanded}
+                setExpanded={setExpanded}
+                />
             </div>
         </div>
+        <nav>
+            <div>
+                <Collapse 
+                    in={expanded}  
+                    timeout="auto" 
+                    unmountOnExit
+                >
+                    <nav className={classes.navMenu}>
+                        <ul className={classes.navMenuLinks}>
+                            <li className={classes.navItem}>
+                                hello
+                            </li>
+                            <li className={classes.navItem}>
+                                hello
+                            </li>
+                            <div className={classes.navItem}>
+                                <Button 
+                                className={classNames(classes.navItem, classes.signout)}
+                                onClick={handleLogout}
+                                >
+                                    <i>
+                                        sign out
+                                    </i>
+                                </Button>
+                            </div>
+                        </ul>
+                    </nav>
+                </Collapse>
+            </div>
+        </nav>
         </>
     );
 };
