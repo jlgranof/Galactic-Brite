@@ -3,7 +3,7 @@ load_dotenv()
 from werkzeug.security import generate_password_hash
 
 from backend import app, db
-from backend.models import User, Category, Event
+from backend.models import User, Category, Event, Picture
 
 with app.app_context():
   db.drop_all()
@@ -35,6 +35,47 @@ with app.app_context():
   darth_plagueis = Event(name = 'Squid Lake by the Mon Calamari Ballet at Coruscant Opera House', event_description = 'In the beautiful Uscru District, lies the Wonderful Galaxies Opera House. The Galaxy renound Mon Calamarin Ballet is putting on a production of Squid Lake. If you have never seen a ballet, this is the one to attend! **Upgrade your tickets to sit in the box with Chancellor Palpentine. Who knows, maybe you will learn things the Jedi can\'t teach you!**', host_id = 2, event_date = '21:00 hours, February 1 19BBY', event_planet = 'Corusant', event_picture_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSWqj-k_7il4cl1r1vfVfACzbntLKR9NEGVcA&usqp=CAU', category_id = 2, is_featured = True)
   event = Event(name = '', event_description = '', host_id = 0, event_date = '', event_planet = '', event_picture_url = '', category_id = 0, is_featured = True)
 
+  https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Baby_Yoda_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Baby_Yoda_2.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Baby_Yoda_3.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Cool_Pic_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Darth_Maul.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Darth_Maul_2.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Darth_Maul_3.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Darth_Vader_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Darth_Vader_2.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Darth_Vader_3.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Darth_Vader_4.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Death_Star_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Death_Star_2.png
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Holdo_Maneuver.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Iconic_Scenes_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Iconic_Scenes_2jpg.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Iconic_Scenes_3.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Iconic_Scenes_4.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Knights_of_Ren.png
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Obi_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Obi_2.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Obi_3.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Obi_4.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Obi_5.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Obi_Ani_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Obi_Ani_2.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Podracing_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Podracing_2.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Poster_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Poster_2.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Ships_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Ships_2.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Space_Battle_1.jpg
+https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Space_Battle_2.jpg
+
+
+
+  yoda_1 = Picture(url = 'https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Yoda_1.jpg')
+  throne = Picture(url = 'https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Throne_Room_Battle.jpg')
+  space_battle_1 = Picture(url = 'https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Space_Battle_3.jpg')
+  space_battle_2 = Picture()
 
   db.session.add(demo)
   db.session.add(palpatine)

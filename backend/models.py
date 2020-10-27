@@ -60,3 +60,9 @@ class BookmarkedEvent(db.Model):
 
   event = db.relationship("Event", back_populates="bookmarked_events")
   user = db.relationship("User", back_populates="bookmarked_events")
+
+class Picture(db.Model):
+  __tablename__= 'pictures'
+
+  id = db.Column(db.Integer, primary_key = True)
+  url = db.Column(db.String(1000), nullable = False)
