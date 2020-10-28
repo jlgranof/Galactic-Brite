@@ -30,13 +30,14 @@ const CustomInput = (props) => {
         setStateFunc,
         inputValue,
         labelText,
+        labelInputProps,
         id,
         inputProps,
         error,
         white,
         success,
         multiline,
-        rows
+        rows,
     } = props;
     const underlineClasses = classNames({
         [classes.underlineError]: error,
@@ -49,6 +50,7 @@ const CustomInput = (props) => {
             <FormControl>
                 <InputLabel
                 htmlFor={id}
+                {...labelInputProps}
                 >
                 {labelText}
                 </InputLabel>
