@@ -41,7 +41,6 @@ const CreateEventForm = () => {
     const [date, setDate] = useState("")
     const [details, setDetails] = useState("")
     const [category, setCategory] = useState('');
-    console.log(category);
     const [planet, setPlanet] = useState('');
 
 

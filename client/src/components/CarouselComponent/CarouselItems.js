@@ -11,7 +11,7 @@ const useStyles = makeStyles({
         left: 0,
         bottom: 0,
         display: "fixed",
-        height: "95vh",
+        height: "78vh",
         width: "100vw"
     },
 })

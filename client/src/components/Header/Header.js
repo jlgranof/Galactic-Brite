@@ -113,7 +113,7 @@ const Header = () => {
     const classes = useStyles()
     const dispatch = useDispatch()
     const history = useHistory()
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(false);
 
     const onMouseEnter = () => {
         if (window.innerWidth < 960) {

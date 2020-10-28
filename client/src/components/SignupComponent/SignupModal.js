@@ -45,6 +45,14 @@ const useStyles = makeStyles({
     },
     inputIconsColor: {
         color: "white",
+    },
+    input: {
+        borderRadius: "5px",
+        opacity: 1,
+        backgroundColor: "rgba(50, 50, 50, .2)",
+        border: "1px solid white",
+        "&:hover": {
+        },
     }
 
 })
@@ -95,7 +103,9 @@ const LoginComponent = () => {
                                             <Email/>
                                         </Icon>
                                     </InputAdornment>
-                                )
+                                ),
+                                className: classes.input
+                            
                             }}
                         />
                         <CustomInput
@@ -111,7 +121,8 @@ const LoginComponent = () => {
                                             <LockIcon/>
                                         </Icon>
                                     </InputAdornment>
-                                )
+                                ),
+                                className: classes.input
                             }}
                         />
                         <CustomInput
@@ -127,7 +138,8 @@ const LoginComponent = () => {
                                             <LockIcon/>
                                         </Icon>
                                     </InputAdornment>
-                                )
+                                ),
+                                className: classes.input
                             }}
                         />
                     </div>

@@ -1,13 +1,19 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
+
 // core components
 import Header from '../Header/Header'
 import CarouselComponent from '../CarouselComponent/CarouselComponent'
 import EventsComponent from '../EventsComponent/EventsComponent'
 import FeaturedEventsComponent from '../FeaturedEventsComponent/FeaturedEventsComponent'
+import FeaturedCarousel from '../CarouselComponent/FeaturedCarousel'
+import SnackBar from '../SnackBar/SnackBar'
 
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
+
+// assets
+import featuredHeader from '../../assets/images/featuredHeader.jpg'
 
 const useStyles = makeStyles({
     featuredEvents: {
@@ -15,7 +21,7 @@ const useStyles = makeStyles({
         postition: "absolute",
         bottom: "50px",
         height: "200px",
-        width: "80%",
+        width: "60%",
         margin: "0 auto",
         backgroundColor: "red",
     },
@@ -24,10 +30,21 @@ const useStyles = makeStyles({
         postition: "absolute",
         bottom: "50px",
         height: "200px",
-        width: "80%",
+        width: "60%",
         margin: "0 auto",
         backgroundColor: "blue",
     },
+    carousel: {
+        display: "fixed",
+        backgroundSize: "100% 100%",
+        borderRadius: "10px",
+        paddingTop:"20px",
+        width: "90%",
+        margin: "0 auto"  
+    },
+    header: {
+
+    }
 })
 
 
@@ -45,12 +62,14 @@ const LandingPage = () => {
     return (
         <>
             <Header/>
+            {/* <SnackBar/> */}
             <CarouselComponent/>
-
-                {featuredEvents? featuredEvents.map((event, i)=> (
-                        <FeaturedEventsComponent  key={i} event={event}/>
-                )):null}
-            <div>
+            <div className={classes.header}>
+                Featured Events
+            </div>
+            <div className={classes.carousel}>
+                <FeaturedCarousel/>
+            </div>
                 {fakeList.map((value, i)=> (
                     <div 
                     key={i}
@@ -58,8 +77,6 @@ const LandingPage = () => {
                     <EventsComponent />
                     </div>
                 ))}
-
-            </div>
 
 
         </>

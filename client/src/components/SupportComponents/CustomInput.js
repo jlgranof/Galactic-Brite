@@ -10,18 +10,7 @@ import Input from '@material-ui/core/Input';
 import classNames from "classnames";
 
 const useStyles = makeStyles({
-    input: {
-        borderRadius: "5px",
-        opacity: 1,
-        backgroundColor: "rgba(50, 50, 50, .2)",
-        border: "1px solid white",
-        "&:hover": {
 
-        },
-
-
-
-    }
 })
 
 const CustomInput = (props) => {
