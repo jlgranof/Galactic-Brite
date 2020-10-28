@@ -14,6 +14,7 @@ import LandingPage from './components/LandingPage/LandingPage'
 import PageNotFound from './components/PageNotFound/PageNotFound'
 import Dashboard from './components/Dashboard/Dashboard'
 import AboutUsPage from './components/AboutUsPage/AboutUsPage'
+import Footer from './components/Footer/Footer'
 
 //? ideas
 import SecondTestPage from './components/TestPage/SecondTestPage'
@@ -27,7 +28,7 @@ function App() {
     const dispatch = useDispatch()
 
 
-    
+
     useEffect(()=>{
         const generateSession = async () => {
             const res = await fetch("/api/session/token/refresh", {
@@ -44,7 +45,7 @@ function App() {
             }
             setLoading(false);
         }
-        
+
         //preload ALL events in redux
         const preloadAllEvents = async () => {
             dispatch(fetchFeaturedEvents())
@@ -65,6 +66,7 @@ function App() {
                 <Route exact path="/AboutUs"><AboutUsPage/></Route>
                 <Route component={PageNotFound}/>
             </Switch>
+            <Footer />
         </BrowserRouter>
     );
 }
