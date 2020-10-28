@@ -57,6 +57,7 @@ const useStyles = makeStyles({
     header : {
         zIndex: 101,
         color: "white",
+
         position: "absolute",
         background: "rgb(70,18,18)",
         background: "linear-gradient(90deg, rgba(70,18,18,1) 0%, rgba(131,2,2,1) 61%, rgba(0,0,0,1) 92%)",
@@ -66,6 +67,27 @@ const useStyles = makeStyles({
         // border: "solid 1.5em rgba(#000, .2)",
         // border: "2px solid red",
         clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)",
+
+        top: "0",
+        borderTop: "50px solid rgba(0,0,0,.9)",
+        borderLeft: "85px solid transparent",
+        borderRight: "85px solid transparent",
+        left: "20%",
+        width: "60%",
+
+    },
+
+    trapezoid : {
+        position: "absolute",
+        zIndex: 200, 
+        borderTop: "50px solid white",
+        borderLeft: "85px solid transparent",
+        borderRight: "85px solid transparent",
+        height: "0",
+        left: "36.5%",
+
+        width: "30%",
+
     },
     
     inherit: {
