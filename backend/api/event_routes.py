@@ -56,10 +56,10 @@ def one_event(id):
     return "There is not an event with that ID"
 
 
-@event_routes.route('/random')
-def random_events():
+@event_routes.route('/random/<amount>')
+def random_events(amount):
     events = []
-    for i in range(1,11):
+    for i in range(1,int(amount) + 1):
         events.append(get_random_event())
     return jsonify(events)
 
