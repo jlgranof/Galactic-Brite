@@ -17,7 +17,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 const baseYearArray = []
 for(let i =0;i < 100; i++){
-    baseYearArray.push(i+1);
+    if(i <50){
+        baseYearArray.push(`${i+1}aay`);
+    }else{
+        baseYearArray.push(`${i+1-50}bby`);
+    }
+
 }
 
 export default function SimpleSelect({category,setCategory,planet,setPlanet,inputProps,labelInputProps,setDay,setMonth,day,month}) {
