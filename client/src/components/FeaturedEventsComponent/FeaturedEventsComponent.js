@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+//redux
+import { useSelector } from 'react-redux'
 
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
@@ -30,8 +32,10 @@ import { useEventCallback } from '@material-ui/core';
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
-        backgroundColor: "rgba(0,0,0,.8)",
-        color: "white"
+        backgroundColor: "rgba(26,26,26,1)",
+        // backgroundColor: "white",
+        color: "white",
+        height: "480px",
     },
     media: {
         color: "white",
@@ -48,45 +52,42 @@ const useStyles = makeStyles({
 
 
 
-const EventsComponent = ({event}) => {
-    // console.log(event)
+const FeaturedEventsComponent = ({style, event}) => {
+    console.log(event)
     const classes = useStyles()
-
     return (
-        <Card className={classes.root}>
-            <CardHeader
-                avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-          </Avatar>
-                }
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
+        <div {...style}>
+            <Card className={classes.root}>
+                <CardHeader
+                    avatar={
+                        <Avatar aria-label="host" src={event.host.avatar_url} className={classes.avatar}/>
+                    }
+                    action={
+                        <IconButton aria-label="settings">
+                            <MoreVertIcon />
+                        </IconButton>
+                    }
+                    title={event.name}
+                    subheader={event.event_date}
+                />
+                <CardMedia
+                    className={classes.media}
+                    image={event.event_picture_url}
+                    title={event.event_description}
+                />
+                <CardContent>
+                    <Typography variant="body2" color="textSecondary" component="p" className={classes.body}>
+                        {event.event_description}
+                    </Typography >
+                </CardContent>
+                <CardActions disableSpacing>
+                    <IconButton aria-label="add to bookmarks">
+                        <BookmarkBorderIcon/>
                     </IconButton>
-                }
-                title="Shrimp and Chorizo Paella"
-                subheader="September 14, 2016"
-            />
-            <CardMedia
-                className={classes.media}
-                image={event.event_picture_url}
-                title="Paella dish"
-            />
-            <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p" classes={classes.body}>
-                    {event.event_description}
-                </Typography >
-            </CardContent>
-            <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-
-                </IconButton>
-                <IconButton>
-                    <BookmarkBorderIcon/>
-                </IconButton>
-            </CardActions>
-        </Card>
+                </CardActions>
+            </Card>
+        </div>
     );
 };
 
-export default EventsComponent;
+export default FeaturedEventsComponent;

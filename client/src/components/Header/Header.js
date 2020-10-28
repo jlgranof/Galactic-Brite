@@ -65,7 +65,7 @@ const useStyles = makeStyles({
     },
     inherit: {
         textDecoration: "none",
-        color: "white"
+        color: "white",
     },
     navMenu: {
         position: "absolute",
@@ -105,10 +105,9 @@ const Header = () => {
     const classes = useStyles()
     const dispatch = useDispatch()
     const history = useHistory()
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
-
         return setExpanded(false)
     },[])
 
