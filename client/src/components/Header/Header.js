@@ -22,6 +22,25 @@ import { Redirect } from 'react-router-dom';
 
 
 
+//redux
+import { useSelector } from 'react-redux'
+
+// Core Components
+import LoginDialog from '../LoginComponent/LoginDialog'
+import SignupDialog from '../SignupComponent/SignupDialog'
+
+
+import clsx from 'clsx';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+
+// @material-ui/icons
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+
+
+
 
 
 const useStyles = makeStyles({
@@ -35,110 +54,70 @@ const useStyles = makeStyles({
         height: "220px",
         clipPath: "polygon(0% 0%, 99% 0%, 100% 100%, 71% 81%, 65% 63%, 49% 52%, 35% 61%, 27% 81%, 0 100%)"
     },
-
-    header: {
-        zIndex: 100,
+    headerWrapper: {
         position: "absolute",
         display: "flex",
-        flexDirection: "row-reverse",
-        opacity: "1",
-        color: "white",
-        top: "0",
-        left: "20%",
-        width: "60%",
-        height: "50px",
-        background: "rgb(55,27,27)",
-        background: "radial-gradient(circle, rgba(55,27,27,1) 0%, rgba(0,0,0,1) 100%, rgba(0,212,255,1) 100%)",
-        clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)"
+        justifyContent: "center",
+        width: "100vw",
     },
-
-    trapezoid : {
+    header : {
         zIndex: 101,
         color: "white",
-        height: "50px",
-        left: "39%",
-        width: "25%",
-        background: "rgb(55,27,27)",
-        background: "radial-gradient(circle, rgba(55,27,27,1) 0%, rgba(0,0,0,1) 100%, rgba(0,212,255,1) 100%)",
-        clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)",
-        gridColumn: "1/10",
-        gridRow: "1/2",
-    },
-    
-    inherit: {
-        textDecoration: "none",
         position: "absolute",
-        zIndex: 200,
-        color: "white",
-        height: "30px",
-        top: "5px",
-        right: "25px",
-        margin: "5px"
+        background: "rgb(70,18,18)",
+        background: "linear-gradient(90deg, rgba(70,18,18,1) 0%, rgba(131,2,2,1) 61%, rgba(0,0,0,1) 92%)",
+        height: "60px",
+        width: "50%",
+        clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)",
+        
     },
-    // navMenu: {
-    //     position: "absolute",
-    //     backgroundColor: "rgba(30,30,30, 1)",
-    //     borderRadius: "5px",
-    //     zIndex: 100,
-    //     top: "85px",
-    //     right: 0,
-    //     width: "250px",
-    //     height: "auto",
-    //     boxShadow: "0 0 3px 0 grey"
-    // },
-    navMenuLinks: {
+    absoluteBlock: {
+        display: "absolute",
+        width: "60%",
+        margin: "0 auto",
+    },
+    flexMain: {
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        zIndex: 100,
-        color: "white",
-        listStyle: "none",
+        flexDirection: "row-reverse",
+        // backgroundColor: "white"
     },
-    // headerWrapper: {
-    //     // position: "absolute",
-    //     width: "40vw",
-    //     left: "30%",
-    // },
-
-    headerButton: {
-        position: "relative",
-        zIndex: 100,
+    flexItemsRight: {
         display: "flex",
-        justifyContent: "space-between"
+        alignItems: "center",
     },
-
-    navItem: {
-        textDecoration: "none",
-        color: "white",
-        width: "100%",
-        "&:hover": {
-            backgroundColor: "rgba(80, 80, 80, 1)",
-            borderRadius: "5px",
-        }
+    flexItemsLeft: {
+        display: "flex",
+        flexDirection: "row-reverse",
+        alignItems: "center",
     },
-    customSize: {
-        alignItems: "flex-end",
-        bottom: 0
+    navMenu: {
+        zIndex: 1000,
+        position: "absolute",
+        right: "20%",
+        backgroundColor: "white"
     },
-    nestedGrid: {
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr 1fr 4fr 1fr 1fr 1fr 1fr",
-        gridTemplateRows: "1fr 8fr 1fr",
-
-
-    },
-    linkCenter: {
-        gridColumn: "5/6",
-        gridRow: "1/2",
-    },
-    linkLeft: {
-        gridColumn: "1/4",
-        gridRow: "1/3",
-    },
-    linkRight: {
-        gridColumn: "1/4",
-        gridRow: "1/3",
+    cutButton: {
+        padding: "0 14px",
+        clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)",
     }
+
+    // headerButton: {
+    //     position: "relative",
+    //     zIndex: 100,
+    //     display: "flex",
+    //     justifyContent: "space-between"
+    // },
+
+    // navItem: {
+    //     textDecoration: "none",
+    //     color: "white",
+    //     width: "100%",
+    //     "&:hover": {
+    //         backgroundColor: "rgba(80, 80, 80, 1)",
+    //         borderRadius: "5px",
+    //     }
+    // },
+    
 })
 
 const Header = () => {
@@ -146,6 +125,8 @@ const Header = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [expanded, setExpanded] = useState(false);
+    const user = useSelector(state => state.auth)
+    const id = useSelector((state) => state.auth.id)
 
     const onMouseEnter = () => {
         if (window.innerWidth < 960) {
@@ -177,31 +158,45 @@ const Header = () => {
 
     return (
         <>
-            <div className={classes.trapezoid}/>
-            <div className={classes.nestedGrid}>
-                <div className={classNames(classes.headerCenter, classes.nestedGrid)}>
-                    <NavLink to="/" activeclass="active">
-                        <HeaderLogo />
-                    </NavLink>
-                </div>
-                <div className={classes.headerWrapper}>
-                
-                <div className={classes.headerButton}>
-                <RightHeaderLinks
-                    inherit={classes.inherit}
-                    expanded={expanded}
-                    setExpanded={setExpanded}/>
-                </div>
+            <div className={classes.headerCenter}>
+                <NavLink to="/" activeclass="active">
+                    <HeaderLogo />
+                </NavLink>
+            </div>
+            <div className={classes.headerWrapper}>
+                <div className={classes.header}>
+                    <div className={classes.absoluteBlock}>
+                        <div className={classes.flexMain}>
+                            <div className={classes.flexItemsLeft}>
+                                <button 
+                                className={classes.cutButton}
+                                onClick={handleLogout}>
+                                    temp signout
+                                </button>
+                            </div>
+                            <div className={classes.flexItemsRight}>
+                                <RightHeaderLinks 
+                                expanded={expanded}
+                                setExpanded={setExpanded}
+                                />
+                            </div>
 
+                        </div>
+
+                    </div>
+                </div>
             </div>
             
-            </div>
+            
+                
+
             <nav className="navbar">
                 <div>
                     <Collapse
                         onMouseEnter={onMouseEnter}
                         onMouseLeave={onMouseLeave}
                         in={expanded}
+                        // in={true}
                         timeout="auto"
                         unmountOnExit
                     >
