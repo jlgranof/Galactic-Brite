@@ -25,35 +25,32 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 const useStyles = makeStyles({
-    rightLinkBox: {
-        display: "flex",
-        flexDirection: "row",
-    },
-    roundIcon: {
-        color: "white",
-        width: "40px",
-        height: "40px",
-        opacity: .8,
-        "&:hover": {
-            opacity: 1,
-            transform: "scale(1.08)"
-        }
-    },
-    alignPlus: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        padding: "10px",
-        top: "0",
-        textDecoration: "None",
-        color: "white",
-        margin: "10px"
-    },
+    // rightLinkBox: {
+    //     display: "flex",
+    //     flexDirection: "row",
+    // },
+    // roundIcon: {
+    //     color: "white",
+    //     width: "40px",
+    //     height: "40px",
+    //     opacity: .8,
+    //     "&:hover": {
+    //         opacity: 1,
+    //         transform: "scale(1.08)"
+    //     }
+    // },
+    // alignPlus: {
+    //     display: "flex",
+    //     alignItems: "center",
+    //     justifyContent: "center",
+    //     flexDirection: "column",
+    //     padding: "10px",
+    //     top: "0",
+    //     textDecoration: "None",
+    //     color: "white",
+    //     margin: "10px"
+    // },
     avatar: {
-        margin: "15px",
-        height: "50px",
-        width: "50px",
         "&:hover": {
             opacity: 1,
             transform: "scale(1.03)"
@@ -62,7 +59,7 @@ const useStyles = makeStyles({
 })
 
 
-const RightHeaderLinks = ({ inherit, expanded, setExpanded }) => {
+const RightHeaderLinks = ({ expanded, setExpanded }) => {
     const classes = useStyles()
     const [isLoginOpen, setIsLoginOpen] = useState(false)
     const [isSignupOpen, setIsSignupOpen] = useState(false)
@@ -90,57 +87,50 @@ const RightHeaderLinks = ({ inherit, expanded, setExpanded }) => {
 
     return (
         <>
-        <div>
             {id === undefined ?
                 <>
                     <NavLink className={classNames(classes.alignPlus)} to="/create-event" activeclass="active">
                         <AddCircleIcon className={classes.roundIcon} />
-                        Create Event
                     </NavLink>
 
-                    <Button className={inherit} variant="contained" color="secondary"  onClick={()=>setIsLoginOpen(true)}>
+                    <button variant="contained" color="secondary" onClick={() => setIsLoginOpen(true)}>
                         Login
-                    </Button>
+                                </button>
 
-                    
+
                     <LoginDialog
-                    isLoginOpen={isLoginOpen}
-                    setIsLoginOpen={setIsLoginOpen}
-                    setIsSignupOpen={setIsSignupOpen}
+                        isLoginOpen={isLoginOpen}
+                        setIsLoginOpen={setIsLoginOpen}
+                        setIsSignupOpen={setIsSignupOpen}
                     />
-                    
-                    <Button className={inherit} variant="contained" color="secondary" onClick={() => setIsSignupOpen(true)}>
+
+                    <button variant="contained" color="secondary" onClick={() => setIsSignupOpen(true)}>
                         Signup
-                    </Button>
-                    
-
-
+                                </button>
                     <SignupDialog
-                    isOpen={isSignupOpen}
-                    setIsOpen={setIsSignupOpen}
+                        isOpen={isSignupOpen}
+                        setIsOpen={setIsSignupOpen}
                     />
                 </>
-            : null }
-                {id !== undefined ?
-                    <>
-                        <NavLink className={classNames(inherit, classes.alignPlus)} to="/create-event" activeclass="active">
-                            <AddCircleIcon className={classes.roundIcon} />
-                                Create Event
-                        </NavLink>
+                : null}
+            {id !== undefined ?
+                <>
+                    <NavLink className={classNames(classes.alignPlus)} to="/create-event">
+                        <AddCircleIcon className={classes.roundIcon} />
+                    </NavLink>
 
-                        <div>
-                        </div>
-                        <IconButton
-                            onMouseEnter={onMouseEnter}
-                            onMouseLeave={onMouseLeave}
-                            aria-expanded={expanded}
-                            aria-label="show more"
-                        >
-                            <Avatar alt={user.username} src={user.avatar_url} className={classes.avatar} />
-                        </IconButton>
-                    </>
-                    : null}
-            </div>
+                    <div>
+                    </div>
+                    <IconButton
+                        onMouseEnter={onMouseEnter}
+                        onMouseLeave={onMouseLeave}
+                        aria-expanded={expanded}
+                        aria-label="show more"
+                    >
+                        <Avatar alt={user.username} src={user.avatar_url} className={classes.avatar} />
+                    </IconButton>
+                </>
+                : null}
         </>
     );
 };

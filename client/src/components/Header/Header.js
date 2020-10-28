@@ -22,6 +22,25 @@ import { Redirect } from 'react-router-dom';
 
 
 
+//redux
+import { useSelector } from 'react-redux'
+
+// Core Components
+import LoginDialog from '../LoginComponent/LoginDialog'
+import SignupDialog from '../SignupComponent/SignupDialog'
+
+
+import clsx from 'clsx';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+
+// @material-ui/icons
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+
+
+
 
 
 const useStyles = makeStyles({
@@ -35,117 +54,70 @@ const useStyles = makeStyles({
         height: "220px",
         clipPath: "polygon(0% 0%, 99% 0%, 100% 100%, 71% 81%, 65% 63%, 49% 52%, 35% 61%, 27% 81%, 0 100%)"
     },
-
-    // header: {
-    //     zIndex: 100,
-    //     position: "absolute",
-    //     display: "flex",
-    //     flexDirection: "row-reverse",
-    //     color: "white",
-    //     top: "0",
-    //     background: "rgb(105,0,0)",
-    //     background: "linear-gradient(90deg, rgba(105,0,0,1) 21%, rgba(0,0,0,1) 54%, rgba(105,0,0,1) 72%)",
-    //     borderTop: "50px solid rgba(0,0,0,1)",
-    //     borderLeft: "85px solid transparent",
-    //     borderRight: "85px solid transparent",
-    //     left: "20%",
-    //     width: "60%",
-    //     clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)"
-    //     // boxShadow: "1px 1px 1px 1px red"
-    // },
-
+    headerWrapper: {
+        position: "absolute",
+        display: "flex",
+        justifyContent: "center",
+        width: "100vw",
+    },
     header : {
         zIndex: 101,
         color: "white",
-
         position: "absolute",
         background: "rgb(70,18,18)",
         background: "linear-gradient(90deg, rgba(70,18,18,1) 0%, rgba(131,2,2,1) 61%, rgba(0,0,0,1) 92%)",
-        height: "50px",
-        left: "17%",
-        width: "70%",
-        // border: "solid 1.5em rgba(#000, .2)",
-        // border: "2px solid red",
+        height: "60px",
+        width: "50%",
         clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)",
-
-        top: "0",
-        borderTop: "50px solid rgba(0,0,0,.9)",
-        borderLeft: "85px solid transparent",
-        borderRight: "85px solid transparent",
-        left: "20%",
+        
+    },
+    absoluteBlock: {
+        display: "absolute",
         width: "60%",
-
+        margin: "0 auto",
     },
-
-    trapezoid : {
-        position: "absolute",
-        zIndex: 200, 
-        borderTop: "50px solid white",
-        borderLeft: "85px solid transparent",
-        borderRight: "85px solid transparent",
-        height: "0",
-        left: "36.5%",
-
-        width: "30%",
-
+    flexMain: {
+        display: "flex",
+        flexDirection: "row-reverse",
+        // backgroundColor: "white"
     },
-    
-    inherit: {
-        textDecoration: "none",
-        position: "absolute",
-        zIndex: 200,
-        color: "white",
-        height: "30px",
-        top: "40px",
-        right: "10px",
-        margin: "5px"
+    flexItemsRight: {
+        display: "flex",
+        alignItems: "center",
+    },
+    flexItemsLeft: {
+        display: "flex",
+        flexDirection: "row-reverse",
+        alignItems: "center",
     },
     navMenu: {
+        zIndex: 1000,
         position: "absolute",
-        backgroundColor: "rgba(30,30,30, 1)",
-        borderRadius: "5px",
-        zIndex: 100,
-        top: "85px",
-        right: 0,
-        width: "250px",
-        height: "auto",
-        boxShadow: "0 0 3px 0 grey"
+        right: "20%",
+        backgroundColor: "white"
     },
-    navMenuLinks: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        zIndex: 100,
-        color: "white",
-        listStyle: "none",
-    },
-
-    headerWrapper: {
-        position: "absolute",
-        width: "40vw",
-        left: "30%",
-    },
-
-    headerButton: {
-        position: "relative",
-        zIndex: 100,
-        display: "flex",
-        justifyContent: "space-between"
-    },
-
-    navItem: {
-        textDecoration: "none",
-        color: "white",
-        width: "100%",
-        "&:hover": {
-            backgroundColor: "rgba(80, 80, 80, 1)",
-            borderRadius: "5px",
-        }
-    },
-    customSize: {
-        alignItems: "flex-end",
-        bottom: 0
+    cutButton: {
+        padding: "0 14px",
+        clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)",
     }
+
+    // headerButton: {
+    //     position: "relative",
+    //     zIndex: 100,
+    //     display: "flex",
+    //     justifyContent: "space-between"
+    // },
+
+    // navItem: {
+    //     textDecoration: "none",
+    //     color: "white",
+    //     width: "100%",
+    //     "&:hover": {
+    //         backgroundColor: "rgba(80, 80, 80, 1)",
+    //         borderRadius: "5px",
+    //     }
+    // },
+    
 })
 
 const Header = () => {
@@ -153,6 +125,8 @@ const Header = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [expanded, setExpanded] = useState(false);
+    const user = useSelector(state => state.auth)
+    const id = useSelector((state) => state.auth.id)
 
     const onMouseEnter = () => {
         if (window.innerWidth < 960) {
@@ -190,15 +164,27 @@ const Header = () => {
                 </NavLink>
             </div>
             <div className={classes.headerWrapper}>
-            <div className={classes.headerButton}>
-            <div className={classes.header}>
-            
-            </div>
-            <RightHeaderLinks
-                    inherit={classes.inherit}
-                    expanded={expanded}
-                    setExpanded={setExpanded}/>
-            </div>
+                <div className={classes.header}>
+                    <div className={classes.absoluteBlock}>
+                        <div className={classes.flexMain}>
+                            <div className={classes.flexItemsLeft}>
+                                <button 
+                                className={classes.cutButton}
+                                onClick={handleLogout}>
+                                    temp signout
+                                </button>
+                            </div>
+                            <div className={classes.flexItemsRight}>
+                                <RightHeaderLinks 
+                                expanded={expanded}
+                                setExpanded={setExpanded}
+                                />
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
             
             
@@ -210,6 +196,7 @@ const Header = () => {
                         onMouseEnter={onMouseEnter}
                         onMouseLeave={onMouseLeave}
                         in={expanded}
+                        // in={true}
                         timeout="auto"
                         unmountOnExit
                     >
