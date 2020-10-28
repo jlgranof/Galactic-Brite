@@ -32,13 +32,14 @@ export const addTicketForEvent = (ticket) => {
 
 //! THUNKS
 //fetch all Events
-export const fetchEvents = (id) => {
+export const fetchRandomEvents = (num) => {
     return async dispatch => {
-        // fetch tickets for user id
-        const res = await fetch(`/api/events/${id}`)
+        // fetch all random events
+        const res = await fetch(`/api/events/random/${num}`)
+        const data = await res.json();
+        console.log(data)
         if (res.ok) {
-            const data = await res.json();
-            dispatch(getEvents(data));
+            // dispatch(getEvents(data));
         }
         return res;
     };
@@ -66,23 +67,23 @@ export const createEventThunk = (event) => {
 
 
 
-export const addTicketsToUser = (ticket, userId) => {
-    return async dispatch => {
-        // no need to include userId to add, user included in body
-        const res = await fetch(`/api/tickets`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                // no csrf yet??????
-                // "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
-            },
-            body: JSON.stringify({ ticket, userId }),
-        });
+// export const addTicketsToUser = (ticket, userId) => {
+//     return async dispatch => {
+//         // no need to include userId to add, user included in body
+//         const res = await fetch(`/api/tickets`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 // no csrf yet??????
+//                 // "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
+//             },
+//             body: JSON.stringify({ ticket, userId }),
+//         });
 
-        if (res.ok) {
-            const data = await res.json();
-            dispatch(addTicketForEvent(data));
-        }
-        return res;
-    };
-};
+//         if (res.ok) {
+//             const data = await res.json();
+//             dispatch(addTicketForEvent(data));
+//         }
+//         return res;
+//     };
+// };

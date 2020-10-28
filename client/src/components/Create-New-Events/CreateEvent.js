@@ -63,7 +63,7 @@ const CreateEventForm = () => {
 
     //formating the date
     const event_date = `${month}/${day}/${year}`
-    console.log(event_date)
+
 
     const dispatch = useDispatch()
 

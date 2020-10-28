@@ -1,16 +1,18 @@
-import { CREATE_EVENT } from '../actions/eventsActions'
+import { CREATE_EVENT, GET_EVENTS } from '../actions/eventsActions'
 import { GET_FEATURED_EVENTS } from '../actions/featuredActions'
-// import { CREATE_EVENT} from '../actions/eventsActions'
 
 
 
-export const featuredSlice = (state = {}, action) => {
+
+export const eventsSlice = (state = {}, action) => {
     Object.freeze(state)
     const nextState = {...state}
     switch (action.type) {
         case GET_FEATURED_EVENTS:
-            nextState.events = [...action.events]
+            nextState.featuredEvents = [...action.featuredEvents]
             return nextState
+        case GET_EVENTS:
+            nextState.events = [...action.events]
         case CREATE_EVENT:
             return state;
         default:

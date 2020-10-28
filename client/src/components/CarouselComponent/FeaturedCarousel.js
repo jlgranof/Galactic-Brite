@@ -32,7 +32,7 @@ const FeaturedCarousel = () => {
     const [isActive, setIsActive] = useState(1)
 
     //preload featured events
-    const featuredEvents = useSelector(state => state.featuredSlice.events)
+    const featuredEvents = useSelector(state => state.eventsSlice.featuredEvents)
 
     const breakPoints = [
         {width: 1, itemsToShow: 1},

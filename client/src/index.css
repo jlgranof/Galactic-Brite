@@ -2,7 +2,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+
 
 }
 html {
@@ -27,7 +27,7 @@ html {
 ::-webkit-scrollbar-button:end:increment  {}
 
 ::-webkit-scrollbar-track-piece  {
-    display:relative;
+
 }
 
 ::-webkit-scrollbar-thumb:vertical {

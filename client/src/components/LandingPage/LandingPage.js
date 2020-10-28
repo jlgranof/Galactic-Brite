@@ -49,6 +49,7 @@ const useStyles = makeStyles({
     },
     featuredHeader: {
         display: "flex",
+        margin: "0 100px",
         flexDirection: "row",
         marginTop: "100px",
         fontWeight: "bold",
@@ -57,6 +58,9 @@ const useStyles = makeStyles({
         textAlign: "center",
         justifyContent: "center",
         alignItems: "center"
+    },
+    spacer: {
+        margin: "0 20px",
     },
     gifBar: {
         zIndex: 100,
@@ -80,7 +84,7 @@ const useStyles = makeStyles({
         borderTop: "2px solid black",
         backgroundColor: "rgba(26, 26, 26, 1)",
         height: "100px",
-        width: "99vw",
+        width: "100vw",
         height: "55px",
         background: "rgb(55,27,27)",
         background: "radial-gradient(circle, rgba(55,27,27,1) 0%, rgba(0,0,0,1) 100%, rgba(0,212,255,1) 100%)",
@@ -91,6 +95,9 @@ const useStyles = makeStyles({
 
 const LandingPage = () => {
     const classes = useStyles()
+
+    const user = useSelector(state => state)
+    console.log(user)
     
     const fakeList = [1, 2, 3, 2, "pulled from database", "random events stuff"]
     
@@ -105,7 +112,7 @@ const LandingPage = () => {
             <div className={classes.gifBar2}>
             </div>
             <div className={classes.featuredHeader}>
-                <div>
+                <div className={classes.spacer}>
                     Featured Events 
                 </div>
                 <ArrowForwardIosIcon fontSize={"large"} />

@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import { useDispatch } from 'react-redux'
 import { setUser } from './actions/authActions'
 import { fetchFeaturedEvents } from './actions/featuredActions'
-// import {fetchEvents } from './actions/eventsActions'
+import {fetchRandomEvents } from './actions/eventsActions'
 
 // core components
 import UserList from './components/UsersList';
@@ -40,7 +40,6 @@ function App() {
             })
             if (res.ok) {
                 const data = await res.json()
-                console.log(data)
                 dispatch(setUser(data))
             }
             setLoading(false);
@@ -49,6 +48,7 @@ function App() {
         //preload ALL events in redux
         const preloadAllEvents = async () => {
             dispatch(fetchFeaturedEvents())
+            dispatch(fetchRandomEvents(10))
         }
         generateSession();
         preloadAllEvents()

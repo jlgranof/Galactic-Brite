@@ -33,7 +33,8 @@ const useStyles = makeStyles({
         maxWidth: 345,
         backgroundColor: "rgba(26,26,26,1)",
         color: "white",
-        height: "480px",
+        height: "500px",
+        margin: "60px 0 200px 0"
 
     },
     media: {
@@ -50,12 +51,15 @@ const useStyles = makeStyles({
     body: {
         color: "white"
     },
+    footer: {
+
+    }
 })
 
 
 
 const FeaturedEventsComponent = ({style, event}) => {
-    console.log(event)
+
     const classes = useStyles()
     return (
         <div {...style}>
@@ -78,12 +82,11 @@ const FeaturedEventsComponent = ({style, event}) => {
                     <Typography variant="body2" color="textSecondary" className={classes.body}>
                         {event.event_description}
                     </Typography >
-
-
-                    <IconButton aria-label="add to bookmarks">
-                        <BookmarkBorderIcon style={{ color: "white"}}/>
-                    </IconButton>
-
+                    <div className={classes.footer}>
+                        <IconButton aria-label="add to bookmarks">
+                            <BookmarkBorderIcon style={{ color: "white"}}/>
+                        </IconButton>
+                    </div>
             </Card>
         </div>
     );
