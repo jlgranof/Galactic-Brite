@@ -18,14 +18,14 @@ const useStyles = makeStyles((theme) => ({
 const baseYearArray = []
 for(let i =0;i < 100; i++){
     if(i <50){
-        baseYearArray.push(`${i+1}aay`);
+        baseYearArray.push(`${50-i}bby`);
     }else{
-        baseYearArray.push(`${i+1-50}bby`);
+        baseYearArray.push(`${i-50}ayy`);
     }
 
 }
 
-export default function SimpleSelect({category,setCategory,planet,setPlanet,inputProps,labelInputProps,setDay,setMonth,day,month}) {
+export default function SimpleSelect({category,setCategory,planet,setPlanet,inputProps,labelInputProps,setDay,setMonth,day,month,year, setYear}) {
   const classes = useStyles();
 
   const handleChangeCategory = (event) => {
@@ -39,6 +39,9 @@ export default function SimpleSelect({category,setCategory,planet,setPlanet,inpu
   };
   const handleDayChange = (event) => {
     setDay(event.target.value);
+  };
+  const handleYearChange = (event) => {
+    setYear(event.target.value);
   };
 
   return (
@@ -117,15 +120,15 @@ export default function SimpleSelect({category,setCategory,planet,setPlanet,inpu
           onChange={handleDayChange}
           {...inputProps}
         >
-          <MenuItem value={'1'}>1</MenuItem>
-          <MenuItem value={'2'}>2</MenuItem>
-          <MenuItem value={'3'}>3</MenuItem>
-          <MenuItem value={'4'}>4</MenuItem>
-          <MenuItem value={'5'}>5</MenuItem>
-          <MenuItem value={'6'}>6</MenuItem>
-          <MenuItem value={'7'}>7</MenuItem>
-          <MenuItem value={'8'}>8</MenuItem>
-          <MenuItem value={'9'}>9</MenuItem>
+          <MenuItem value={'01'}>1</MenuItem>
+          <MenuItem value={'02'}>2</MenuItem>
+          <MenuItem value={'03'}>3</MenuItem>
+          <MenuItem value={'04'}>4</MenuItem>
+          <MenuItem value={'05'}>5</MenuItem>
+          <MenuItem value={'06'}>6</MenuItem>
+          <MenuItem value={'07'}>7</MenuItem>
+          <MenuItem value={'08'}>8</MenuItem>
+          <MenuItem value={'09'}>9</MenuItem>
           <MenuItem value={'10'}>10</MenuItem>
           <MenuItem value={'11'}>11</MenuItem>
           <MenuItem value={'12'}>12</MenuItem>
@@ -156,8 +159,8 @@ export default function SimpleSelect({category,setCategory,planet,setPlanet,inpu
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={day}
-          onChange={handleDayChange}
+          value={year}
+          onChange={handleYearChange}
           {...inputProps}
         >
           {baseYearArray.map((ele,i) => <MenuItem value={ele}>{`${ele}`}</MenuItem>)}

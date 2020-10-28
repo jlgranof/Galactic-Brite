@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 
 // Images
 import coruscant from './Coruscant_03db43b4.jpeg'
@@ -52,27 +52,30 @@ const CreateEventForm = () => {
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("")
-    const [date, setDate] = useState("")
+    // const [date, setDate] = useState("")
     const [details, setDetails] = useState("")
     const [category, setCategory] = useState('');
     const [planet, setPlanet] = useState('');
     const [month, setMonth] = useState('');
     const [day, setDay] = useState('');
-// use selector for auth host
+    const [year, setYear] = useState('');
+    const host_id = useSelector((state) => state.auth.id)
+
+    //formating the date
+    const event_date = `${month}/${day}/${year}`
+    console.log(event_date)
 
     const dispatch = useDispatch()
-    const host_id= 1;
 
     const handleSubmit = (e) =>{
         const event = {
             name:name,
             event_description: description,
             event_details: details,
-            event_date: date,
+            event_date,
             event_planet: planet,
             category_id: category,
             host_id,
-
         }
         e.preventDefault();
         dispatch(createEventThunk(event))
@@ -100,9 +103,9 @@ const CreateEventForm = () => {
                         </div>
                         <div>
                             {/* custom react component for calnedar */}
-                            <CustomInput labelText={'Date'} setStateFunc={setDate}
+                            {/* <CustomInput labelText={'Date'} setStateFunc={setDate}
                             inputProps={{ className: classes.colorMe}}
-                            labelInputProps={{className: classes.textColor}}/>
+                            labelInputProps={{className: classes.textColor}}/> */}
                         </div>
                         <div>
                             <SimpleSelect
@@ -114,6 +117,8 @@ const CreateEventForm = () => {
                             setMonth={setMonth}
                             day={day}
                             setDay={setDay}
+                            year={year}
+                            setYear={setYear}
                             inputProps={{ className: classes.sizeMe}}
                             labelInputProps={{className: classes.textColor}}
                             />
