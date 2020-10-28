@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Cookies from "js-cookie";
 
 // redux
 import { useDispatch } from 'react-redux'
@@ -20,6 +21,7 @@ import CreateEventForm from './components/Create-New-Events/CreateEvent'
 
 
 function App() {
+    // const [fetchWithCSRF, setFetchWithCSRF] = useState(()=> fetch)
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
 
@@ -27,11 +29,17 @@ function App() {
     
     useEffect(()=>{
         const generateSession = async () => {
-            const res = await fetch("/api/session/login")
+            const res = await fetch("/api/session/token/refresh", {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'access': Cookies.get("access_token_cookie")
+                },
+            })
             if (res.ok) {
                 const data = await res.json()
                 console.log(data)
-                // dispatch(setUser(res.data.user))
+                dispatch(setUser(data))
             }
             setLoading(false);
         }

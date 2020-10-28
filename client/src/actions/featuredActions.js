@@ -21,7 +21,7 @@ export const getFeaturedEvents = (events) => {
 export const fetchFeaturedEvents = () => {
     return async dispatch => {
         // fetch featuredEvents
-        const res = await fetch(`/api/events/`)
+        const res = await fetch(`/api/events/featured`)
         if (res.ok) {
             const data = await res.json();
             dispatch(getFeaturedEvents(data));

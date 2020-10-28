@@ -38,7 +38,7 @@ const LandingPage = () => {
 
     //preload featured events
     const featuredEvents = useSelector(state => state.featuredSlice.events)
-    console.log(featuredEvents)
+    // console.log(featuredEvents)
     
     const fakeList = [1, 2, 3, 2, "pulled from database", "random events stuff"]
 

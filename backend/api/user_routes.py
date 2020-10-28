@@ -5,7 +5,12 @@ import jwt
 from datetime import datetime, timedelta
 import os
 import json
-
+from flask_jwt_extended import (
+    JWTManager, jwt_required, create_access_token,
+    jwt_refresh_token_required, create_refresh_token,
+    get_jwt_identity, set_access_cookies,
+    set_refresh_cookies, unset_jwt_cookies
+)
 
 user_routes = Blueprint('users', __name__)
 
@@ -18,25 +23,27 @@ def index():
 
 @user_routes.route('/', methods=['POST'])
 def sign_up():
-  data = request.json
+    username = request.json.get('username', None)
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+    if not username or not password or not email:
+        return jsonify({'login': False}), 401
 
-  hashed_pass = generate_password_hash(data['password'], method='sha256')
-  new_user = User(username=data['username'], email=data['email'], hashed_password=hashed_pass)
-  db.session.add(new_user)
-  db.session.commit()
-  token_user = new_user.to_dict()
+    hashed_pass = generate_password_hash(password, method='sha256')
 
-  token = jwt.encode({
-            "userId": token_user["id"],
-            "exp": datetime.utcnow() + timedelta(minutes=30)
-            }, os.environ.get('SECRET_KEY'))
-
-  delattr(new_user, 'hashed_password')
-
-  user = new_user.to_dict()
-  user.pop('hashed_password')
-
-  return {**user}
+    new_user = User(username=username, email=email, hashed_password=hashed_pass)
+    db.session.add(new_user)
+    db.session.commit()
+    # Create the tokens we will be sending back to the user
+    access_token = create_access_token(identity=username)
+    refresh_token = create_refresh_token(identity=username)
+    user = new_user.to_dict()
+    user.pop('hashed_password')
+    # Set the JWT cookies in the response
+    resp = jsonify({'login': True, **user})
+    set_access_cookies(resp, access_token)
+    set_refresh_cookies(resp, refresh_token)
+    return resp, 200
 
 
 @user_routes.route('/<id>', methods=['DELETE'])
@@ -44,6 +51,8 @@ def delete_user(id):
     user = User.query.filter_by(id=id).first()
     if not user:
         return jsonify({'message': 'Not user found!'})
+    resp = jsonify({'logout': True})
+    unset_jwt_cookies(resp)
     db.session.delete(user)
     db.session.commit()
     return jsonify({'message': 'User has been deleted!'})
