@@ -12,13 +12,16 @@ import SnackBar from '../SnackBar/SnackBar'
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 
+// assets
+import featuredHeader from '../../assets/images/featuredHeader.jpg'
+
 const useStyles = makeStyles({
     featuredEvents: {
         zIndex: 100,
         postition: "absolute",
         bottom: "50px",
         height: "200px",
-        width: "80%",
+        width: "60%",
         margin: "0 auto",
         backgroundColor: "red",
     },
@@ -27,18 +30,20 @@ const useStyles = makeStyles({
         postition: "absolute",
         bottom: "50px",
         height: "200px",
-        width: "80%",
+        width: "60%",
         margin: "0 auto",
         backgroundColor: "blue",
     },
-    coverFlow: {
+    carousel: {
         display: "fixed",
-        top: "500px",
-        height: "600px",
-        backgroundColor: "white",
+        backgroundSize: "100% 100%",
+        borderRadius: "10px",
+        paddingTop:"20px",
         width: "90%",
-        margin: "0 auto"
-        
+        margin: "0 auto"  
+    },
+    header: {
+
     }
 })
 
@@ -59,10 +64,12 @@ const LandingPage = () => {
             <Header/>
             {/* <SnackBar/> */}
             <CarouselComponent/>
-            <div className={classes.coverFlow}>
+            <div className={classes.header}>
+                Featured Events
+            </div>
+            <div className={classes.carousel}>
                 <FeaturedCarousel/>
             </div>
-            <div>
                 {fakeList.map((value, i)=> (
                     <div 
                     key={i}
@@ -70,7 +77,6 @@ const LandingPage = () => {
                     <EventsComponent />
                     </div>
                 ))}
-            </div>
 
 
         </>

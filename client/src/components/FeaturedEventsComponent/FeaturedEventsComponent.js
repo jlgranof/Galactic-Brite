@@ -33,7 +33,9 @@ const useStyles = makeStyles({
     root: {
         maxWidth: 345,
         backgroundColor: "rgba(0,0,0,.8)",
-        color: "white"
+        // backgroundColor: "white",
+        color: "white",
+        height: "480px",
     },
     media: {
         color: "white",
@@ -65,13 +67,13 @@ const FeaturedEventsComponent = ({style, event}) => {
                             <MoreVertIcon />
                         </IconButton>
                     }
-                    title="Shrimp and Chorizo Paella"
-                    subheader="September 14, 2016"
+                    title={event.name}
+                    subheader={event.event_date}
                 />
                 <CardMedia
                     className={classes.media}
                     image={event.event_picture_url}
-                    title="Paella dish"
+                    title={event.event_description}
                 />
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p" className={classes.body}>
@@ -79,10 +81,7 @@ const FeaturedEventsComponent = ({style, event}) => {
                     </Typography >
                 </CardContent>
                 <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-
-                    </IconButton>
-                    <IconButton>
+                    <IconButton aria-label="add to bookmarks">
                         <BookmarkBorderIcon/>
                     </IconButton>
                 </CardActions>

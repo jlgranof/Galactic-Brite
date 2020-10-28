@@ -34,11 +34,6 @@ const FeaturedCarousel = () => {
     //preload featured events
     const featuredEvents = useSelector(state => state.featuredSlice.events)
 
-
-    const scroll = () => {
-        setIsActive((num) => num + 1)
-    }
-
     const breakPoints = [
         {width: 1, itemsToShow: 1},
         {width: 550, itemsToShow: 2},
@@ -50,6 +45,10 @@ const FeaturedCarousel = () => {
         <>
             <Carousel
             breakPoints={breakPoints}
+            focusOnSelect={true}
+            itemPadding={[0, 10, 0, 10]}
+            pagination={false}
+            disableArrowsOnEnd={false}
             >
                 {featuredEvents ? featuredEvents.map((event, i) => (
                     <FeaturedEventsComponent

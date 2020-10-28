@@ -16,16 +16,7 @@ import falcon from '../../assets/images/falcon.jpg'
 
 
 const useStyles = makeStyles({
-    indicators: {
-        position: "absolute",
-        transform: "scale(2) rotate(90deg)",
-        width: "100px",
-        right: 0,
-        padding: 0,
-        zIndex: 1000,
-        top: "80%",
-        boxSizing: "border-box"
-    },
+
 })
 
 
@@ -49,7 +40,7 @@ const CarouselComponent = () => {
             autoPlay={true}
             interval={3000}
             animation={"fade"}
-            navButtonsAlwaysVisible={true}
+            navButtonsAlwaysVisible={false}
             fullHeightHover={false}
             // next={(next, active) => console.log(`we left ${active}, and are now at ${next}`)}
             // prev={(prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
