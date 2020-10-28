@@ -45,7 +45,6 @@ const FeaturedCarousel = () => {
         <>
             <Carousel
             breakPoints={breakPoints}
-            focusOnSelect={true}
             itemPadding={[0, 10, 0, 10]}
             pagination={false}
             disableArrowsOnEnd={false}

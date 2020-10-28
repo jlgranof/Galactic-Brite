@@ -12,7 +12,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -33,21 +32,24 @@ const useStyles = makeStyles({
     root: {
         maxWidth: 345,
         backgroundColor: "rgba(26,26,26,1)",
-        // backgroundColor: "white",
         color: "white",
         height: "480px",
+
     },
     media: {
         color: "white",
-        height: 0,
-        paddingTop: '56.25%', // 16:9
+        height: "200px",
+        width: "300px",
+    },
+    header: {
+        color: "white"
     },
     avatar: {
         backgroundColor: red[500],
     },
     body: {
         color: "white"
-    }
+    },
 })
 
 
@@ -59,32 +61,29 @@ const FeaturedEventsComponent = ({style, event}) => {
         <div {...style}>
             <Card className={classes.root}>
                 <CardHeader
+                className={classes.header}
                     avatar={
                         <Avatar aria-label="host" src={event.host.avatar_url} className={classes.avatar}/>
                     }
-                    action={
-                        <IconButton aria-label="settings">
-                            <MoreVertIcon />
-                        </IconButton>
-                    }
                     title={event.name}
-                    subheader={event.event_date}
                 />
-                <CardMedia
+                <Typography variant="body2" color="textSecondary" className={classes.body}>
+                    {event.event_date}
+                </Typography >
+                <img 
                     className={classes.media}
-                    image={event.event_picture_url}
-                    title={event.event_description}
+                    src={event.event_picture_url}
                 />
-                <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p" className={classes.body}>
+
+                    <Typography variant="body2" color="textSecondary" className={classes.body}>
                         {event.event_description}
                     </Typography >
-                </CardContent>
-                <CardActions disableSpacing>
+
+
                     <IconButton aria-label="add to bookmarks">
-                        <BookmarkBorderIcon/>
+                        <BookmarkBorderIcon style={{ color: "white"}}/>
                     </IconButton>
-                </CardActions>
+
             </Card>
         </div>
     );

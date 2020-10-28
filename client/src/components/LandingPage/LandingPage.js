@@ -48,6 +48,8 @@ const useStyles = makeStyles({
         margin: "0 auto"  
     },
     featuredHeader: {
+        display: "flex",
+        flexDirection: "row",
         marginTop: "100px",
         fontWeight: "bold",
         fontSize: "40px",
@@ -89,11 +91,6 @@ const useStyles = makeStyles({
 
 const LandingPage = () => {
     const classes = useStyles()
-    const dispatch = useDispatch()
-    
-    //preload featured events
-    const featuredEvents = useSelector(state => state.featuredSlice.events)
-    // console.log(featuredEvents)
     
     const fakeList = [1, 2, 3, 2, "pulled from database", "random events stuff"]
     
@@ -108,8 +105,10 @@ const LandingPage = () => {
             <div className={classes.gifBar2}>
             </div>
             <div className={classes.featuredHeader}>
-                Featured Events 
-                    <ArrowForwardIosIcon fontSize={"large"} />
+                <div>
+                    Featured Events 
+                </div>
+                <ArrowForwardIosIcon fontSize={"large"} />
             </div>
             <div className={classes.carousel}>
                 <FeaturedCarousel/>
