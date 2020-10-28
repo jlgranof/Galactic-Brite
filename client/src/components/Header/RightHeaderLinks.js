@@ -64,11 +64,10 @@ const RightHeaderLinks = ({inherit, expanded, setExpanded}) => {
     const [isLoginOpen, setIsLoginOpen] = useState(false)
     const [isSignupOpen, setIsSignupOpen] = useState(false)
     const user = useSelector(state => state.auth)
-    const id = useSelector((state) => state.auth.id)
     return (
         <>
             <div className={classes.rightLinkBox}>
-                {id === undefined ?
+                {user.id === undefined ?
                     <>
                         <NavLink className={classNames(inherit, classes.alignPlus)} to="/create-event" activeclass="active">
                             <AddCircleIcon className={classes.roundIcon} />
@@ -93,7 +92,7 @@ const RightHeaderLinks = ({inherit, expanded, setExpanded}) => {
                         />
                     </>
                 : null }
-                {id !== undefined ?
+                {user.id !== undefined ?
                     <>
                         <NavLink className={classNames(inherit, classes.alignPlus)} to="/create-event" activeclass="active">
                                 <AddCircleIcon className={classes.roundIcon}/>

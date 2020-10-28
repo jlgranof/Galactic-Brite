@@ -1,10 +1,12 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
+
 // core components
 import Header from '../Header/Header'
 import CarouselComponent from '../CarouselComponent/CarouselComponent'
 import EventsComponent from '../EventsComponent/EventsComponent'
 import FeaturedEventsComponent from '../FeaturedEventsComponent/FeaturedEventsComponent'
+import FeaturedCarousel from '../CarouselComponent/FeaturedCarousel'
 import SnackBar from '../SnackBar/SnackBar'
 
 // @material-ui/core
@@ -29,6 +31,15 @@ const useStyles = makeStyles({
         margin: "0 auto",
         backgroundColor: "blue",
     },
+    coverFlow: {
+        display: "fixed",
+        top: "500px",
+        height: "600px",
+        backgroundColor: "white",
+        width: "90%",
+        margin: "0 auto"
+        
+    }
 })
 
 
@@ -48,10 +59,9 @@ const LandingPage = () => {
             <Header/>
             {/* <SnackBar/> */}
             <CarouselComponent/>
-
-                {featuredEvents? featuredEvents.map((event, i)=> (
-                    <FeaturedEventsComponent  key={i} event={event}/>
-                    )):null}
+            <div className={classes.coverFlow}>
+                <FeaturedCarousel/>
+            </div>
             <div>
                 {fakeList.map((value, i)=> (
                     <div 
@@ -60,7 +70,6 @@ const LandingPage = () => {
                     <EventsComponent />
                     </div>
                 ))}
-
             </div>
 
 
