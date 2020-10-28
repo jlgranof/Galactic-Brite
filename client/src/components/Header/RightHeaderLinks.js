@@ -89,36 +89,38 @@ const RightHeaderLinks = ({ inherit, expanded, setExpanded }) => {
 
 
     return (
-        <>
         <div>
             {id === undefined ?
+
                 <>
-                    <NavLink className={classNames(classes.alignPlus)} to="/create-event" activeclass="active">
-                        <AddCircleIcon className={classes.roundIcon} />
-                        Create Event
-                    </NavLink>
+                    <div>
+                        {/* <NavLink className={classNames(classes.alignPlus)} to="/create-event" activeclass="active">
+                            <AddCircleIcon className={classes.roundIcon} />
+                            Create Event
+                        </NavLink> */}
 
-                    <Button className={inherit} variant="contained" color="secondary"  onClick={()=>setIsLoginOpen(true)}>
-                        Login
-                    </Button>
+                        <button onClick={()=>setIsLoginOpen(true)}>
+                            Login
+                        </button>
 
-                    
-                    <LoginDialog
-                    isLoginOpen={isLoginOpen}
-                    setIsLoginOpen={setIsLoginOpen}
-                    setIsSignupOpen={setIsSignupOpen}
-                    />
-                    
-                    <Button className={inherit} variant="contained" color="secondary" onClick={() => setIsSignupOpen(true)}>
-                        Signup
-                    </Button>
-                    
+                        
+                        <LoginDialog
+                        isLoginOpen={isLoginOpen}
+                        setIsLoginOpen={setIsLoginOpen}
+                        setIsSignupOpen={setIsSignupOpen}
+                        />
+                        
+                        <button onClick={() => setIsSignupOpen(true)}>
+                            Signup
+                        </button>
+                        
 
 
-                    <SignupDialog
-                    isOpen={isSignupOpen}
-                    setIsOpen={setIsSignupOpen}
-                    />
+                        <SignupDialog
+                        isOpen={isSignupOpen}
+                        setIsOpen={setIsSignupOpen}
+                        />
+                    </div>
                 </>
             : null }
                 {id !== undefined ?
@@ -141,7 +143,6 @@ const RightHeaderLinks = ({ inherit, expanded, setExpanded }) => {
                     </>
                     : null}
             </div>
-        </>
     );
 };
 

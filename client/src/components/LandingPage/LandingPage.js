@@ -83,6 +83,21 @@ const useStyles = makeStyles({
         background: "rgb(55,27,27)",
         background: "radial-gradient(circle, rgba(55,27,27,1) 0%, rgba(0,0,0,1) 100%, rgba(0,212,255,1) 100%)",
         
+    },
+    container: {
+        display: "grid",
+        gridTemplateColumns: "4fr 8fr 4fr",
+        gridTemplateRows: "4fr 6fr 1fr",
+
+
+    },
+    centerHeader: {
+        gridColumn: "2/3",
+        gridRow: "1/2",
+    },
+    gifBody: {
+        gridColumn: "1/4",
+        gridRow: "1/3",
     }
 })
 
@@ -100,12 +115,20 @@ const LandingPage = () => {
     // http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote
     return (
         <>
-            <Header/>
-            {/* <SnackBar/> */}
-            <CarouselComponent />
-            <div className={classes.gifBar}>
+            <div className={classes.container}>
+            <div className={classes.centerHeader}>
+                <Header/>
             </div>
-            <div className={classes.gifBar2}>
+            <div className={classes.gifBody}>
+                <CarouselComponent />
+
+                <div className={classes.gifBar}>
+                </div>
+                <div className={classes.gifBar2}>
+                </div>
+            </div>
+                {/* <SnackBar/> */}
+
             </div>
             <div className={classes.featuredHeader}>
                 Featured Events 
