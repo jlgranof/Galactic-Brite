@@ -36,13 +36,38 @@ const useStyles = makeStyles({
         clipPath: "polygon(0% 0%, 99% 0%, 100% 100%, 71% 81%, 65% 63%, 49% 52%, 35% 61%, 27% 81%, 0 100%)"
     },
 
-    header: {
-        zIndex: 100,
-        position: "absolute",
-        display: "flex",
-        flexDirection: "row-reverse",
-        opacity: "1",
+    // header: {
+    //     zIndex: 100,
+    //     position: "absolute",
+    //     display: "flex",
+    //     flexDirection: "row-reverse",
+    //     color: "white",
+    //     top: "0",
+    //     background: "rgb(105,0,0)",
+    //     background: "linear-gradient(90deg, rgba(105,0,0,1) 21%, rgba(0,0,0,1) 54%, rgba(105,0,0,1) 72%)",
+    //     borderTop: "50px solid rgba(0,0,0,1)",
+    //     borderLeft: "85px solid transparent",
+    //     borderRight: "85px solid transparent",
+    //     left: "20%",
+    //     width: "60%",
+    //     clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)"
+    //     // boxShadow: "1px 1px 1px 1px red"
+    // },
+
+    header : {
+        zIndex: 101,
         color: "white",
+
+        position: "absolute",
+        background: "rgb(70,18,18)",
+        background: "linear-gradient(90deg, rgba(70,18,18,1) 0%, rgba(131,2,2,1) 61%, rgba(0,0,0,1) 92%)",
+        height: "50px",
+        left: "17%",
+        width: "70%",
+        // border: "solid 1.5em rgba(#000, .2)",
+        // border: "2px solid red",
+        clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)",
+
         top: "0",
         borderTop: "50px solid rgba(0,0,0,.9)",
         borderLeft: "85px solid transparent",
@@ -62,6 +87,7 @@ const useStyles = makeStyles({
         left: "36.5%",
 
         width: "30%",
+
     },
     
     inherit: {
@@ -92,6 +118,19 @@ const useStyles = makeStyles({
         zIndex: 100,
         color: "white",
         listStyle: "none",
+    },
+
+    headerWrapper: {
+        position: "absolute",
+        width: "40vw",
+        left: "30%",
+    },
+
+    headerButton: {
+        position: "relative",
+        zIndex: 100,
+        display: "flex",
+        justifyContent: "space-between"
     },
 
     navItem: {
@@ -150,14 +189,21 @@ const Header = () => {
                     <HeaderLogo />
                 </NavLink>
             </div>
+            <div className={classes.headerWrapper}>
+            <div className={classes.headerButton}>
             <div className={classes.header}>
+            
             </div>
-            <div className={classes.trapezoid}/>
-                {/* <RightHeaderLinks
+            <RightHeaderLinks
                     inherit={classes.inherit}
                     expanded={expanded}
-                    setExpanded={setExpanded}
-                /> */}
+                    setExpanded={setExpanded}/>
+            </div>
+            </div>
+            
+            
+                
+
             <nav className="navbar">
                 <div>
                     <Collapse
