@@ -32,7 +32,7 @@ import { useEventCallback } from '@material-ui/core';
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
-        backgroundColor: "rgba(0,0,0,.8)",
+        backgroundColor: "rgba(26,26,26,1)",
         // backgroundColor: "white",
         color: "white",
         height: "480px",
@@ -60,7 +60,7 @@ const FeaturedEventsComponent = ({style, event}) => {
             <Card className={classes.root}>
                 <CardHeader
                     avatar={
-                        <Avatar aria-label="host" src={event.event_picture_url} className={classes.avatar}/>
+                        <Avatar aria-label="host" src={event.host.avatar_url} className={classes.avatar}/>
                     }
                     action={
                         <IconButton aria-label="settings">

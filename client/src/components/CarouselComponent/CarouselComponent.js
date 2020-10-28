@@ -36,7 +36,7 @@ const CarouselComponent = () => {
     },[])
     return (
         <Carousel
-            indicatorContainerProps={{className:classes.indicators}}
+            indicators={false}
             autoPlay={true}
             interval={3000}
             animation={"fade"}
