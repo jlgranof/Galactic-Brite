@@ -1,5 +1,4 @@
 from random import randint
-import requests
 from backend.api.custom_events.description import random_description
 from backend.api.custom_events.date import random_date
 from backend.api.custom_events.name import random_name

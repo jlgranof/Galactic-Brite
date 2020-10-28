@@ -41,6 +41,7 @@ def one_event(id):
                 "id": event.user.id,
                 "username": event.user.username,
                 "email": event.user.email
+                "avatar_url": event.user.avatar_url
             },
             "event_date": event.event_date,
             "event_planet": event.event_planet,
