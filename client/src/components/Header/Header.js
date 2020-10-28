@@ -1,14 +1,13 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom'
-
+// import { Button } from './Button';
 // core components
 import HeaderLogo from './HeaderLogo'
-import LeftHeaderLinks from './LeftHeaderLinks';
 import RightHeaderLinks from './RightHeaderLinks';
 
 //redux
-import {useDispatch} from 'react-redux'
-import {logout} from '../../actions/authActions'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../actions/authActions'
 
 
 // nodejs library that concatenates classes
@@ -26,9 +25,6 @@ import { Redirect } from 'react-router-dom';
 
 
 const useStyles = makeStyles({
-    headerBar: {
-        width: "100%",
-    },
     headerCenter: {
         zIndex: 1000,
         backgroundColor: "white",
@@ -39,64 +35,76 @@ const useStyles = makeStyles({
         height: "220px",
         clipPath: "polygon(0% 0%, 99% 0%, 100% 100%, 71% 81%, 65% 63%, 49% 52%, 35% 61%, 27% 81%, 0 100%)"
     },
-    leftHeader: {
-        zIndex: 1,
-        position: "absolute",
-        right: "50%",
-        paddingRight: "100px",
-        width: "50%",
-        display: "flex",
-        opacity: "1",
-        color: "white",
-        backgroundColor: "rgba(0,0,0,.8)",
 
-    },
-    rightHeader: {
-        zIndex: 1,
+    header: {
+        zIndex: 100,
         position: "absolute",
-        left: "50%",
-        paddingLeft: "150px",
-        width: "50%",
         display: "flex",
         flexDirection: "row-reverse",
         opacity: "1",
         color: "white",
-        backgroundColor: "rgba(0,0,0,.8)",
+        top: "0",
+        borderTop: "50px solid rgba(0,0,0,.9)",
+        borderLeft: "85px solid transparent",
+        borderRight: "85px solid transparent",
+        left: "20%",
+        width: "60%",
+        boxShadow: "1px 1px 1px 1px red"
     },
+
+    trapezoid : {
+        position: "absolute",
+        zIndex: 200, 
+        borderTop: "50px solid white",
+        borderLeft: "85px solid transparent",
+        borderRight: "85px solid transparent",
+        height: "0",
+        left: "37.5%",
+        marginLeft: "-50px",
+        width: "30%",
+    },
+    
     inherit: {
         textDecoration: "none",
-        color: "white"
+        position: "absolute",
+        zIndex: 200,
+        color: "white",
+        height: "30px",
+        top: "40px",
+        right: "10px",
+        margin: "5px"
     },
     navMenu: {
         position: "absolute",
         backgroundColor: "rgba(30,30,30, 1)",
-        borderRadius: "10px",
+        borderRadius: "5px",
         zIndex: 100,
-        top: "90px",
-        right: 20,
-        width: "200px",
+        top: "85px",
+        right: 0,
+        width: "250px",
         height: "auto",
         boxShadow: "0 0 3px 0 grey"
     },
     navMenuLinks: {
         display: "flex",
         flexDirection: "column",
-        justifyContent:"center",
+        justifyContent: "center",
         zIndex: 100,
         color: "white",
         listStyle: "none",
     },
+
     navItem: {
         textDecoration: "none",
         color: "white",
         width: "100%",
         "&:hover": {
             backgroundColor: "rgba(80, 80, 80, 1)",
-            
+            borderRadius: "5px",
         }
     },
-    signout: {
-        alignItems:"flex-end", 
+    customSize: {
+        alignItems: "flex-end",
         bottom: 0
     }
 })
@@ -107,71 +115,82 @@ const Header = () => {
     const history = useHistory()
     const [expanded, setExpanded] = useState(true);
 
-    useEffect(() => {
+    const onMouseEnter = () => {
+        if (window.innerWidth < 960) {
+            setExpanded(false);
+        } else {
+            setExpanded(true);
+        }
+    };
 
+    const onMouseLeave = () => {
+        if (window.innerWidth < 960) {
+            setExpanded(false);
+        } else {
+            setExpanded(false);
+        }
+    };
+
+    useEffect(() => {
         return setExpanded(false)
-    },[])
+    }, [])
 
     const handleLogout = () => {
         setExpanded(false)
         dispatch(logout())
         history.push('/')
     }
+
+
+
     return (
         <>
-        <div className={classes.headerCenter}>
-            <NavLink to="/" activeclass="active">
-                <HeaderLogo/>
-            </NavLink>
-        </div>
-        <div className={classes.bar}>
-            <div className={classes.leftHeader}>
-                <LeftHeaderLinks inherit={classes.inherit}/>
+            <div className={classes.headerCenter}>
+                <NavLink to="/" activeclass="active">
+                    <HeaderLogo />
+                </NavLink>
             </div>
-            <div className={classes.rightHeader}>
-                <RightHeaderLinks 
-                inherit={classes.inherit}
-                expanded={expanded}
-                setExpanded={setExpanded}
-                />
+            <div className={classes.header}>
             </div>
-        </div>
-        <nav>
-            <div>
-                <Collapse 
-                    in={expanded}  
-                    timeout="auto" 
-                    unmountOnExit
-                >
-                    <nav className={classes.navMenu}>
-                        <div className={classes.navMenuLinks}>
-                            <NavLink 
-                            className={classes.navItem}
-                            to="/dashboard" 
-                            >
-                            Dashboard
-                            </NavLink>
-                            <NavLink 
-                            to="/aboutUs"
-                            className={classes.navItem}
-                            >
-                            AboutUs
-                            </NavLink>
-                            <div className={classes.navItem}>
-                                <Button 
-                                className={classNames(classes.navItem, classes.signout)}
-                                onClick={handleLogout}
-                                >
-                                    <i>
-                                        sign out
-                                    </i>
+            <div className={classes.trapezoid}/>
+                {/* <RightHeaderLinks
+                    inherit={classes.inherit}
+                    expanded={expanded}
+                    setExpanded={setExpanded}
+                /> */}
+            <nav className="navbar">
+                <div>
+                    <Collapse
+                        onMouseEnter={onMouseEnter}
+                        onMouseLeave={onMouseLeave}
+                        in={expanded}
+                        timeout="auto"
+                        unmountOnExit
+                    >
+                        <nav className={classes.navMenu}>
+                            <div className={classes.navMenuLinks}>
+                                <Button onClick={() => history.push('/dashboard')} className={classNames(classes.navItem, classes.customSize)}>
+                                    Dashboard
                                 </Button>
+
+                                <Button onClick={() => history.push('/about')} className={classNames(classes.navItem, classes.customSize)}>
+                                    About
+                                </Button>
+                                <div>
+                                    <Button
+                                        className={classNames(classes.navItem, classes.customSize)}
+                                        onClick={handleLogout}
+                                    >
+                                        <i>
+                                            sign out
+                                    </i>
+                                    </Button>
+                                </div>
                             </div>
-                        </div>
-                    </nav>
-                </Collapse>
-            </div>
-        </nav>
+                        </nav>
+                    </Collapse>
+                </div>
+            </nav>
         </>
     );
 };
