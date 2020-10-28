@@ -21,7 +21,7 @@ html {
     background: -ms-linear-gradient(left,   black 0%,red 51%,red 51%,red 51%, black 100%);
     background: linear-gradient(to right,   black 0%,red 51%,red 51%,red 51%, black 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=' black', endColorstr=' black',GradientType=1 );
-    width: 30px;
+    width: 18px;
 }
 ::-webkit-scrollbar-button:start:decrement,
 ::-webkit-scrollbar-button:end:increment  {}
