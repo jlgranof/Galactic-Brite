@@ -49,7 +49,7 @@ const useStyles = makeStyles({
         borderRight: "85px solid transparent",
         left: "20%",
         width: "60%",
-        boxShadow: "1px 1px 1px 1px red"
+
     },
 
     trapezoid : {
@@ -59,8 +59,8 @@ const useStyles = makeStyles({
         borderLeft: "85px solid transparent",
         borderRight: "85px solid transparent",
         height: "0",
-        left: "37.5%",
-        marginLeft: "-50px",
+        left: "36.5%",
+
         width: "30%",
     },
     
