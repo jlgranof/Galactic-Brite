@@ -10,8 +10,8 @@ const useStyles = makeStyles({
         right: 0,
         left: 0,
         bottom: 0,
-        display: "fixed",
-        height: "78vh",
+        display: "absolute",
+        height: "85vh",
         width: "100vw"
     },
 })

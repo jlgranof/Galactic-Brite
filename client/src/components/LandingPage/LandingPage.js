@@ -11,6 +11,11 @@ import SnackBar from '../SnackBar/SnackBar'
 
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
+import Icon from '@material-ui/core/Icon';
+
+// @material-ui/icons
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+
 
 // assets
 import featuredHeader from '../../assets/images/featuredHeader.jpg'
@@ -42,30 +47,69 @@ const useStyles = makeStyles({
         width: "90%",
         margin: "0 auto"  
     },
-    header: {
-
+    featuredHeader: {
+        marginTop: "100px",
+        fontWeight: "bold",
+        fontSize: "40px",
+        color: "white",
+        textAlign: "center",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    gifBar: {
+        zIndex: 100,
+        left: "10%",
+        top: "80vh",
+        position: "absolute",
+        backgroundColor: "rgba(26, 26, 26, 1)",
+        height: "100px",
+        width: "80vw",
+        clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
+        background: "rgb(55,27,27)",
+        background: "radial-gradient(circle, rgba(55,27,27,1) 0%, rgba(0,0,0,1) 100%, rgba(0,212,255,1) 100%)",
+        height: "100px",
+        clipPath: "polygon(20% 0%, 80% 0, 100% 100%, 0% 100%)",
+        
+    },
+    gifBar2: {
+        zIndex: 110,
+        top: "85vh",
+        position: "absolute",
+        borderTop: "2px solid black",
+        backgroundColor: "rgba(26, 26, 26, 1)",
+        height: "100px",
+        width: "99vw",
+        height: "55px",
+        background: "rgb(55,27,27)",
+        background: "radial-gradient(circle, rgba(55,27,27,1) 0%, rgba(0,0,0,1) 100%, rgba(0,212,255,1) 100%)",
+        
     }
 })
 
 
 const LandingPage = () => {
     const classes = useStyles()
-
     const dispatch = useDispatch()
-
+    
     //preload featured events
     const featuredEvents = useSelector(state => state.featuredSlice.events)
     // console.log(featuredEvents)
     
     const fakeList = [1, 2, 3, 2, "pulled from database", "random events stuff"]
-
+    
+    // http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote
     return (
         <>
             <Header/>
             {/* <SnackBar/> */}
-            <CarouselComponent/>
-            <div className={classes.header}>
-                Featured Events
+            <CarouselComponent />
+            <div className={classes.gifBar}>
+            </div>
+            <div className={classes.gifBar2}>
+            </div>
+            <div className={classes.featuredHeader}>
+                Featured Events 
+                    <ArrowForwardIosIcon fontSize={"large"} />
             </div>
             <div className={classes.carousel}>
                 <FeaturedCarousel/>
