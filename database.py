@@ -84,7 +84,6 @@ with app.app_context():
   db.session.add(boba)
   db.session.add(han)
   db.session.add(luke)
-  db.session.add(event)
   db.session.add(party)
   db.session.add(production)
   db.session.add(exectution)
