@@ -47,17 +47,16 @@ class Event(db.Model):
 
   user = db.relationship("User", back_populates="events")
   category = db.relationship("Category", back_populates="events")
-  bookmarked_events = db.relationship("BookmarkedEvent", back_populates="event")
 
+  
 class BookmarkedEvent(db.Model):
   __tablename__ = 'bookmarked_events'
 
   id = db.Column(db.Integer, primary_key = True)
-  event_id = db.Column(db.Integer, db.ForeignKey("events.id"), nullable = False)
+  event_name = db.Column(db.String(200))
   user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = False)
   is_registered = db.Column(db.Boolean, default = False)
 
-  event = db.relationship("Event", back_populates="bookmarked_events")
   user = db.relationship("User", back_populates="bookmarked_events")
 
 class Picture(db.Model):
