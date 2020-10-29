@@ -93,7 +93,7 @@ def update_bookmark():
     return jsonify({
         "bookmark.id": bookmark.id,
         "bookmark.event_name": bookmark.event_name,
-        "bookmark.event_name": bookmark.is_registered
+        "bookmark.is_registered": bookmark.is_registered
     })
 
 @event_routes.route('/bookmarks/<user_id>')
