@@ -29,6 +29,7 @@ const EventsComponent = () => {
     const classes = useStyles()
 
     const user = useSelector(state => state)
+    
 
 
     return (

@@ -13,6 +13,7 @@ export const eventsSlice = (state = {}, action) => {
             return nextState
         case GET_EVENTS:
             nextState.events = [...action.events]
+            return nextState
         case CREATE_EVENT:
             return state;
         default:

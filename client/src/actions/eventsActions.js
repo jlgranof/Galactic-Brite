@@ -36,10 +36,11 @@ export const fetchRandomEvents = (num) => {
     return async dispatch => {
         // fetch all random events
         const res = await fetch(`/api/events/random/${num}`)
-        const data = await res.json();
-        console.log(data)
+        
         if (res.ok) {
-            // dispatch(getEvents(data));
+            const data = await res.json();
+            console.log(data)
+            dispatch(getEvents(data));
         }
         return res;
     };

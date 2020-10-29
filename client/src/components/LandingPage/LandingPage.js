@@ -96,8 +96,8 @@ const useStyles = makeStyles({
 const LandingPage = () => {
     const classes = useStyles()
 
-    const user = useSelector(state => state)
-    console.log(user)
+    const events = useSelector(state => state.eventsSlice.events)
+    console.log(events)
     
     const fakeList = [1, 2, 3, 2, "pulled from database", "random events stuff"]
     
@@ -124,7 +124,9 @@ const LandingPage = () => {
                     <div 
                     key={i}
                     className={classes.events}>
-                    <EventsComponent />
+                    <EventsComponent
+                    
+                    />
                     </div>
                 ))}
 
