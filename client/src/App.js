@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Cookies from "js-cookie";
 
 // redux
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { setUser } from './actions/authActions'
 import { fetchFeaturedEvents } from './actions/featuredActions'
 import {fetchRandomEvents } from './actions/eventsActions'
@@ -15,10 +15,10 @@ import PageNotFound from './components/PageNotFound/PageNotFound'
 import Dashboard from './components/Dashboard/Dashboard'
 import AboutUsPage from './components/AboutUsPage/AboutUsPage'
 import Footer from './components/Footer/Footer'
+import EventDetails from './components/EventDetails/EventDetails'
 
 //? ideas
 import SecondTestPage from './components/TestPage/SecondTestPage'
-
 import CreateEventForm from './components/Create-New-Events/CreateEvent'
 
 
@@ -26,6 +26,8 @@ function App() {
     // const [fetchWithCSRF, setFetchWithCSRF] = useState(()=> fetch)
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
+    const events = useSelector(state => state.eventsSlice.events)
+    console.log(events)
 
 
 
@@ -44,7 +46,6 @@ function App() {
             }
             setLoading(false);
         }
-
         //preload ALL events in redux
         const preloadAllEvents = async () => {
             dispatch(fetchFeaturedEvents())
@@ -54,6 +55,7 @@ function App() {
         preloadAllEvents()
     }, [loading])
 
+    const id = 1
     if(loading) return null
     return (
         <BrowserRouter>
@@ -64,6 +66,7 @@ function App() {
                 <Route exact path="/"><LandingPage/></Route>
                 <Route exact path="/create-event"><CreateEventForm/></Route>
                 <Route exact path="/AboutUs"><AboutUsPage/></Route>
+                <Route path={`event-details/${id}`}><EventDetails/></Route>
                 <Route component={PageNotFound}/>
             </Switch>
             <Footer />
