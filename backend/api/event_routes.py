@@ -63,31 +63,28 @@ def random_events(amount):
         events.append(get_random_event())
     return jsonify(events)
 
+@event_routes.route('/bookmarks/add', methods=['POST'])
+def add_bookmark():
+    data = request.json
+    bookmark = BookmarkedEvent(
+        event_name=data['event_name'],
+        user_id=data['user_id'],
+        is_registered=data['is_registered']
+    )
+    db.session.add(bookmark)
+    db.session.commit()
+    return jsonify(data)
+
+
 @event_routes.route('/bookmarks/<user_id>')
 def bookmarked_events(user_id):
     bookmarked_events = []
     events = BookmarkedEvent.query.filter(BookmarkedEvent.user_id == user_id)
     for event in events:
-        bookmarked_events.append({
-            "is_registered": event.is_registered,
-            "name": event.event.name,
-            "event_description": event.event.event_description,
-            "host": {
-                "id": event.event.user.id,
-                "username": event.event.user.username,
-                "email": event.event.user.email,
-                "avatar_url": event.event.user.avatar_url
-            },
-            "event_date": event.event.event_date,
-            "event_planet": event.event.event_planet,
-            "event_picture_url": event.event.event_picture_url,
-            "category": {
-                "id": event.event.category.id,
-                "type": event.event.category.type
-                },
-            "is_featured": event.event.is_featured
-
-        })
+            bookmarked_events.append({
+                "event_name": event.event_name,
+                "is_registered": event.is_registered
+            })
     return jsonify(bookmarked_events)
 
 @event_routes.route('/custom', methods=['POST'])
@@ -112,7 +109,4 @@ def add_custom_event():
         return jsonify(errors)
     db.session.add(custom_event)
     db.session.commit()
-    if 'is_registered' in data.keys():
-        print('working')
-
     return jsonify(data)
