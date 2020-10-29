@@ -24,7 +24,7 @@ James White
 
     Twitter:
     Facebook:
-    GitHub:
+    GitHub: <https://github.com/whitejamesthe2nd>
     Instagram:
 
 Alec Garcia
