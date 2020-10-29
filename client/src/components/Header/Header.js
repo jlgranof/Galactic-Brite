@@ -6,7 +6,7 @@ import HeaderLogo from './HeaderLogo'
 import RightHeaderLinks from './RightHeaderLinks';
 //redux
 import { useDispatch } from 'react-redux'
-import { logout } from '../../actions/authActions'
+import { logout } from '../../Redux/actions/authActions'
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core

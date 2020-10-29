@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 // redux
 import { useDispatch } from 'react-redux'
-import {login} from '../../actions/authActions'
+import {login} from '../../Redux/actions/authActions'
 
 // Core Components
 import LoginModal from '../LoginComponent/LoginModal'

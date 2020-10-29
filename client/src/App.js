@@ -4,9 +4,9 @@ import Cookies from "js-cookie";
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { setUser } from './actions/authActions'
-import { fetchFeaturedEvents } from './actions/featuredActions'
-import {fetchRandomEvents } from './actions/eventsActions'
+import { setUser } from './Redux/actions/authActions'
+import { fetchFeaturedEvents } from './Redux/actions/featuredActions'
+import {fetchRandomEvents } from './Redux/actions/eventsActions'
 
 // core components
 import UserList from './components/UsersList';
