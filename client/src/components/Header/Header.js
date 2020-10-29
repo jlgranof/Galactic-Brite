@@ -177,18 +177,18 @@ const Header = () => {
                 </NavLink>
             </div>
             <div className={classes.headerWrapper}>
-                <div className={classes.header} />
-                <div className={classes.flexMain}>
-                    <div className={classes.flexItemsLeft}>
-                        <Button variant="contained" className={classNames(classes.alignPlus)} onClick={() => history.push('/create-event')} activeclass="active">
-                            Make Event
+                <div className={classes.header}/>
+                    <div className={classes.flexMain}>
+                        <div className={classes.flexItemsLeft}>
+                            <Button variant="contained" className={classNames(classes.alignPlus)} onClick={() => history.push('/create-event')} activeclass="active">
+                                Make Event
                             </Button>
                         <Button variant="contained" className={classNames(classes.storePlus)} to="/store" activeclass="active">
                             Store
                             </Button>
-                    </div>
-                    <div className={classes.flexItemsRight}>
-                        <RightHeaderLinks
+                        </div>
+                        <div className={classes.flexItemsRight}>
+                            <RightHeaderLinks
                             cutLog={classes.cutLog}
                             cutSign={classes.cutSign}
                             expanded={expanded}
@@ -234,6 +234,7 @@ const Header = () => {
     );
 };
 export default Header;
+<<<<<<< HEAD
 
 
 
@@ -247,3 +248,5 @@ export default Header;
 
 
 
+=======
+>>>>>>> main
