@@ -3,6 +3,7 @@ export const GET_EVENTS = "GET EVENTS";
 export const ADD_TICKET = "ADD TICKET";
 export const CREATE_EVENT = "CREATE_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
+export const GET_BOOKMARK_EVENTS = "GET_BOOKMARK_EVENTS";
 
 
 // might swap over to have tickets as a separate action
@@ -15,6 +16,12 @@ export const getEvents = (events) => {
     return {
         type: GET_EVENTS,
         events
+    }
+}
+export const getBookmarkEvents = (bookmarkEvents) => {
+    return {
+        type: GET_BOOKMARK_EVENTS,
+        bookmarkEvents
     }
 }
 export const deleteEvent = (events) => {
@@ -43,10 +50,22 @@ export const fetchRandomEvents = (num) => {
     return async dispatch => {
         // fetch all random events
         const res = await fetch(`/api/events/random/${num}`)
-        
+
         if (res.ok) {
             const data = await res.json();
             dispatch(getEvents(data));
+        }
+        return res;
+    };
+};
+export const fetchBookmarkEventsThunk = (id) => {
+    return async dispatch => {
+        // fetch Bookmark event
+        const res = await fetch(`/api/events/bookmarks/${id}`)
+
+        if (res.ok) {
+            const data = await res.json();
+            dispatch(getBookmarkEvents(data));
         }
         return res;
     };
