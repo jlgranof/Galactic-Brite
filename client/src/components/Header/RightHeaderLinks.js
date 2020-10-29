@@ -1,29 +1,21 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
 //redux
 import { useSelector } from 'react-redux'
-
 // Core Components
 import LoginDialog from '../LoginComponent/LoginDialog'
 import SignupDialog from '../SignupComponent/SignupDialog'
-
-
 // nodejs library that concatenates classes
 import classNames from "classnames";
-
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-
 // @material-ui/icons
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
-
 const useStyles = makeStyles({
     // rightLinkBox: {
     //     display: "flex",
@@ -39,34 +31,14 @@ const useStyles = makeStyles({
     //         transform: "scale(1.08)"
     //     }
     // },
-    // alignPlus: {
-    //     display: "flex",
-    //     alignItems: "center",
-    //     justifyContent: "center",
-    //     flexDirection: "column",
-    //     padding: "10px",
-    //     top: "0",
-    //     textDecoration: "None",
-    //     color: "white",
-    //     margin: "10px"
-    // },
-    avatar: {
-        "&:hover": {
-            opacity: 1,
-            transform: "scale(1.03)"
-        },
-    },
+
 })
-
-
-const RightHeaderLinks = ({ expanded, setExpanded }) => {
+const RightHeaderLinks = ({ expanded, setExpanded, cutLog, cutSign }) => {
     const classes = useStyles()
     const [isLoginOpen, setIsLoginOpen] = useState(false)
     const [isSignupOpen, setIsSignupOpen] = useState(false)
     const user = useSelector(state => state.auth)
     const id = useSelector((state) => state.auth.id)
-
-
     const onMouseEnter = () => {
         if (window.innerWidth < 960) {
             setExpanded(false);
@@ -74,7 +46,6 @@ const RightHeaderLinks = ({ expanded, setExpanded }) => {
             setExpanded(true);
         }
     };
-
     const onMouseLeave = () => {
         if (window.innerWidth < 960) {
             setExpanded(false);
@@ -82,32 +53,23 @@ const RightHeaderLinks = ({ expanded, setExpanded }) => {
             setExpanded(false);
         }
     };
-
-
-
     return (
         <>
             {id === undefined ?
-
                 <>
-                    <NavLink className={classNames(classes.alignPlus)} to="/create-event" activeclass="active">
-                        <AddCircleIcon className={classes.roundIcon} />
-                    </NavLink>
-
-                    <button variant="contained" color="secondary" onClick={() => setIsLoginOpen(true)}>
-                        Login
-                                </button>
-
-
+                    
+                    <Button className={cutLog} variant="contained" onClick={() => setIsLoginOpen(true)}>
+                    Login
+                    </Button>
+                    
                     <LoginDialog
                         isLoginOpen={isLoginOpen}
                         setIsLoginOpen={setIsLoginOpen}
                         setIsSignupOpen={setIsSignupOpen}
                     />
-
-                    <button variant="contained" color="secondary" onClick={() => setIsSignupOpen(true)}>
+                    <Button className={cutSign} variant="contained" onClick={() => setIsSignupOpen(true)}>
                         Signup
-                                </button>
+                                </Button>
                     <SignupDialog
                         isOpen={isSignupOpen}
                         setIsOpen={setIsSignupOpen}
@@ -115,25 +77,12 @@ const RightHeaderLinks = ({ expanded, setExpanded }) => {
                 </>
                 : null}
             {id !== undefined ?
-                <>
-                    <NavLink className={classNames(classes.alignPlus)} to="/create-event">
-                        <AddCircleIcon className={classes.roundIcon} />
-                    </NavLink>
-
                     <div>
+                        <Button alt={user.username} onMouseEnter={onMouseEnter} variant="contained" onMouseLeave={onMouseLeave} src={user.avatar_url} className={cutSign}>Profile</Button>
                     </div>
-                    <IconButton
-                        onMouseEnter={onMouseEnter}
-                        onMouseLeave={onMouseLeave}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                    >
-                        <Avatar alt={user.username} src={user.avatar_url} className={classes.avatar} />
-                    </IconButton>
-                </>
+
                 : null}
         </>
     );
 };
-
 export default RightHeaderLinks;
