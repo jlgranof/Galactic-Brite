@@ -74,7 +74,7 @@ export const fetchBookmarkEventsThunk = (id) => {
 export const createEventThunk = (event) => {
     return async dispatch => {
         // Post request for creating events
-        const res = await fetch(`/api/events`, {
+        const res = await fetch(`/api/events/custom`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

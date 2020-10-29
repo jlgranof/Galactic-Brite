@@ -80,6 +80,7 @@ const CreateEventForm = () => {
             host_id,
         }
         e.preventDefault();
+        console.log(event);
         dispatch(createEventThunk(event))
         history.push('/')
     }

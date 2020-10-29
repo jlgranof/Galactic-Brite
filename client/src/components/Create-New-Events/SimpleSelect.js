@@ -56,13 +56,13 @@ export default function SimpleSelect({category,setCategory,planet,setPlanet,inpu
           onChange={handleChangeCategory}
           {...inputProps}
         >
-          <MenuItem value={'Surprise Party'}>Surprise Party</MenuItem>
-          <MenuItem value={'Live Productions'}>Live Productions</MenuItem>
-          <MenuItem value={'Live Excutions'}>Live Executions</MenuItem>
-          <MenuItem value={'Sports'}>Sports</MenuItem>
-          <MenuItem value={'Tours'}>Tours</MenuItem>
-          <MenuItem value={'Product Launches'}>Product Launches</MenuItem>
-          <MenuItem value={'Seminars'}>Seminars</MenuItem>
+          <MenuItem value={1}>Surprise Party</MenuItem>
+          <MenuItem value={2}>Live Productions</MenuItem>
+          <MenuItem value={3}>Live Executions</MenuItem>
+          <MenuItem value={4}>Sports</MenuItem>
+          <MenuItem value={5}>Tours</MenuItem>
+          <MenuItem value={6}>Product Launches</MenuItem>
+          <MenuItem value={7}>Seminars</MenuItem>
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
