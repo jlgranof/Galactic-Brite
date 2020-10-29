@@ -234,19 +234,3 @@ const Header = () => {
     );
 };
 export default Header;
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> main
