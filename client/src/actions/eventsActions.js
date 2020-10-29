@@ -39,7 +39,6 @@ export const fetchRandomEvents = (num) => {
         
         if (res.ok) {
             const data = await res.json();
-            console.log(data)
             dispatch(getEvents(data));
         }
         return res;

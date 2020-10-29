@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import { useHistory } from 'react-router-dom'
 
 //redux
 import { useSelector } from 'react-redux'
@@ -167,6 +167,7 @@ const iconList = [
 
 const EventsComponent = (props) => {
     const classes = useStyles()
+    const history = useHistory()
     const user = useSelector(state => state)
     const [isLoaded, setIsLoaded]= useState(true)
 
@@ -196,36 +197,61 @@ const EventsComponent = (props) => {
 
     const icon = iconList[Math.floor(Math.random() * iconList.length)];
 
+    const handleEventDetails = (e) => {
+        console.log(e.target)
+        if (e.target.id == id) { 
+            return
+        }
+        history.push(`/${id}`)
+    }
 
-    console.log("avatar",avatar.status)
+    const handleBookmark = (e) => {
+    }
+    const handleAddTicket = () => {
+        console.log("hello")
+    }
+
     return (
-        <button className={classes.root}>
+        <div 
+            className={classes.root}
+            >
             <div className={classSelector}>
                 {isLoaded ?
                 <img
                     className={mediaSelector}
                     onError={handleError}
                     src={avatar}
+                    onClick={handleEventDetails}
                 />
                 :<img 
                     className={mediaSelector}
                     onError={handleError}
                     src={somethingMissing}
+                    onClick={handleEventDetails}
                 />}
                 <div className={classes.eventDetails}>
                     <span className={classes.eventName}>
-                            <div className={classes.eventNameTitle}>
+                        <div 
+                            className={classes.eventNameTitle}
+                            onClick={handleEventDetails}
+                        >
                             {eventName}
-                            </div>
+                        </div>
                         <div className={classes.links}>
                             <Button 
                                 size="small" 
                                 className={classes.button} 
                                 style={{ color: "red", opacity: ".8" }}
                             >
-                                Ticket
+                                <span 
+                                id={id}
+                                onClick={handleAddTicket}
+                                >
+                                    Ticket
+                                </span>
                             </Button>
                             <Button 
+                                    onClick={handleEventDetails}
                                     size="small" 
                                     style={{ color: "red", opacity: ".8"}}
                                     className={classes.button}
@@ -234,7 +260,10 @@ const EventsComponent = (props) => {
                             </Button>
                         </div>
                     </span>
-                    <span className={classes.eventDescription}>
+                    <span 
+                        onClick={handleEventDetails}
+                        className={classes.eventDescription}
+                    >
                         {description.description}
                     </span>
                 </div>
@@ -246,7 +275,7 @@ const EventsComponent = (props) => {
                 />:null}
             </div>
 
-        </button>
+        </div>
     );
 };
 
