@@ -22,6 +22,7 @@ const useStyles = makeStyles({
         width:"100vw",
         height:"100vh",
         backgroundImage: ` url(${coruscant})`,
+        backgroundSize: '100% 100%'
     },
     middle: {
         gridRow: "2/3",
@@ -52,7 +53,6 @@ const CreateEventForm = () => {
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("")
-    // const [date, setDate] = useState("")
     const [details, setDetails] = useState("")
     const [category, setCategory] = useState('');
     const [planet, setPlanet] = useState('');
