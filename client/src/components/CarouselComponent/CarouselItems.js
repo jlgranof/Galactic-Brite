@@ -6,10 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
     image: {
-        top: 0,
-        right: 0,
-        left: 0,
-        bottom: 0,
         display: "absolute",
         height: "85vh",
         width: "100vw"

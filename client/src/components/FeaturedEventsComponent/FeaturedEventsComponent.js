@@ -12,7 +12,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -27,64 +26,73 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import { useEventCallback } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
         backgroundColor: "rgba(26,26,26,1)",
-        // backgroundColor: "white",
         color: "white",
-        height: "480px",
+        height: "500px",
+        margin: "60px 0 200px 0"
+
     },
     media: {
         color: "white",
-        height: 0,
-        paddingTop: '56.25%', // 16:9
+        height: "200px",
+        width: "100%",
+    },
+    header: {
+        color: "white"
     },
     avatar: {
         backgroundColor: red[500],
     },
     body: {
         color: "white"
+    },
+    tags: {
+
     }
 })
 
 
 
 const FeaturedEventsComponent = ({style, event}) => {
-    console.log(event)
+    const [isBookmarked, setIsBookmarked] = useState(false)
+
     const classes = useStyles()
     return (
         <div {...style}>
             <Card className={classes.root}>
                 <CardHeader
+                className={classes.header}
                     avatar={
                         <Avatar aria-label="host" src={event.host.avatar_url} className={classes.avatar}/>
                     }
-                    action={
-                        <IconButton aria-label="settings">
-                            <MoreVertIcon />
-                        </IconButton>
-                    }
                     title={event.name}
-                    subheader={event.event_date}
                 />
-                <CardMedia
+                <div className={classes.tags}>
+                    {isBookmarked ?
+                    <IconButton onClick={() => setIsBookmarked(false)}>
+                            <BookmarkIcon style={{ color: "red" }} />
+                    </IconButton>
+                        : <IconButton onClick={() => setIsBookmarked(true)}>
+                                <BookmarkBorderIcon style={{ color: "red" }} />
+                    </IconButton>}
+                </div>
+                <Typography variant="body2" color="textSecondary" className={classes.body}>
+                    {event.event_date}
+                </Typography >
+                <img 
                     className={classes.media}
-                    image={event.event_picture_url}
-                    title={event.event_description}
+                    src={event.event_picture_url}
                 />
-                <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p" className={classes.body}>
+
+                    <Typography variant="body2" color="textSecondary" className={classes.body}>
                         {event.event_description}
                     </Typography >
-                </CardContent>
-                <CardActions disableSpacing>
-                    <IconButton aria-label="add to bookmarks">
-                        <BookmarkBorderIcon/>
-                    </IconButton>
-                </CardActions>
             </Card>
         </div>
     );

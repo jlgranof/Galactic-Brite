@@ -4,13 +4,15 @@ export const ADD_TICKET = "ADD TICKET";
 // might swap over to have tickets as a separate action
 
 
+
+
 //!ACTIONS
-export const getFeaturedEvents = (events) => {
+export const getFeaturedEvents = (featuredEvents) => {
     //Events is an array of event objects?? maybe
     // need backend route first
     return {
         type: GET_FEATURED_EVENTS,
-        events
+        featuredEvents
     }
 }
 
