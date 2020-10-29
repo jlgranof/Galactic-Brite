@@ -93,6 +93,7 @@ def bookmarked_events(user_id):
 @event_routes.route('/custom', methods=['POST'])
 def add_custom_event():
     data = request.json
+    print(data)
     errors = []
     event_description = data['event_description']
     event_details = data['event_details']
@@ -112,7 +113,4 @@ def add_custom_event():
         return jsonify(errors)
     db.session.add(custom_event)
     db.session.commit()
-    if 'is_registered' in data.keys():
-        print('working')
-
     return jsonify(data)
