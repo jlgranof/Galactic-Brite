@@ -1,5 +1,7 @@
+
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux'
+
 
 
 
@@ -7,13 +9,11 @@ import {useDispatch, useSelector } from 'react-redux'
 import Header from '../Header/Header'
 import CarouselComponent from '../CarouselComponent/CarouselComponent'
 import EventsComponent from '../EventsComponent/EventsComponent'
-import FeaturedEventsComponent from '../FeaturedEventsComponent/FeaturedEventsComponent'
 import FeaturedCarousel from '../CarouselComponent/FeaturedCarousel'
-import SnackBar from '../SnackBar/SnackBar'
+
 
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
-import Icon from '@material-ui/core/Icon';
 
 // @material-ui/icons
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -103,16 +103,11 @@ const useStyles = makeStyles({
 const LandingPage = () => {
     const classes = useStyles()
     const events = useSelector(state => state.eventsSlice.events)
-    
-    
-
-
-
 
     return (
         <>
             <Header/>
-            
+
             {/* <SnackBar/> */}
             <CarouselComponent/>
             
@@ -138,7 +133,7 @@ const LandingPage = () => {
                     key={i}
                     >
                         <EventsComponent
-                        id={event.host_id}
+                        id={i}
                         date={event.event_date}
                         description={event.event_description}
                         avatar={event.event_picture_url}

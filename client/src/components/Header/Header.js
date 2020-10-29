@@ -42,7 +42,7 @@ const useStyles = makeStyles({
         justifyContent: "center",
         width: "100vw",
     },
-    header : {
+    header: {
         zIndex: 101,
         color: "white",
         position: "absolute",
@@ -131,16 +131,17 @@ const useStyles = makeStyles({
         clipPath: "polygon(0% 0, 90% 0, 100% 100%, 13% 100%);"
     },
     roundIcon: {
-            color: "white",
-            width: "40px",
-            opacity: .8,
-            "&:hover": {
-                opacity: 1,
-                transform: "scale(1.08)"
-            }
-        },
+        color: "white",
+        width: "40px",
+        opacity: .8,
+        "&:hover": {
+            opacity: 1,
+            transform: "scale(1.08)"
+        }
+    },
 })
 const Header = () => {
+
     const classes = useStyles()
     const dispatch = useDispatch()
     const history = useHistory()
@@ -183,19 +184,19 @@ const Header = () => {
                             <Button variant="contained" className={classNames(classes.alignPlus)} onClick={() => history.push('/create-event')} activeclass="active">
                                 Make Event
                             </Button>
-                            <Button variant="contained" className={classNames(classes.storePlus)} to="/store" activeclass="active">
-                                Store
+                        <Button variant="contained" className={classNames(classes.storePlus)} to="/store" activeclass="active">
+                            Store
                             </Button>
                         </div>
                         <div className={classes.flexItemsRight}>
-                            <RightHeaderLinks 
+                            <RightHeaderLinks
                             cutLog={classes.cutLog}
                             cutSign={classes.cutSign}
                             expanded={expanded}
                             setExpanded={setExpanded}
-                            />
-                        </div>
+                        />
                     </div>
+                </div>
             </div>
             <nav className="navbar">
                 <div>
@@ -233,4 +234,6 @@ const Header = () => {
         </>
     );
 };
+
 export default Header;
+

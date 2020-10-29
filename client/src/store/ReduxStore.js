@@ -4,6 +4,7 @@ import {auth} from '../reducers/Authentication'
 import { eventsSlice } from '../reducers/FeaturedEvents'
 import { quoteSlice } from '../reducers/QuoteReducer'
 import {event} from '../reducers/Events'
+import {registerSlice} from '../reducers/Registered';
 
 let storeEnhancer;
 
@@ -16,7 +17,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 
-const ReducerMerger = combineReducers({auth, eventsSlice, quoteSlice})
+
+const ReducerMerger = combineReducers({auth, eventsSlice, quoteSlice, registerSlice})
+
 
 const configureStore = (initialState) => {
     return createStore (
