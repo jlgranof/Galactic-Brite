@@ -26,36 +26,45 @@ function App() {
     // const [fetchWithCSRF, setFetchWithCSRF] = useState(()=> fetch)
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
-    const events = useSelector(state => state.eventsSlice.events)
-    console.log(events)
+    const allEvents = useSelector(state => state.eventsSlice)
+    const auth = useSelector(state => state.auth)
+    const hello = allEvents.events ? allEvents.events.map( event => event.name.split(" ").join("-")): null
+
+
 
 
 
     useEffect(()=>{
         const generateSession = async () => {
-            const res = await fetch("/api/session/token/refresh", {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'access': Cookies.get("access_token_cookie")
-                },
-            })
-            if (res.ok) {
-                const data = await res.json()
-                dispatch(setUser(data))
-            }
-            setLoading(false);
+                const res = await fetch("/api/session/token/refresh", {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'access': Cookies.get("access_token_cookie")
+                    },
+                })
+                if (res.ok) {
+                    const data = await res.json()
+                    dispatch(setUser(data))
+                }
+            setLoading(false)
         }
         //preload ALL events in redux
-        const preloadAllEvents = async () => {
-            dispatch(fetchFeaturedEvents())
+        const preloadEvents = () => {
             dispatch(fetchRandomEvents(10))
+            setLoading(false);
         }
-        generateSession();
-        preloadAllEvents()
-    }, [loading])
+        const preloadFeaturedEvents = () => {
+            dispatch(fetchFeaturedEvents())
+            setLoading(false)
 
-    const id = 1
+        }
+        preloadFeaturedEvents()
+        if (!allEvents.events) preloadEvents();
+        generateSession();
+    }, [loading])
+    
+    
     if(loading) return null
     return (
         <BrowserRouter>
@@ -66,7 +75,13 @@ function App() {
                 <Route exact path="/"><LandingPage/></Route>
                 <Route exact path="/create-event"><CreateEventForm/></Route>
                 <Route exact path="/AboutUs"><AboutUsPage/></Route>
-                <Route path={`event-details/${id}`}><EventDetails/></Route>
+                {allEvents.events ? allEvents.events.map((event, id) => (
+                
+                
+                <Route key={id} path={`event-details/${(event.name.split(' ').join('-'))}`}>
+                    <EventDetails />
+                </Route>)
+                ): null}
                 <Route component={PageNotFound}/>
             </Switch>
             <Footer />

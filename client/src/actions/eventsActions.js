@@ -1,27 +1,22 @@
 import Cookies from "js-cookie";
+import {fetchFeaturedEvents} from './featuredActions'
 export const GET_EVENTS = "GET EVENTS";
-export const ADD_TICKET = "ADD TICKET";
 export const CREATE_EVENT = "CREATE_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const GET_BOOKMARK_EVENTS = "GET_BOOKMARK_EVENTS";
 
+export const ADD_TICKET = "ADD TICKET";
+export const ADD_BOOKMARK = "ADD BOOKMARK"
 
-// might swap over to have tickets as a separate action
 
 
-//!ACTIONS
+//EVENT ACTIONS
 export const getEvents = (events) => {
     //Events is an array of event objects?? maybe
     // need backend route first
     return {
         type: GET_EVENTS,
         events
-    }
-}
-export const getBookmarkEvents = (bookmarkEvents) => {
-    return {
-        type: GET_BOOKMARK_EVENTS,
-        bookmarkEvents
     }
 }
 export const deleteEvent = (events) => {
@@ -34,6 +29,21 @@ export const createEvent = () =>{
         type: CREATE_EVENT
     }
 }
+//BOOKMARK ACTIONS
+export const getBookmarkEvents = (bookmarkEvents) => {
+    return {
+        type: GET_BOOKMARK_EVENTS,
+        bookmarkEvents
+    }
+}
+export const addBookmark = () => {
+    return {
+        type: ADD_BOOKMARK,
+
+    }
+}
+
+//TICKET ACTIONS
 export const addTicketForEvent = (ticket) => {
     //each ticket will include all ticket info, location, host, etc
     // console.log("created", ticket)
@@ -45,7 +55,6 @@ export const addTicketForEvent = (ticket) => {
 
 
 //! THUNKS
-//fetch all Events
 export const fetchRandomEvents = (num) => {
     return async dispatch => {
         // fetch all random events
@@ -74,7 +83,7 @@ export const fetchBookmarkEventsThunk = (id) => {
 export const createEventThunk = (event) => {
     return async dispatch => {
         // Post request for creating events
-        const res = await fetch(`/api/events`, {
+        const res = await fetch(`/api/events/custom`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,7 +93,7 @@ export const createEventThunk = (event) => {
         });
         if (res.ok) {
             const data = await res.json();
-            dispatch(createEvent());
+            dispatch(fetchFeaturedEvents());
         }
         return res;
     };
