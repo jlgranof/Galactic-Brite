@@ -54,7 +54,7 @@ const TestPage = () => {
     const [gifLoading, setGifLoading] = useState(true)
     const [profileVisible, setProfileVisible] = useState(false)
     const id = useSelector((state) => state.auth.id)
-    const avatar = useSelector((state) => state.auth.avatr_url)
+    const avatar = useSelector((state) => state.auth.avatar_url)
     const email = useSelector((state) => state.auth.email)
     const userName = useSelector((state) => state.auth.username)
     const [checked, setChecked] = useState([]);
