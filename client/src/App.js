@@ -59,7 +59,7 @@ function App() {
             setLoading(false)
 
         }
-        if (!allEvents.featuredEvents) preloadFeaturedEvents()
+        preloadFeaturedEvents()
         if (!allEvents.events) preloadEvents();
         generateSession();
     }, [loading])

@@ -90,13 +90,14 @@ def bookmarked_events(user_id):
         })
     return jsonify(bookmarked_events)
 
+
 @event_routes.route('/custom', methods=['POST'])
 def add_custom_event():
     data = request.json
     errors = []
     event_description = data['event_description']
     event_details = data['event_details']
-    event_picture_url = Picture.query.get(randint(1,37)).url
+    event_picture_url = Picture.query.get(randint(1, 37)).url
     data['event_picture_url'] = event_picture_url
     custom_event = Event(
         name=data['name'],
@@ -112,7 +113,4 @@ def add_custom_event():
         return jsonify(errors)
     db.session.add(custom_event)
     db.session.commit()
-    if 'is_registered' in data.keys():
-        print('working')
-
     return jsonify(data)
