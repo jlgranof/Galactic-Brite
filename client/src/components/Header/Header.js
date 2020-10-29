@@ -113,6 +113,7 @@ const useStyles = makeStyles({
         left: "34.4vw",
         height: "70%",
         width: "150px",
+
         clipPath: "polygon(0% 0, 90% 0, 100% 100%, 11% 100%);"
     },
     storePlus: {
@@ -228,4 +229,6 @@ const Header = () => {
         </>
     );
 };
+
 export default Header;
+

@@ -55,3 +55,10 @@ html {
 .footer-text {
     width: 200px
 }
+
+.quote {
+    display: flex;
+    justify-content: flex-end;
+    color: rgb(253, 224, 55);
+    text-shadow: 4px 4px 4px #000;
+}
