@@ -24,13 +24,14 @@ import tenor from '../../assets/images/starwarsgifs/tenor.gif'
 
 
 const useStyles = makeStyles({
-    quote : {
-        position: "absolute",
+
+    containerAbso: {
         zIndex: 2012,
-        background: "white",
-        top: "0px",
-        right: "20px"
-    }
+        position: "absolute",
+        width: "50%",
+        top: "45%",
+        left: "10%"
+    },
 })
 
 
@@ -55,12 +56,10 @@ const CarouselComponent = () => {
         return () => controller.abort()
     },[dispatch])
 
-    console.log(quote)
-
 
     return (
         <>
-            <div>{ quote ? <div className={classes.quote} >{quote['starWarsQuote']}</div> : null }</div>
+            <div className={classes.containerAbso}>{ quote ? <h2 className="quote" >"{quote['starWarsQuote']}"</h2> : null }</div>
             <Carousel
                 indicators={false}
                 autoPlay={true}
