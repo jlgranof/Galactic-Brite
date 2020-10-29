@@ -1,4 +1,4 @@
-import Cookies from "js-cookie";
+
 import {fetchFeaturedEvents} from './featuredActions'
 export const GET_EVENTS = "GET EVENTS";
 export const CREATE_EVENT = "CREATE_EVENT";

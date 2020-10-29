@@ -1,4 +1,3 @@
-// import { CREATE_EVENT, DELETE_EVENT, GET_EVENTS } from '../actions/eventsActions'
 import { GET_BOOKMARK_EVENTS, ADD_BOOKMARK } from '../actions/eventsActions'
 
 
@@ -9,13 +8,6 @@ export const registerSlice = (state = {}, action) => {
         case GET_BOOKMARK_EVENTS:
             nextState.bookmarkEvents = [...action.bookmarkEvents]
             return nextState
-        // case GET_EVENTS:
-        //     nextState.events = [...action.events]
-        //     return nextState
-        // case CREATE_EVENT:
-        //     return state;
-        // case DELETE_EVENT:
-        //     return state
         case ADD_BOOKMARK:
             return state
         default:

@@ -1,4 +1,4 @@
-import Cookies from "js-cookie";
+
 export const GET_FEATURED_EVENTS = "GET FEATURED EVENTS";
 export const ADD_TICKET = "ADD TICKET";
 // might swap over to have tickets as a separate action
