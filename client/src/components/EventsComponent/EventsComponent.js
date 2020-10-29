@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Redirect, useHistory } from 'react-router-dom'
 
 //redux
 import { useSelector, useDispatch } from 'react-redux'
+import {addBookmarkToUser} from '../../actions/eventsActions'
 
 // assets
 import icon1 from '../../assets/images/icon.png'
@@ -208,17 +209,23 @@ const EventsComponent = (props) => {
 
     const handleBookmark = () => {
         if(user.id !== undefined){
-                setIsBookmarked(!isBookmarked)
-                if(isBookmarked){
-                    // dispatch(addBookmarkToUser())
-                    // user id 
-                    // name
-                }
+            setIsBookmarked(!isBookmarked)
         }
     }
     const handleAddTicket = () => {
         console.log("hello")
     }
+
+    useEffect(() => {
+        if (isBookmarked) {
+            const details = {
+                "event_name": eventName,
+                "user_id": user.id,
+                "is_registered": false
+            }
+            dispatch(addBookmarkToUser(details))
+        }
+    }, [isBookmarked])
 
     return (
         <div 

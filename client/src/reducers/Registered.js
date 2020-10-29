@@ -1,15 +1,16 @@
 import { GET_BOOKMARK_EVENTS, ADD_BOOKMARK } from '../actions/eventsActions'
 
 
-export const registerSlice = (state = {}, action) => {
+export const registerSlice = (state = [], action) => {
     Object.freeze(state)
-    const nextState = {...state}
+    let nextState;
     switch (action.type) {
         case GET_BOOKMARK_EVENTS:
-            nextState.bookmarkEvents = [...action.bookmarkEvents]
+            nextState = [...action.bookmarkEvents]
             return nextState
         case ADD_BOOKMARK:
-            return state
+            nextState = [...state, ...action.bookmark]
+            return nextState
         default:
             return state;
     }
