@@ -1,4 +1,4 @@
-import { SET_QUOTE } from '../actions/quoteFront'
+import { SET_QUOTE } from '../../actions/quoteFront'
 
 const INITIAL_STATE = {
     'quote': ''
