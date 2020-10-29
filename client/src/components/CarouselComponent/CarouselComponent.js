@@ -26,7 +26,7 @@ import tenor from '../../assets/images/starwarsgifs/tenor.gif'
 const useStyles = makeStyles({
 
     containerAbso: {
-        zIndex: 2012,
+        zIndex: 100,
         position: "absolute",
         width: "50%",
         top: "45%",
