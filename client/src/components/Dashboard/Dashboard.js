@@ -20,7 +20,9 @@ import hanger from '../../assets/images/hanger.jpg'
 import { makeStyles } from "@material-ui/core/styles";
 import SwitchListSecondary from "./listComponent";
 import Fade from '@material-ui/core/Fade';
+import Card from './card';
 
+// Thunks
 import { fetchBookmarkEventsThunk } from '../../actions/eventsActions';
 
 
@@ -64,12 +66,14 @@ const TestPage = () => {
     const email = useSelector((state) => state.auth.email)
     const userName = useSelector((state) => state.auth.username)
     const [checked, setChecked] = useState([]);
-
-
+    const registerSlice = useSelector((state) => state.registerSlice)
+    console.log(registerSlice)
     const dispatch = useDispatch()
 
     useEffect(() =>{
-        dispatch(fetchBookmarkEventsThunk(id))
+        if(id){
+            dispatch(fetchBookmarkEventsThunk(id))
+        }
     })
 
     useEffect(() => {
@@ -82,15 +86,14 @@ const TestPage = () => {
         }
     }, [gifLoading])
 
-    if (!id) history.push("/")
     return (
         <>
             <Header />
-            {gifLoading ?
+            {/* {gifLoading ?
                 <div>
                     <img className={classes.warZone} src={xWing} alt="fighter.gif" />
                 </div>
-                : null}
+                : null} */}
             {profileVisible ?
                 <>
                 <div className={classes.container}>
@@ -101,12 +104,13 @@ const TestPage = () => {
                         <h3>{`${email}`}</h3>
                         <img src={avatar}></img>
                         <SwitchListSecondary checked={checked} setChecked={setChecked}/>
+                    {registerSlice ? registerSlice.map((ele)=> <Card name={ele.event_name}/>): null}
+                <div>
+                </div>
                     </div>
                 </div>
 
                 {/* card container */}
-                <div>
-                </div>
                 {/* <Fade in={true} timeout={1000}>
                     <img className={classNames(classes.hanger, classes.warZone)} src={hanger} alt="fighter.gif" />
                 </Fade> */}
