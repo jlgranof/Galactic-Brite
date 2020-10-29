@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { getQuote } from '../../actions/quoteFront';
+import { getQuote } from '../../Redux/actions/quoteFront';
 import {useDispatch, useSelector } from 'react-redux'
 
 // core components
