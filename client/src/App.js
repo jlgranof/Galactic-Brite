@@ -31,10 +31,8 @@ function App() {
     const hello = allEvents.events ? allEvents.events.map( event => event.name.split(" ").join("-")): null
 
 
-
-
-
     useEffect(()=>{
+        
         const generateSession = async () => {
                 const res = await fetch("/api/session/token/refresh", {
                     method: 'post',

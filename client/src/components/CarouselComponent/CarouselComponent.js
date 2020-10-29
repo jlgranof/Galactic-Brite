@@ -1,4 +1,6 @@
 import React, {useEffect} from 'react';
+import { getQuote } from '../../actions/quoteFront';
+import {useDispatch, useSelector } from 'react-redux'
 
 // core components
 import CarouselItems from '../CarouselComponent/CarouselItems'
@@ -23,10 +25,18 @@ import tenor from '../../assets/images/starwarsgifs/tenor.gif'
 
 const useStyles = makeStyles({
 
+    containerAbso: {
+        zIndex: 2012,
+        position: "absolute",
+        width: "50%",
+        top: "45%",
+        left: "10%"
+    },
 })
 
 
 const CarouselComponent = () => {
+    const dispatch = useDispatch()
     const classes = useStyles()
     const items = [
         nextlevel,
@@ -36,25 +46,34 @@ const CarouselComponent = () => {
         tenor
     ]
 
+    const quote = useSelector(state => state.quoteSlice.quote)
+    
+
     // clean up timeout with abort controller
     const controller = new AbortController()
     useEffect(()=>{
+        dispatch(getQuote())
         return () => controller.abort()
-    },[])
+    },[dispatch])
+
+
     return (
-        <Carousel
-            indicators={false}
-            autoPlay={true}
-            interval={4000}
-            timeout={0}
-            animation={"fade"}
-            navButtonsAlwaysVisible={false}
-            fullHeightHover={false}
-        >
-            {
-                items.map((url, i) => <CarouselItems key={i} url={url} />)
-            }
-        </Carousel>
+        <>
+            <div className={classes.containerAbso}>{ quote ? <h2 className="quote" >"{quote['starWarsQuote']}"</h2> : null }</div>
+            <Carousel
+                indicators={false}
+                autoPlay={true}
+                interval={4000}
+                timeout={0}
+                animation={"fade"}
+                navButtonsAlwaysVisible={false}
+                fullHeightHover={false}
+            >
+                {
+                    items.map((url, i) => <CarouselItems key={i} url={url} />)
+                }
+            </Carousel>
+        </>
     );
 };
 
