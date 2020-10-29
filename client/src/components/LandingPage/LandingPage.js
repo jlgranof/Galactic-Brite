@@ -17,9 +17,6 @@ import Icon from '@material-ui/core/Icon';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 
-// assets
-import featuredHeader from '../../assets/images/featuredHeader.jpg'
-
 const useStyles = makeStyles({
     featuredEvents: {
         zIndex: 100,
@@ -31,13 +28,21 @@ const useStyles = makeStyles({
         backgroundColor: "red",
     },
     events: {
+        display: "flex",
+        flexDirection: "column",
+        margin: '0 auto',
         zIndex: 100,
-        postition: "absolute",
-        bottom: "50px",
-        height: "200px",
-        width: "60%",
-        margin: "0 auto",
-        backgroundColor: "blue",
+        paddingBottom: "50px",
+        marginBottom: "50px",
+        width: "70%",
+        backgroundColor: "rgba(21, 21, 21, 1)",
+        boxShadow: " 1px 1px 100px 10px rgb(70, 18, 11)",
+        borderRadius: "20px",
+        paddingTop: "80px"
+    },
+    parent: {
+        display: "flex",
+        justifyContent: "center",
     },
     carousel: {
         display: "fixed",
@@ -95,11 +100,9 @@ const useStyles = makeStyles({
 
 const LandingPage = () => {
     const classes = useStyles()
-
+    
     const events = useSelector(state => state.eventsSlice.events)
     console.log(events)
-    
-    const fakeList = [1, 2, 3, 2, "pulled from database", "random events stuff"]
     
     // http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote
     return (
@@ -120,22 +123,27 @@ const LandingPage = () => {
             <div className={classes.carousel}>
                 <FeaturedCarousel/>
             </div>
-                {fakeList.map((value, i)=> (
+            <div className={classes.events}>
+                { events ? events.map((event, i)=> (
                     <div 
+                    className={classes.parent}
                     key={i}
-                    className={classes.events}>
-                    <EventsComponent
-                    id={events.host_id}
-                    date={events.event_date}
-                    description={events.event_description}
-                    avatar={events.event_picture_url}
-                    planet={events.event_planet}
-                    date={events.event_date}
-                    date={events.event_date}
-                    date={events.event_date}
-                    />
+                    >
+                        <EventsComponent
+                        id={event.host_id}
+                        date={event.event_date}
+                        description={event.event_description}
+                        avatar={event.event_picture_url}
+                        planet={event.event_planet}
+                        featured={event.is_featured}
+                        eventName={event.name}
+                        rtl={i%2==0?true:false}
+                        />
                     </div>
-                ))}
+                )): null}
+
+            </div>
+            
 
 
         </>

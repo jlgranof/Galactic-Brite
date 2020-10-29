@@ -26,6 +26,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import { useEventCallback } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles({
@@ -40,7 +41,7 @@ const useStyles = makeStyles({
     media: {
         color: "white",
         height: "200px",
-        width: "300px",
+        width: "100%",
     },
     header: {
         color: "white"
@@ -51,7 +52,7 @@ const useStyles = makeStyles({
     body: {
         color: "white"
     },
-    footer: {
+    tags: {
 
     }
 })
@@ -59,6 +60,7 @@ const useStyles = makeStyles({
 
 
 const FeaturedEventsComponent = ({style, event}) => {
+    const [isBookmarked, setIsBookmarked] = useState(false)
 
     const classes = useStyles()
     return (
@@ -71,6 +73,15 @@ const FeaturedEventsComponent = ({style, event}) => {
                     }
                     title={event.name}
                 />
+                <div className={classes.tags}>
+                    {isBookmarked ?
+                    <IconButton onClick={() => setIsBookmarked(false)}>
+                            <BookmarkIcon style={{ color: "red" }} />
+                    </IconButton>
+                        : <IconButton onClick={() => setIsBookmarked(true)}>
+                                <BookmarkBorderIcon style={{ color: "red" }} />
+                    </IconButton>}
+                </div>
                 <Typography variant="body2" color="textSecondary" className={classes.body}>
                     {event.event_date}
                 </Typography >
@@ -82,11 +93,6 @@ const FeaturedEventsComponent = ({style, event}) => {
                     <Typography variant="body2" color="textSecondary" className={classes.body}>
                         {event.event_description}
                     </Typography >
-                    <div className={classes.footer}>
-                        <IconButton aria-label="add to bookmarks">
-                            <BookmarkBorderIcon style={{ color: "white"}}/>
-                        </IconButton>
-                    </div>
             </Card>
         </div>
     );
