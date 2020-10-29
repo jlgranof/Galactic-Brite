@@ -63,10 +63,17 @@ def random_events(amount):
         events.append(get_random_event())
     return jsonify(events)
 
-# @event_routes.route('/bookmarks/add', methods=['POST'])
-# def add_bookmark():
-#     data = request.json
-#     bookmark =
+@event_routes.route('/bookmarks/add', methods=['POST'])
+def add_bookmark():
+    data = request.json
+    bookmark = BookmarkedEvent(
+        event_name=data['event_name'],
+        user_id=data['user_id'],
+        is_registered=data['is_registered']
+    )
+    db.session.add(bookmark)
+    db.session.commit()
+    return jsonify(data)
 
 
 @event_routes.route('/bookmarks/<user_id>')
