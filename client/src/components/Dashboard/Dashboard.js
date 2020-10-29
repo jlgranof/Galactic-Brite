@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, } from 'react';
+import { useDispatch,useSelector } from "react-redux";
 // core components
 import Header from '../Header/Header'
 
@@ -14,9 +14,8 @@ import hanger from '../../assets/images/hanger.jpg'
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 import SwitchListSecondary from "./listComponent";
-// import Zoom from '@material-ui/core/Zoom';
 import Fade from '@material-ui/core/Fade';
-import { useSelector } from 'react-redux';
+import { fetchBookmarkEventsThunk } from '../../actions/eventsActions';
 
 
 
@@ -58,7 +57,12 @@ const TestPage = () => {
     const email = useSelector((state) => state.auth.email)
     const userName = useSelector((state) => state.auth.username)
     const [checked, setChecked] = useState([]);
-    console.log(checked)
+
+    const dispatch = useDispatch()
+
+    useEffect(() =>{
+        dispatch(fetchBookmarkEventsThunk(id))
+    })
     useEffect(() => {
         const firstTimer = setTimeout(() => setGifLoading(() => false), 14)
         const secondTimer = setTimeout(() => setProfileVisible(() => true), 1)
@@ -89,6 +93,10 @@ const TestPage = () => {
                         <img src={avatar}></img>
                         <SwitchListSecondary checked={checked} setChecked={setChecked}/>
                     </div>
+                </div>
+                {/* card container */}
+                <div>
+
                 </div>
                 {/* <Fade in={true} timeout={1000}>
                     <img className={classNames(classes.hanger, classes.warZone)} src={hanger} alt="fighter.gif" />
