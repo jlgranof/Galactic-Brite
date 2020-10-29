@@ -125,7 +125,14 @@ const LandingPage = () => {
                     key={i}
                     className={classes.events}>
                     <EventsComponent
-                    
+                    id={events.host_id}
+                    date={events.event_date}
+                    description={events.event_description}
+                    avatar={events.event_picture_url}
+                    planet={events.event_planet}
+                    date={events.event_date}
+                    date={events.event_date}
+                    date={events.event_date}
                     />
                     </div>
                 ))}
