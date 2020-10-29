@@ -1,7 +1,9 @@
 import Cookies from "js-cookie";
 export const GET_EVENTS = "GET EVENTS";
 export const ADD_TICKET = "ADD TICKET";
-export const CREATE_EVENT = "CREATE_EVENT"
+export const CREATE_EVENT = "CREATE_EVENT";
+export const DELETE_EVENT = "DELETE_EVENT";
+
 
 // might swap over to have tickets as a separate action
 
@@ -13,6 +15,11 @@ export const getEvents = (events) => {
     return {
         type: GET_EVENTS,
         events
+    }
+}
+export const deleteEvent = (events) => {
+    return {
+        type: DELETE_EVENT,
     }
 }
 export const createEvent = () =>{
@@ -60,6 +67,27 @@ export const createEventThunk = (event) => {
         if (res.ok) {
             const data = await res.json();
             dispatch(createEvent());
+        }
+        return res;
+    };
+};
+export const deleteEventThunk = (authId) => {
+    return async dispatch => {
+        // Post request for creating events
+        const body = {
+            host_id: authId
+        }
+        const res = await fetch(`/api/events`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                // "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
+            },
+            body: JSON.stringify(body),
+        });
+        if (res.ok) {
+            const data = await res.json();
+            dispatch(deleteEvent());
         }
         return res;
     };
