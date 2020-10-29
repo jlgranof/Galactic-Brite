@@ -69,7 +69,9 @@ const TestPage = () => {
     const dispatch = useDispatch()
 
     useEffect(() =>{
-        dispatch(fetchBookmarkEventsThunk(id))
+        if(id){
+            dispatch(fetchBookmarkEventsThunk(id))
+        }
     })
 
     useEffect(() => {

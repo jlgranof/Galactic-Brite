@@ -26,9 +26,9 @@ function App() {
     // const [fetchWithCSRF, setFetchWithCSRF] = useState(()=> fetch)
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
-    const allEvents = useSelector(state => state.eventsSlice)
+    const featured = useSelector(state => state.eventsSlice.featuredEvents)
     const auth = useSelector(state => state.auth)
-    const hello = allEvents.events ? allEvents.events.map( event => event.name.split(" ").join("-")): null
+
 
 
 
@@ -60,7 +60,7 @@ function App() {
 
         }
         preloadFeaturedEvents()
-        if (!allEvents.events) preloadEvents();
+        preloadEvents();
         generateSession();
     }, [loading])
     
@@ -75,13 +75,12 @@ function App() {
                 <Route exact path="/"><LandingPage/></Route>
                 <Route exact path="/create-event"><CreateEventForm/></Route>
                 <Route exact path="/AboutUs"><AboutUsPage/></Route>
-                {allEvents.events ? allEvents.events.map((event, id) => (
-                
-                
-                <Route key={id} path={`event-details/${(event.name.split(' ').join('-'))}`}>
+                {featured ? featured.map((event, id) => (
+                <Route key={id} path={`event-details/${event.id}`}>
                     <EventDetails />
                 </Route>)
                 ): null}
+                <Route path="/event-details/random"><EventDetails/></Route>
                 <Route component={PageNotFound}/>
             </Switch>
             <Footer />
