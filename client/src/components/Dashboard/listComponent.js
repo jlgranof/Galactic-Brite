@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SwitchListSecondary(moreProps) {
   const classes = useStyles();
-//   const [checked, setChecked] = React.useState(['wifi']);
     const {
         setChecked,
         checked

@@ -69,7 +69,7 @@ const useStyles = makeStyles({
         height: "60px",
         width: "50%",
         clipPath: "polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%)",
-        
+
     },
     absoluteBlock: {
         display: "absolute",
@@ -117,7 +117,7 @@ const useStyles = makeStyles({
     //         borderRadius: "5px",
     //     }
     // },
-    
+
 })
 
 const Header = () => {
@@ -168,14 +168,14 @@ const Header = () => {
                     <div className={classes.absoluteBlock}>
                         <div className={classes.flexMain}>
                             <div className={classes.flexItemsLeft}>
-                                <button 
+                                <button
                                 className={classes.cutButton}
                                 onClick={handleLogout}>
                                     temp signout
                                 </button>
                             </div>
                             <div className={classes.flexItemsRight}>
-                                <RightHeaderLinks 
+                                <RightHeaderLinks
                                 expanded={expanded}
                                 setExpanded={setExpanded}
                                 />
@@ -186,9 +186,9 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            
-            
-                
+
+
+
 
             <nav className="navbar">
                 <div>

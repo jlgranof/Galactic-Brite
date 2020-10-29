@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom'
 
 // Images
 import coruscant from './Coruscant_03db43b4.jpeg'
@@ -66,6 +67,7 @@ const CreateEventForm = () => {
     console.log(event_date)
 
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const handleSubmit = (e) =>{
         const event = {
@@ -79,7 +81,7 @@ const CreateEventForm = () => {
         }
         e.preventDefault();
         dispatch(createEventThunk(event))
-
+        history.push('/')
     }
     return (
         <>
