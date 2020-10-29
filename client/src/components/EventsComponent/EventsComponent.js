@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 
 //redux
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 // assets
-import featuredHeader from '../../assets/images/featuredHeader.jpg'
 import icon1 from '../../assets/images/icon.png'
 import icon2 from '../../assets/images/icon2.png'
 import icon3 from '../../assets/images/icon3.png'
@@ -24,12 +23,12 @@ import classNames from "classnames";
 
 // @material-ui/core
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+
+// material-ui/icons
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import BookmarkIcon from '@material-ui/icons/Bookmark';
 
 const useStyles = makeStyles({
     root: {
@@ -168,8 +167,11 @@ const iconList = [
 const EventsComponent = (props) => {
     const classes = useStyles()
     const history = useHistory()
-    const user = useSelector(state => state)
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.auth)
     const [isLoaded, setIsLoaded]= useState(true)
+    const [isBookmarked, setIsBookmarked] = useState(false)
+    const [icon] = useState(iconList[Math.floor(Math.random() * iconList.length)])
 
     const {
         rtl,
@@ -181,6 +183,7 @@ const EventsComponent = (props) => {
         id,
         planet
     } = props
+
     const classSelector = classNames({
         [classes.mediaLeft]: rtl,
         [classes.mediaRight]: !rtl,
@@ -195,17 +198,23 @@ const EventsComponent = (props) => {
     })
     const handleError = () => setIsLoaded(false)
 
-    const icon = iconList[Math.floor(Math.random() * iconList.length)];
-
     const handleEventDetails = (e) => {
-        console.log(e.target)
+        // console.log(e.target)
         if (e.target.id == id) { 
             return
         }
-        history.push(`/${id}`)
+        history.push(`event-details/${eventName}`)
     }
 
-    const handleBookmark = (e) => {
+    const handleBookmark = () => {
+        if(user.id !== undefined){
+                setIsBookmarked(!isBookmarked)
+                if(isBookmarked){
+                    // dispatch(addBookmarkToUser())
+                    // user id 
+                    // name
+                }
+        }
     }
     const handleAddTicket = () => {
         console.log("hello")
@@ -238,6 +247,14 @@ const EventsComponent = (props) => {
                             {eventName}
                         </div>
                         <div className={classes.links}>
+                            {isBookmarked ?
+                                <IconButton onClick={handleBookmark}>
+                                    <BookmarkIcon style={{ color: "red" }} />
+                                </IconButton>
+                                : <IconButton onClick={handleBookmark}>
+                                    <BookmarkBorderIcon style={{ color: "red" }} />
+                                </IconButton>
+                            }
                             <Button 
                                 size="small" 
                                 className={classes.button} 
