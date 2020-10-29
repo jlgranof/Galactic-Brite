@@ -1,5 +1,7 @@
-import React from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import React, { useEffect } from 'react';
+import {useDispatch, useSelector } from 'react-redux'
+
+
 
 // core components
 import Header from '../Header/Header'
@@ -94,32 +96,38 @@ const useStyles = makeStyles({
         background: "rgb(55,27,27)",
         background: "radial-gradient(circle, rgba(55,27,27,1) 0%, rgba(0,0,0,1) 100%, rgba(0,212,255,1) 100%)",
         
-    }
+    },
 })
 
 
 const LandingPage = () => {
     const classes = useStyles()
-    
     const events = useSelector(state => state.eventsSlice.events)
-    console.log(events)
     
-    // http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote
+    
+
+
+
+
     return (
         <>
             <Header/>
+            
             {/* <SnackBar/> */}
-            <CarouselComponent />
+            <CarouselComponent/>
+            
             <div className={classes.gifBar}>
             </div>
             <div className={classes.gifBar2}>
             </div>
+            
             <div className={classes.featuredHeader}>
                 <div className={classes.spacer}>
                     Featured Events 
                 </div>
                 <ArrowForwardIosIcon fontSize={"large"} />
             </div>
+            
             <div className={classes.carousel}>
                 <FeaturedCarousel/>
             </div>

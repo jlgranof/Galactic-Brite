@@ -27,11 +27,9 @@ function App() {
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
     const events = useSelector(state => state.eventsSlice.events)
-    console.log(events)
-
-
 
     useEffect(()=>{
+        
         const generateSession = async () => {
             const res = await fetch("/api/session/token/refresh", {
                 method: 'post',

@@ -1,4 +1,6 @@
 import React, {useEffect} from 'react';
+import { getQuote } from '../../actions/quoteFront';
+import {useDispatch, useSelector } from 'react-redux'
 
 // core components
 import CarouselItems from '../CarouselComponent/CarouselItems'
@@ -22,11 +24,18 @@ import tenor from '../../assets/images/starwarsgifs/tenor.gif'
 
 
 const useStyles = makeStyles({
-
+    quote : {
+        position: "absolute",
+        zIndex: 2012,
+        background: "white",
+        top: "0px",
+        right: "20px"
+    }
 })
 
 
 const CarouselComponent = () => {
+    const dispatch = useDispatch()
     const classes = useStyles()
     const items = [
         nextlevel,
@@ -36,25 +45,36 @@ const CarouselComponent = () => {
         tenor
     ]
 
+    const quote = useSelector(state => state.quoteSlice.quote)
+    
+
     // clean up timeout with abort controller
     const controller = new AbortController()
     useEffect(()=>{
+        dispatch(getQuote())
         return () => controller.abort()
-    },[])
+    },[dispatch])
+
+    console.log(quote)
+
+
     return (
-        <Carousel
-            indicators={false}
-            autoPlay={true}
-            interval={4000}
-            timeout={0}
-            animation={"fade"}
-            navButtonsAlwaysVisible={false}
-            fullHeightHover={false}
-        >
-            {
-                items.map((url, i) => <CarouselItems key={i} url={url} />)
-            }
-        </Carousel>
+        <>
+            <div>{ quote ? <div className={classes.quote} >{quote['starWarsQuote']}</div> : null }</div>
+            <Carousel
+                indicators={false}
+                autoPlay={true}
+                interval={4000}
+                timeout={0}
+                animation={"fade"}
+                navButtonsAlwaysVisible={false}
+                fullHeightHover={false}
+            >
+                {
+                    items.map((url, i) => <CarouselItems key={i} url={url} />)
+                }
+            </Carousel>
+        </>
     );
 };
 
