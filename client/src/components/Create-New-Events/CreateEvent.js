@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom'
 
 // Images
 import coruscant from './Coruscant_03db43b4.jpeg'
@@ -22,6 +23,7 @@ const useStyles = makeStyles({
         width:"100vw",
         height:"100vh",
         backgroundImage: ` url(${coruscant})`,
+        backgroundSize: '100% 100%'
     },
     middle: {
         gridRow: "2/3",
@@ -52,7 +54,6 @@ const CreateEventForm = () => {
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("")
-    // const [date, setDate] = useState("")
     const [details, setDetails] = useState("")
     const [category, setCategory] = useState('');
     const [planet, setPlanet] = useState('');
@@ -66,6 +67,7 @@ const CreateEventForm = () => {
 
 
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const handleSubmit = (e) =>{
         const event = {
@@ -79,7 +81,7 @@ const CreateEventForm = () => {
         }
         e.preventDefault();
         dispatch(createEventThunk(event))
-
+        history.push('/')
     }
     return (
         <>

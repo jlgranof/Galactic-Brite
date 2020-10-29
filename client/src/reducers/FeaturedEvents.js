@@ -1,7 +1,5 @@
-import { CREATE_EVENT, GET_EVENTS } from '../actions/eventsActions'
+import { CREATE_EVENT, DELETE_EVENT, GET_EVENTS } from '../actions/eventsActions'
 import { GET_FEATURED_EVENTS } from '../actions/featuredActions'
-
-
 
 
 export const eventsSlice = (state = {}, action) => {
@@ -16,6 +14,8 @@ export const eventsSlice = (state = {}, action) => {
             return nextState
         case CREATE_EVENT:
             return state;
+        case DELETE_EVENT:
+            return state
         default:
             return state;
     }

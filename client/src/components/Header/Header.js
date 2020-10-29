@@ -52,10 +52,17 @@ const useStyles = makeStyles({
         // background: "rgb(70,18,18)",
         // background: "linear-gradient(90deg, rgba(70,18,18,1) 0%, rgba(131,2,2,1) 61%, rgba(0,0,0,1) 92%)",
         height: "60px",
+
+    },
+    absoluteBlock: {
+        display: "absolute",
+        width: "60%",
+        margin: "0 auto",
         width: "51%",
         borderTop: "50px solid rgb(70,18,18)",
         borderLeft: "25px solid transparent",
         borderRight: "25px solid transparent",
+
     },
     
     flexMain: {
@@ -96,6 +103,7 @@ const useStyles = makeStyles({
     },
 
 
+
     cutLog: {
         position: "absolute",
         background: "white",
@@ -105,6 +113,7 @@ const useStyles = makeStyles({
         top: "33%",
         clipPath: "polygon(14% 0, 100% 0, 86% 100%, 0 100%);",
     },
+
 
     cutSign: {
         position: "absolute",
@@ -180,6 +189,7 @@ const Header = () => {
                 </NavLink>
             </div>
             <div className={classes.headerWrapper}>
+
                 <div className={classes.header}/>
                     <div className={classes.flexMain}>
                         <div className={classes.flexItemsLeft}>
@@ -200,6 +210,8 @@ const Header = () => {
                         </div>
                     </div>
             </div>
+
+
             <nav className="navbar">
                 <div>
                     <Collapse
@@ -236,4 +248,6 @@ const Header = () => {
         </>
     );
 };
+
 export default Header;
+
