@@ -5,7 +5,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -16,18 +15,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const baseYearArray = []
-for(let i =0;i < 100; i++){
-    if(i <50){
-        baseYearArray.push(`${50-i}bby`);
-    }else{
-        baseYearArray.push(`${i-50}ayy`);
-    }
-
+for (let i = 0; i < 100; i++) {
+  if (i < 50) {
+    baseYearArray.push(`${50 - i}bby`);
+  } else {
+    baseYearArray.push(`${i - 50}ayy`);
+  }
 }
-
-export default function SimpleSelect({category,setCategory,planet,setPlanet,inputProps,labelInputProps,setDay,setMonth,day,month,year, setYear}) {
+export default function SimpleSelect({ category, setCategory, planet, setPlanet, inputProps, labelInputProps, setDay, setMonth, day, month, year, setYear }) {
   const classes = useStyles();
-
   const handleChangeCategory = (event) => {
     setCategory(event.target.value);
   };
@@ -43,12 +39,11 @@ export default function SimpleSelect({category,setCategory,planet,setPlanet,inpu
   const handleYearChange = (event) => {
     setYear(event.target.value);
   };
-
   return (
     <div>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label"
-        {...labelInputProps}>Category</InputLabel>
+          {...labelInputProps}>Category</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -56,18 +51,18 @@ export default function SimpleSelect({category,setCategory,planet,setPlanet,inpu
           onChange={handleChangeCategory}
           {...inputProps}
         >
-          <MenuItem value={'Surprise Party'}>Surprise Party</MenuItem>
-          <MenuItem value={'Live Productions'}>Live Productions</MenuItem>
-          <MenuItem value={'Live Excutions'}>Live Executions</MenuItem>
-          <MenuItem value={'Sports'}>Sports</MenuItem>
-          <MenuItem value={'Tours'}>Tours</MenuItem>
-          <MenuItem value={'Product Launches'}>Product Launches</MenuItem>
-          <MenuItem value={'Seminars'}>Seminars</MenuItem>
+          <MenuItem value={1}>Surprise Party</MenuItem>
+          <MenuItem value={2}>Live Productions</MenuItem>
+          <MenuItem value={3}>Live Executions</MenuItem>
+          <MenuItem value={4}>Sports</MenuItem>
+          <MenuItem value={5}>Tours</MenuItem>
+          <MenuItem value={6}>Product Launches</MenuItem>
+          <MenuItem value={7}>Seminars</MenuItem>
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label"
-        {...labelInputProps}>Planet</InputLabel>
+          {...labelInputProps}>Planet</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -75,19 +70,19 @@ export default function SimpleSelect({category,setCategory,planet,setPlanet,inpu
           onChange={handleChangePlanet}
           {...inputProps}
         >
-            <MenuItem value={'Dagobah'}>Dagobah</MenuItem>
-            <MenuItem value={'Hoth'}>Hoth</MenuItem>
-            <MenuItem value={'Tatooine'}>Tatooine</MenuItem>
-            <MenuItem value={'Coruscant'}>Coruscant</MenuItem>
-            <MenuItem value={'Naboo'}>Naboo</MenuItem>
-            <MenuItem value={'Alderaan'}>Alderaan</MenuItem>
-            <MenuItem value={'Mustafar'}>Mustafar</MenuItem>
-            <MenuItem value={'Endor'}>Endor</MenuItem>
+          <MenuItem value={'Dagobah'}>Dagobah</MenuItem>
+          <MenuItem value={'Hoth'}>Hoth</MenuItem>
+          <MenuItem value={'Tatooine'}>Tatooine</MenuItem>
+          <MenuItem value={'Coruscant'}>Coruscant</MenuItem>
+          <MenuItem value={'Naboo'}>Naboo</MenuItem>
+          <MenuItem value={'Alderaan'}>Alderaan</MenuItem>
+          <MenuItem value={'Mustafar'}>Mustafar</MenuItem>
+          <MenuItem value={'Endor'}>Endor</MenuItem>
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label"
-        {...labelInputProps}>Month</InputLabel>
+          {...labelInputProps}>Month</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -107,12 +102,11 @@ export default function SimpleSelect({category,setCategory,planet,setPlanet,inpu
           <MenuItem value={'10'}>10</MenuItem>
           <MenuItem value={'11'}>11</MenuItem>
           <MenuItem value={'12'}>12</MenuItem>
-
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label"
-        {...labelInputProps}>Day</InputLabel>
+          {...labelInputProps}>Day</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -155,7 +149,7 @@ export default function SimpleSelect({category,setCategory,planet,setPlanet,inpu
       </FormControl>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label"
-        {...labelInputProps}>Year</InputLabel>
+          {...labelInputProps}>Year</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -163,8 +157,8 @@ export default function SimpleSelect({category,setCategory,planet,setPlanet,inpu
           onChange={handleYearChange}
           {...inputProps}
         >
-          {baseYearArray.map((ele,i) => <MenuItem value={ele}>{`${ele}`}</MenuItem>)}
-                  </Select>
+          {baseYearArray.map((ele, i) => <MenuItem key={i} value={ele}>{`${ele}`}</MenuItem>)}
+        </Select>
       </FormControl>
     </div>
   );

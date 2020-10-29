@@ -1,7 +1,14 @@
+
 import React, { useState, useEffect, } from 'react';
 import { useDispatch,useSelector } from "react-redux";
+import {useHistory} from 'react-router-dom'
+
+
 // core components
 import Header from '../Header/Header'
+
+//redux
+import { useSelector } from 'react-redux';
 
 
 // nodejs library that concatenates classes
@@ -15,7 +22,9 @@ import hanger from '../../assets/images/hanger.jpg'
 import { makeStyles } from "@material-ui/core/styles";
 import SwitchListSecondary from "./listComponent";
 import Fade from '@material-ui/core/Fade';
+
 import { fetchBookmarkEventsThunk } from '../../actions/eventsActions';
+
 
 
 
@@ -38,7 +47,6 @@ const useStyles = makeStyles({
     container:{
         display: 'grid',
         gridTemplateRows: '230px 1fr 1fr',
-        backgroundImage: `url(${hanger})`
     },
     seeMe:{
         gridRowStart: '2',
@@ -50,6 +58,7 @@ const useStyles = makeStyles({
 
 const TestPage = () => {
     const classes = useStyles()
+    const history = useHistory()
     const [gifLoading, setGifLoading] = useState(true)
     const [profileVisible, setProfileVisible] = useState(false)
     const id = useSelector((state) => state.auth.id)
@@ -58,14 +67,16 @@ const TestPage = () => {
     const userName = useSelector((state) => state.auth.username)
     const [checked, setChecked] = useState([]);
 
+
     const dispatch = useDispatch()
 
     useEffect(() =>{
         dispatch(fetchBookmarkEventsThunk(id))
     })
+
     useEffect(() => {
-        const firstTimer = setTimeout(() => setGifLoading(() => false), 14)
-        const secondTimer = setTimeout(() => setProfileVisible(() => true), 1)
+        const firstTimer = setTimeout(() => setGifLoading(() => false), 1400)
+        const secondTimer = setTimeout(() => setProfileVisible(() => true), 1400)
 
         return () => {
             clearTimeout(firstTimer)
@@ -73,7 +84,7 @@ const TestPage = () => {
         }
     }, [gifLoading])
 
-
+    if (!id) history.push("/")
     return (
         <>
             <Header />
@@ -94,9 +105,9 @@ const TestPage = () => {
                         <SwitchListSecondary checked={checked} setChecked={setChecked}/>
                     </div>
                 </div>
+
                 {/* card container */}
                 <div>
-
                 </div>
                 {/* <Fade in={true} timeout={1000}>
                     <img className={classNames(classes.hanger, classes.warZone)} src={hanger} alt="fighter.gif" />
