@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect, } from 'react';
-import { useDispatch,useSelector } from "react-redux";
 import {useHistory} from 'react-router-dom'
 
 
@@ -8,8 +7,7 @@ import {useHistory} from 'react-router-dom'
 import Header from '../Header/Header'
 
 //redux
-import { useSelector } from 'react-redux';
-
+import { useDispatch,useSelector } from "react-redux";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
