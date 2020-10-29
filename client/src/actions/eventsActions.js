@@ -36,9 +36,10 @@ export const getBookmarkEvents = (bookmarkEvents) => {
         bookmarkEvents
     }
 }
-export const addBookmark = () => {
+export const addBookmark = (bookmark) => {
     return {
         type: ADD_BOOKMARK,
+        bookmark
 
     }
 }
@@ -75,6 +76,27 @@ export const fetchBookmarkEventsThunk = (id) => {
         if (res.ok) {
             const data = await res.json();
             dispatch(getBookmarkEvents(data));
+        }
+        return res;
+    };
+};
+
+export const addBookmarkToUser = (details) => {
+    return async dispatch => {
+        // fetch Bookmark event
+        const res = await fetch(`/api/events/bookmarks/add`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
+            },
+            body: JSON.stringify(details),
+        })
+
+        if (res.ok) {
+            const data = await res.json();
+            const bookmark = [data]
+            dispatch(addBookmark(bookmark));
         }
         return res;
     };

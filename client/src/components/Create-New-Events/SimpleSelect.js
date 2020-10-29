@@ -157,7 +157,7 @@ export default function SimpleSelect({ category, setCategory, planet, setPlanet,
           onChange={handleYearChange}
           {...inputProps}
         >
-          {baseYearArray.map((ele, i) => <MenuItem value={ele}>{`${ele}`}</MenuItem>)}
+          {baseYearArray.map((ele, i) => <MenuItem key={i} value={ele}>{`${ele}`}</MenuItem>)}
         </Select>
       </FormControl>
     </div>
