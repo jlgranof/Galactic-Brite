@@ -239,7 +239,7 @@ const Header = () => {
                                     Dashboard
                                 </Button>
                                 <Button 
-                                onClick={() => history.push('/about')} 
+                                onClick={() => history.push('/aboutUs')} 
                                 className={classNames(classes.navItem)}>
                                     <PersonOutlineIcon/>
                                     About

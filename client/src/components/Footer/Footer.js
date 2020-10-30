@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 
     alignCenterLogo: {
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-around",
         flexDirection: "column",
         paddingTop: "5px",
         color: "white"
@@ -105,7 +105,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className={classes.alignCenterLogo}>
-                <img className='rebel-logo' src='https://i.imgur.com/1Mx9czp.jpg' />
+                <img className='rebel-logo' src='https://i.imgur.com/ljlGd8p.png' />
                 Galatic Brite 2020 ©
             </div>
             <div className={classes.links}>

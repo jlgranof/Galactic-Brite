@@ -45,7 +45,7 @@ function App() {
                     const data = await res.json()
                     dispatch(setUser(data))
                 }
-            if (!res.ok) setLoading(true)
+
             }
             //preload ALL events in redux
             const preloadEvents = () => {
