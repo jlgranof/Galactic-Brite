@@ -48,7 +48,7 @@ class Event(db.Model):
   user = db.relationship("User", back_populates="events")
   category = db.relationship("Category", back_populates="events")
 
-  
+
 class BookmarkedEvent(db.Model):
   __tablename__ = 'bookmarked_events'
 
