@@ -23,8 +23,9 @@ import clsx from 'clsx';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 // @material-ui/icons
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+
 const useStyles = makeStyles({
     headerCenter: {
         zIndex: 1000,
@@ -83,10 +84,36 @@ const useStyles = makeStyles({
     },
     navMenu: {
         zIndex: 1000,
+        display: "flex",
+        flexDirection: "column",
         position: "absolute",
+        height: "150px",
+        width: "150px",
         right: "25%",
-        top: "4.5%",
-        backgroundColor: "white"
+        top: "6.5%",
+        boxShadow: "1px 1px 10px 1px rgb(40,40,40)",
+        borderRadius: "10px",
+        background: "linear-gradient(0deg, rgba(30, 30, 30, 1) 0%, rgba(75, 73, 73, 1) 50%, rgba(30, 30, 30, 1) 100%)"
+    },
+    navMenuLinks: {
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+    },
+    navItem: {
+        color: "grey",
+        fontWeight: "bold",
+        "&:hover": {
+            color: "white",
+            borderRadius: "10px",
+
+            // backgroundColor: "rgba(220,220,220, .2)",
+            transform: "scale(1.1)"
+        }
+    },
+    customSize: {
+        display: "flex",
+        justifyContent: "center",
     },
     cutLog: {
         position: "absolute",
@@ -205,22 +232,24 @@ const Header = () => {
                     >
                         <nav className={classes.navMenu}>
                             <div className={classes.navMenuLinks}>
-                                <Button onClick={() => history.push('/dashboard')} className={classNames(classes.navItem, classes.customSize)}>
+                                <Button 
+                                onClick={() => history.push('/dashboard')} 
+                                className={classNames(classes.navItem)}>
+                                    <DashboardIcon/>
                                     Dashboard
                                 </Button>
-                                <Button onClick={() => history.push('/about')} className={classNames(classes.navItem, classes.customSize)}>
+                                <Button 
+                                onClick={() => history.push('/about')} 
+                                className={classNames(classes.navItem)}>
+                                    <PersonOutlineIcon/>
                                     About
                                 </Button>
-                                <div>
-                                    <Button
-                                        className={classNames(classes.navItem, classes.customSize)}
-                                        onClick={handleLogout}
-                                    >
-                                        <i>
-                                            sign out
-                                    </i>
-                                    </Button>
-                                </div>
+                                <Button
+                                    className={classNames(classes.navItem, classes.customSize)}
+                                    onClick={handleLogout}
+                                >
+                                        sign out
+                                </Button>
                             </div>
                         </nav>
                     </Collapse>

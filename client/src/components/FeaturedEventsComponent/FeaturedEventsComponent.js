@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //redux
 import { useSelector, useDispatch } from 'react-redux'
+import { addBookmarkToUser } from '../../Redux/actions/eventsActions'
 
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
@@ -52,8 +53,22 @@ const useStyles = makeStyles({
 
 const FeaturedEventsComponent = ({style, event}) => {
     const dispatch = useDispatch()
+    const classes = useStyles()
     const user = useSelector(state => state.auth)
     const [isBookmarked, setIsBookmarked] = useState(false)
+
+
+    useEffect(() => {
+        if (isBookmarked) {
+            const details = {
+                "event_name": event.name,
+                "user_id": user.id,
+                "is_registered": false
+            }
+            dispatch(addBookmarkToUser(details))
+        }
+    }, [isBookmarked])
+
 
     const handleAddTicket = () => {
 
@@ -69,7 +84,6 @@ const FeaturedEventsComponent = ({style, event}) => {
             }
         }
     }
-    const classes = useStyles()
     return (
         <div {...style}>
             <Card className={classes.root}>

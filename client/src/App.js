@@ -45,23 +45,23 @@ function App() {
                     const data = await res.json()
                     dispatch(setUser(data))
                 }
+            if (!res.ok) setLoading(true)
+            }
+            //preload ALL events in redux
+            const preloadEvents = () => {
+                dispatch(fetchRandomEvents(10))
+                
+            }
+            const preloadFeaturedEvents = () => {
+                dispatch(fetchFeaturedEvents())
+                
+                
+            }
+            preloadFeaturedEvents()
+            preloadEvents();
+            generateSession();
             setLoading(false)
-        }
-        //preload ALL events in redux
-        const preloadEvents = () => {
-            dispatch(fetchRandomEvents(10))
-            setLoading(false);
-        }
-        const preloadFeaturedEvents = () => {
-            dispatch(fetchFeaturedEvents())
-            setLoading(false)
-
-        }
-        preloadFeaturedEvents()
-        preloadEvents();
-        generateSession();
     }, [loading])
-    
     
     if(loading) return null
     return (
