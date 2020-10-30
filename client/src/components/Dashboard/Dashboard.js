@@ -22,8 +22,10 @@ import SwitchListSecondary from "./listComponent";
 import Fade from '@material-ui/core/Fade';
 import Card from './card';
 
+
 // Thunks
-import { fetchBookmarkEventsThunk } from '../../actions/eventsActions';
+import { fetchBookmarkEventsThunk } from '../../Redux/actions/eventsActions';
+
 
 
 
@@ -77,7 +79,9 @@ const TestPage = () => {
         if(id){
             dispatch(fetchBookmarkEventsThunk(id))
         }
+
     },[id])
+
 
     useEffect(() => {
         const firstTimer = setTimeout(() => setGifLoading(() => false), 1400)

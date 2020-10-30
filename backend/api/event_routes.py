@@ -75,6 +75,26 @@ def add_bookmark():
     db.session.commit()
     return jsonify(data)
 
+@event_routes.route('/bookmarks/delete', methods=['DELETE'])
+def delete_bookmark():
+    data = request.json
+    bookmark = BookmarkedEvent.query.get(data['id'])
+    db.session.delete(bookmark)
+    db.session.commit()
+    return "Deleted."
+
+
+@event_routes.route('/bookmarks/update', methods=['PUT'])
+def update_bookmark():
+    data = request.json
+    bookmark = BookmarkedEvent.query.get(data['id'])
+    bookmark.is_registered = data['is_registered']
+    db.session.commit()
+    return jsonify({
+        "bookmark.id": bookmark.id,
+        "bookmark.event_name": bookmark.event_name,
+        "bookmark.is_registered": bookmark.is_registered
+    })
 
 @event_routes.route('/bookmarks/<user_id>')
 def bookmarked_events(user_id):
@@ -82,6 +102,7 @@ def bookmarked_events(user_id):
     events = BookmarkedEvent.query.filter(BookmarkedEvent.user_id == user_id)
     for event in events:
             bookmarked_events.append({
+                "id": event.id,
                 "event_name": event.event_name,
                 "is_registered": event.is_registered
             })

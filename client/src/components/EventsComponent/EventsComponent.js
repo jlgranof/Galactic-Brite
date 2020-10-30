@@ -3,7 +3,7 @@ import { Redirect, useHistory } from 'react-router-dom'
 
 //redux
 import { useSelector, useDispatch } from 'react-redux'
-import {addBookmarkToUser} from '../../actions/eventsActions'
+import {addBookmarkToUser} from '../../Redux/actions/eventsActions'
 
 // assets
 import icon1 from '../../assets/images/icon.png'
@@ -47,7 +47,6 @@ const useStyles = makeStyles({
         '&:hover': {
             transform: 'scale(.995)'
         }
-
     },
     mediaRight: {
         display: "flex",
@@ -201,10 +200,18 @@ const EventsComponent = (props) => {
 
     const handleEventDetails = (e) => {
         // console.log(e.target)
-        if (e.target.id == id) { 
+        if (e.target.id === id) { 
             return
         }
-        history.push(`event-details/${eventName}`)
+        history.push({pathname:'/event-details/random', state: {
+            avatar: avatar, 
+            date: date,
+            description: description,
+            eventName: eventName,
+            featured: featured,
+            id: id,
+            planet: planet
+        }})
     }
 
     const handleBookmark = () => {

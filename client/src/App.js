@@ -4,9 +4,9 @@ import Cookies from "js-cookie";
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { setUser } from './actions/authActions'
-import { fetchFeaturedEvents } from './actions/featuredActions'
-import {fetchRandomEvents } from './actions/eventsActions'
+import { setUser } from './Redux/actions/authActions'
+import { fetchFeaturedEvents } from './Redux/actions/featuredActions'
+import {fetchRandomEvents } from './Redux/actions/eventsActions'
 
 // core components
 import UserList from './components/UsersList';
@@ -26,15 +26,13 @@ function App() {
     // const [fetchWithCSRF, setFetchWithCSRF] = useState(()=> fetch)
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
-    const allEvents = useSelector(state => state.eventsSlice)
+    const featured = useSelector(state => state.eventsSlice.featuredEvents)
     const auth = useSelector(state => state.auth)
-    const hello = allEvents.events ? allEvents.events.map( event => event.name.split(" ").join("-")): null
-
-
 
 
 
     useEffect(()=>{
+        
         const generateSession = async () => {
                 const res = await fetch("/api/session/token/refresh", {
                     method: 'post',
@@ -47,26 +45,27 @@ function App() {
                     const data = await res.json()
                     dispatch(setUser(data))
                 }
+            if (!res.ok) setLoading(true)
+            }
+            //preload ALL events in redux
+            const preloadEvents = () => {
+                dispatch(fetchRandomEvents(10))
+                
+            }
+            const preloadFeaturedEvents = () => {
+                dispatch(fetchFeaturedEvents())
+                
+                
+            }
+            preloadFeaturedEvents()
+            preloadEvents();
+            generateSession();
             setLoading(false)
-        }
-        //preload ALL events in redux
-        const preloadEvents = () => {
-            dispatch(fetchRandomEvents(10))
-            setLoading(false);
-        }
-        const preloadFeaturedEvents = () => {
-            dispatch(fetchFeaturedEvents())
-            setLoading(false)
-
-        }
-        preloadFeaturedEvents()
-        if (!allEvents.events) preloadEvents();
-        generateSession();
     }, [loading])
-    
     
     if(loading) return null
     return (
+        <>
         <BrowserRouter>
             <Switch>
                 <Route exact path="/users"><UserList /></Route>
@@ -75,17 +74,17 @@ function App() {
                 <Route exact path="/"><LandingPage/></Route>
                 <Route exact path="/create-event"><CreateEventForm/></Route>
                 <Route exact path="/AboutUs"><AboutUsPage/></Route>
-                {allEvents.events ? allEvents.events.map((event, id) => (
-                
-                
-                <Route key={id} path={`event-details/${(event.name.split(' ').join('-'))}`}>
+                {featured ? featured.map((event, id) => (
+                <Route key={id} path={`event-details/${event.id}`}>
                     <EventDetails />
                 </Route>)
                 ): null}
+                <Route path="/event-details/random"><EventDetails/></Route>
                 <Route component={PageNotFound}/>
             </Switch>
-            <Footer />
         </BrowserRouter>
+            <Footer />
+        </>
     );
 }
 
