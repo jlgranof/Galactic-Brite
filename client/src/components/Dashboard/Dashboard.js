@@ -53,6 +53,9 @@ const useStyles = makeStyles({
         textAlign: 'right',
         backgroundColor: 'white',
         zIndex: '100'
+    },
+    white:{
+        backgroundColor: 'white'
     }
 })
 
@@ -74,7 +77,7 @@ const TestPage = () => {
         if(id){
             dispatch(fetchBookmarkEventsThunk(id))
         }
-    })
+    },[id])
 
     useEffect(() => {
         const firstTimer = setTimeout(() => setGifLoading(() => false), 1400)
@@ -99,12 +102,20 @@ const TestPage = () => {
                 <div className={classes.container}>
                     <div className={classes.seeMe}>
 
+                        <div className={classes.white}>
                         <h1 >This works</h1>
                         <h3>{`${userName}`}</h3>
                         <h3>{`${email}`}</h3>
                         <img src={avatar}></img>
+                        </div>
                         <SwitchListSecondary checked={checked} setChecked={setChecked}/>
-                    {registerSlice ? registerSlice.map((ele)=> <Card name={ele.event_name}/>): null}
+                        <div>
+                        {registerSlice ? registerSlice.map((ele)=>{
+                            const randomNum = Math.floor(Math.random() * Math.floor(8));
+                             return <Card name={ele.event_name} id={ele.id} randomNum={randomNum}/>
+
+                            }): null}
+                        </div>
                 <div>
                 </div>
                     </div>
