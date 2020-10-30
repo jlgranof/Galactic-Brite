@@ -62,3 +62,29 @@ html {
     color: rgb(253, 224, 55);
     text-shadow: 4px 4px 4px #000;
 }
+
+
+/* square buttons */
+.rec.rec-arrow {
+    border-radius: 0;
+    color: white;
+    border-radius: 50%;
+}
+.rec.rec-arrow-left,
+.rec.rec-arrow-right {
+    opacity: .2;
+    background-color: transparent;
+    color: white;
+}
+.rec-arrow-left:hover,
+.rec-arrow-right:hover {
+    opacity: 1;
+    background-color: linear-gradient(90deg, rgba(20,20,20,1) 0%, rgba(232,65,65,1) 50%, rgba(10,10,10,1) 96%)!important;
+    background: rgb(20,20,20) !important;
+background: linear-gradient(90deg, rgba(20,20,20,1) 0%, rgba(232,65,65,1) 50%, rgba(10,10,10,1) 96%) !important;
+    color: black !important;
+}
+
+
+
+

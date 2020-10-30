@@ -10,7 +10,6 @@ export const eventsSlice = (state = {}, action) => {
             nextState.featuredEvents = [...action.featuredEvents]
             return nextState
         case GET_EVENTS:
-            console.log(action)
             nextState.events = [...action.events]
             return nextState
         case CREATE_EVENT:

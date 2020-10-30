@@ -72,7 +72,6 @@ const TestPage = () => {
     const userName = useSelector((state) => state.auth.username)
     const [checked, setChecked] = useState([]);
     const registerSlice = useSelector((state) => state.registerSlice)
-    console.log(registerSlice)
     const dispatch = useDispatch()
 
     useEffect(() =>{
