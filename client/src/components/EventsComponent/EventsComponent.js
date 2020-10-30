@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 //redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -199,7 +199,6 @@ const EventsComponent = (props) => {
     const handleError = () => setIsLoaded(false)
 
     const handleEventDetails = (e) => {
-        // console.log(e.target)
         if (e.target.id === id) { 
             return
         }
@@ -220,7 +219,6 @@ const EventsComponent = (props) => {
         }
     }
     const handleAddTicket = () => {
-        console.log("hello")
     }
 
     useEffect(() => {

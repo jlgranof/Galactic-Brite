@@ -56,6 +56,8 @@ const RightHeaderLinks = ({ expanded, setExpanded, cutLog, cutSign }) => {
                     <SignupDialog
                         isOpen={isSignupOpen}
                         setIsOpen={setIsSignupOpen}
+                        setIsLoginOpen={setIsLoginOpen}
+                        setIsSignupOpen={setIsSignupOpen}
                     />
                 </>
                 : null}

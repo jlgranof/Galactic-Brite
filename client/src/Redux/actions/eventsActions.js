@@ -46,8 +46,7 @@ export const addBookmark = (bookmark) => {
 
 //TICKET ACTIONS
 export const addTicketForEvent = (ticket) => {
-    //each ticket will include all ticket info, location, host, etc
-    // console.log("created", ticket)
+
     return {
         type: ADD_TICKET,
         ticket

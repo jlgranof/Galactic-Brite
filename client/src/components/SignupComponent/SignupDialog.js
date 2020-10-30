@@ -10,7 +10,12 @@ import { DialogActions } from '../ModalStyles/ModalStyles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 
-const SignupPage = ({isOpen, setIsOpen}) => {
+const SignupPage = ({isOpen, setIsOpen, setIsLoginOpen, setIsSignupOpen}) => {
+
+    const transitionToLogin = () => {
+        setIsLoginOpen(true)
+        setIsSignupOpen(false)
+    }
     return (
         <Dialog
             open={isOpen}
@@ -27,8 +32,14 @@ const SignupPage = ({isOpen, setIsOpen}) => {
                 <Button
                     autoFocus
                     onClick={() => setIsOpen(false)}
-                    color="primary">
+                    style={{ color: "red" }}>
                     create an account
+                </Button>
+                <Button
+                        onClick={transitionToLogin}
+                        color="secondary"
+                        >
+                    <i>back to Login</i>
                 </Button>
         </Dialog>
     );
