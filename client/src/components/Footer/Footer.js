@@ -10,7 +10,9 @@ const useStyles = makeStyles({
         display: "flex",
         backgroundColor: 'black',
         justifyContent: "space-between",
-        height: "150px"
+        height: "150px",
+        color: "white",
+        textDecoration: "None"
     },
     links: {
         display: 'flex',
