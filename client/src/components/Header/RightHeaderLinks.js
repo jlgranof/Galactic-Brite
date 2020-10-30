@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+
+
 //redux
 import { useSelector } from 'react-redux'
 // Core Components
@@ -10,9 +12,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
-
+    
 })
 const RightHeaderLinks = ({ expanded, setExpanded, cutLog, cutSign }) => {
+
+
     const classes = useStyles()
     const [isLoginOpen, setIsLoginOpen] = useState(false)
     const [isSignupOpen, setIsSignupOpen] = useState(false)
@@ -48,7 +52,7 @@ const RightHeaderLinks = ({ expanded, setExpanded, cutLog, cutSign }) => {
                     />
                     <Button className={cutSign} variant="contained" onClick={() => setIsSignupOpen(true)}>
                         Signup
-                                </Button>
+                    </Button>
                     <SignupDialog
                         isOpen={isSignupOpen}
                         setIsOpen={setIsSignupOpen}

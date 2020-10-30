@@ -6,6 +6,7 @@ import ReduxStore from './Redux/store/ReduxStore'
 import { Provider } from 'react-redux'
 
 
+
 // if (process.env.NODE_ENV !== 'production') {
 //   const getCSRFToken = () => {
 //     return fetch("api/csrf/token")
@@ -22,7 +23,7 @@ const store = ReduxStore()
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+        <App /> 
   </Provider>,
   document.getElementById('root')
 );
