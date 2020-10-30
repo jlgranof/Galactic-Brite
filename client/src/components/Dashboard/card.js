@@ -16,6 +16,9 @@ const useStyles = makeStyles({
 
 export default function ImgMediaCard(props) {
   const classes = useStyles();
+  const {
+    name,
+  } = props
 
   return (
     <Card className={classes.root}>
@@ -29,7 +32,7 @@ export default function ImgMediaCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {`${name}`}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
