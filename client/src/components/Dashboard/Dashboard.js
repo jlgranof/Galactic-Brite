@@ -99,9 +99,9 @@ const TestPage = () => {
 
     // },[id])
 
-    const cards = registerSlice ? registerSlice.map((ele)=>{
+    const cards = registerSlice ? registerSlice.map((ele,i)=>{
         const randomNum = Math.floor(Math.random() * Math.floor(8));
-         return <Card name={ele.event_name} id={ele.id} randomNum={randomNum}/>
+         return <Card key={i} name={ele.event_name} id={ele.id} authId={id} eventId={ele.id} randomNum={randomNum}/>
         }): null
 
     useEffect(() => {

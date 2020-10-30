@@ -112,7 +112,9 @@ export const addBookmarkToUser = (details) => {
 export const removeBookmarkThunk = (eventId, userId) => {
     return async dispatch => {
         // fetch Delete event
-        const body = {event_id: eventId}
+        const body = {'id': eventId}
+        // console.log(eventId)
+        const id= eventId
         const res = await fetch(`/api/events/bookmarks/delete`, {
             method: 'DELETE',
             headers: {

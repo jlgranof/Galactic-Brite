@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
 }));
-//please help me
 
 export default function SwitchListSecondary(moreProps) {
   const classes = useStyles();
