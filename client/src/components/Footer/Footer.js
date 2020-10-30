@@ -11,8 +11,7 @@ const useStyles = makeStyles({
         backgroundColor: 'black',
         justifyContent: "space-between",
         height: "150px",
-        color: "white",
-        textDecoration: "None"
+        
     },
     links: {
         display: 'flex',
@@ -20,7 +19,8 @@ const useStyles = makeStyles({
         margin: '0 190px',
         padding: "15px",
         color: "white",
-        minWidth: "100px"
+        textDecoration: "None"
+
     },
     logos: {
         top: "35px",
@@ -108,7 +108,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className={classes.alignCenterLogo}>
-                <img className='rebel-logo' src='https://i.imgur.com/1Mx9czp.jpg' />
+                <img className='rebel-logo' src='https://i.imgur.com/ljlGd8p.png' />
                 Galatic Brite 2020 ©
             </div>
             <div className={classes.links}>
