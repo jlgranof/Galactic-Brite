@@ -66,9 +66,9 @@ const useStyles = makeStyles({
         justifyContent: "center",
         alignItems: "center"
     },
-    spacer: {
-        margin: "0 20px",
-    },
+    // spacer: {
+    //     margin: "0 20px",
+    // },
     gifBar: {
         zIndex: 100,
         left: "10%",
@@ -107,8 +107,6 @@ const LandingPage = () => {
     return (
         <>
             <Header/>
-
-            {/* <SnackBar/> */}
             <CarouselComponent/>
             
             <div className={classes.gifBar}>
