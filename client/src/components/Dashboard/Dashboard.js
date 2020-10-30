@@ -21,7 +21,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import SwitchListSecondary from "./listComponent";
 import Fade from '@material-ui/core/Fade';
 import Card from './card';
-
+import BookmarkCarousel from './Carousel';
 
 // Thunks
 import { fetchBookmarkEventsThunk } from '../../Redux/actions/eventsActions';
@@ -52,12 +52,22 @@ const useStyles = makeStyles({
     },
     seeMe:{
         gridRowStart: '2',
-        textAlign: 'right',
         backgroundColor: 'white',
         zIndex: '100'
     },
     white:{
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        textAlign: 'right',
+    },
+    bookmark:{
+        display: 'flexbox',
+        textAlign: 'center',
+        alignContent: 'flexend'
+    },
+    avatar:{
+        height: '150px',
+        width: '150px',
+        borderRadius: '50%'
     }
 })
 
@@ -82,6 +92,10 @@ const TestPage = () => {
 
     },[id])
 
+    const cards = registerSlice ? registerSlice.map((ele)=>{
+        const randomNum = Math.floor(Math.random() * Math.floor(8));
+         return <Card name={ele.event_name} id={ele.id} randomNum={randomNum}/>
+        }): null
 
     useEffect(() => {
         const firstTimer = setTimeout(() => setGifLoading(() => false), 1400)
@@ -107,18 +121,14 @@ const TestPage = () => {
                     <div className={classes.seeMe}>
 
                         <div className={classes.white}>
-                        <h1 >This works</h1>
+                        <img src={avatar } className={classes.avatar}></img>
                         <h3>{`${userName}`}</h3>
                         <h3>{`${email}`}</h3>
-                        <img src={avatar}></img>
-                        </div>
                         <SwitchListSecondary checked={checked} setChecked={setChecked}/>
+                        </div>
+                        <h3 className={classes.bookmark}>Bookmaked Events</h3>
                         <div>
-                        {registerSlice ? registerSlice.map((ele)=>{
-                            const randomNum = Math.floor(Math.random() * Math.floor(8));
-                             return <Card name={ele.event_name} id={ele.id} randomNum={randomNum}/>
-
-                            }): null}
+                            <BookmarkCarousel cards={cards}/>
                         </div>
                 <div>
                 </div>
