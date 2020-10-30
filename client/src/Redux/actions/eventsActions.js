@@ -112,7 +112,6 @@ export const removeBookmarkThunk = (eventId, userId) => {
     return async dispatch => {
         // fetch Delete event
         const body = {'id': eventId}
-        // console.log(eventId)
         const id= eventId
         const res = await fetch(`/api/events/bookmarks/delete`, {
             method: 'DELETE',
@@ -169,27 +168,3 @@ export const deleteEventThunk = (authId) => {
         return res;
     };
 };
-
-
-
-
-// export const addTicketsToUser = (ticket, userId) => {
-//     return async dispatch => {
-//         // no need to include userId to add, user included in body
-//         const res = await fetch(`/api/tickets`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 // no csrf yet??????
-//                 // "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
-//             },
-//             body: JSON.stringify({ ticket, userId }),
-//         });
-
-//         if (res.ok) {
-//             const data = await res.json();
-//             dispatch(addTicketForEvent(data));
-//         }
-//         return res;
-//     };
-// };

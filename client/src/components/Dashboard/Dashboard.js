@@ -91,12 +91,12 @@ const TestPage = () => {
     const registerSlice = useSelector((state) => state.registerSlice)
     const dispatch = useDispatch()
 
-    // useEffect(() =>{
-    //     if(id){
-    //         dispatch(fetchBookmarkEventsThunk(id))
-    //     }
+    useEffect(() =>{
+        if(id){
+            dispatch(fetchBookmarkEventsThunk(id))
+        }
 
-    // },[id])
+    },[id])
 
     const cards = registerSlice ? registerSlice.map((ele,i)=>{
         const randomNum = Math.floor(Math.random() * Math.floor(8));
