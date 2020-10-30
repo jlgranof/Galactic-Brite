@@ -11,9 +11,6 @@ import Carousel from 'react-elastic-carousel'
 import { makeStyles } from "@material-ui/core/styles";
 
 
-//bootstrap
-// import './styles.css'
-
 const useStyles = makeStyles({
     indicators: {
         position: "absolute",
@@ -41,21 +38,23 @@ const FeaturedCarousel = () => {
         {width: 1200, itemsToShow: 4},
     ]
 
+    const everyComponent = [featuredEvents ? featuredEvents.map((event, i) => (
+        <FeaturedEventsComponent
+            key={i}
+            event={event}
+        />
+    )) : <></>]
+    const list = [...everyComponent]
     return (
         <>
-            <Carousel
+            {featuredEvents ? <Carousel
             breakPoints={breakPoints}
             itemPadding={[0, 10, 0, 10]}
             pagination={false}
             disableArrowsOnEnd={false}
             >
-                {featuredEvents ? featuredEvents.map((event, i) => (
-                    <FeaturedEventsComponent
-                        key={i}
-                        event={event}
-                    />
-                )) : <div></div>}
-            </Carousel>
+                {list}
+            </Carousel>: null }
         </>
     );
 };

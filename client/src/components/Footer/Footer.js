@@ -19,7 +19,8 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         margin: '0 190px',
         padding: "15px",
-        color: "white"
+        color: "white",
+        minWidth: "100px"
     },
     logos: {
         top: "35px",
@@ -30,7 +31,8 @@ const useStyles = makeStyles({
         color: "grey",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center"
+        justifyContent: "center",
+        minWidth: "120px"
     },
 
     alignGithubLogo: {
@@ -48,10 +50,11 @@ const useStyles = makeStyles({
 
     alignCenterLogo: {
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-around",
         flexDirection: "column",
         paddingTop: "5px",
-        color: "white"
+        color: "white",
+        minWidth: "140px"
     },
     sideGataltic: {
         display: "flex",
