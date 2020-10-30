@@ -59,16 +59,32 @@
 
 7. Kessel Run Tour
     * user: Han Solo
-    * description:
-    * date:
-    * planet:
+    * description: Join the legendary smuggler Han Solo on his tour of the Kessel Run! Ride in the Millenium Falcon, flown by Han Solo and his partner Chewie. The tour starts on Kessel and ends sourth of the Si'Flaata Cluster. The gole is to move spice without getting caught by Imperial Ships. Good Luck and have fun!
+    * date: October 27, 10BBY @ 11:00
+    * planet: Kessel
     * picture_url:
     * category: tours
 
 8. Seminar @ New Jedi Academy
     * user: Luke Sykwalker
-    * description:
-    * date:
+    * description: Get a free lesson in exploring the force led by the one and only Luke Skywalker! The man who brought down the Empire. Open to all beings, even if you are not force sensitive. Surprise guests may include Jedi Ghosts!
+    * date: July 12, 23ABY @ 12:00
+    * planet: Yavin 4
+    * picture_url:
+    * category: seminar
+
+9. Seminar @ New Jedi Academy
+    * user: Luke Sykwalker
+    * description: Get a free lesson in exploring the force led by the one and only Luke Skywalker! The man who brought down the Empire. Open to all beings, even if you are not force sensitive. Surprise guests may include Jedi Ghosts!
+    * date: July 12, 23ABY @ 12:00
+    * planet: Yavin 4
+    * picture_url:
+    * category: seminar
+
+10. Seminar @ New Jedi Academy
+    * user: Luke Sykwalker
+    * description: Get a free lesson in exploring the force led by the one and only Luke Skywalker! The man who brought down the Empire. Open to all beings, even if you are not force sensitive. Surprise guests may include Jedi Ghosts!
+    * date: July 12, 23ABY @ 12:00
     * planet: Yavin 4
     * picture_url:
     * category: seminar
