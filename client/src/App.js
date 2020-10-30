@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setUser } from './Redux/actions/authActions'
 import { fetchFeaturedEvents } from './Redux/actions/featuredActions'
 import {fetchRandomEvents } from './Redux/actions/eventsActions'
-
+import {fetchBookmarkEventsThunk} from'./Redux/actions/eventsActions'
 // core components
 import UserList from './components/UsersList';
 import LandingPage from './components/LandingPage/LandingPage'
@@ -32,7 +32,7 @@ function App() {
 
 
     useEffect(()=>{
-        
+
         const generateSession = async () => {
 
                 const res = await fetch("/api/session/token/refresh", {
@@ -53,19 +53,26 @@ function App() {
             const preloadEvents = () => {
                 dispatch(fetchRandomEvents(10))
                 setLoading(false)
-                
+
             }
             const preloadFeaturedEvents = () => {
                 dispatch(fetchFeaturedEvents())
                 setLoading(false)
-                
-                
+
+
             }
             preloadFeaturedEvents()
             preloadEvents();
             generateSession();
     }, [loading])
-    
+
+    useEffect(() =>{
+        if(auth.id){
+            dispatch(fetchBookmarkEventsThunk(auth.id))
+        }
+
+    },[auth.id])
+
     if(loading) return null
     return (
         <>

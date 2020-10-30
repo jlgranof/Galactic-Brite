@@ -7,6 +7,7 @@ export const GET_BOOKMARK_EVENTS = "GET_BOOKMARK_EVENTS";
 
 export const ADD_TICKET = "ADD TICKET";
 export const ADD_BOOKMARK = "ADD BOOKMARK"
+export const REMOVE_BOOKMARK = "REMOVE BOOKMARK"
 
 
 
@@ -39,6 +40,13 @@ export const getBookmarkEvents = (bookmarkEvents) => {
 export const addBookmark = (bookmark) => {
     return {
         type: ADD_BOOKMARK,
+        bookmark
+
+    }
+}
+export const removeBookmark = (bookmark) => {
+    return {
+        type: REMOVE_BOOKMARK,
         bookmark
 
     }
@@ -97,6 +105,25 @@ export const addBookmarkToUser = (details) => {
             const data = await res.json();
             const bookmark = [data]
             dispatch(addBookmark(bookmark));
+        }
+        return res;
+    };
+};
+export const removeBookmarkThunk = (eventId, userId) => {
+    return async dispatch => {
+        // fetch Delete event
+        const body = {event_id: eventId}
+        const res = await fetch(`/api/events/bookmarks/delete`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                // "XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
+            },
+            body: JSON.stringify(body),
+        })
+
+        if (res.ok) {
+            dispatch(fetchBookmarkEventsThunk(userId));
         }
         return res;
     };
