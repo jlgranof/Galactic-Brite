@@ -41,7 +41,7 @@ const useStyles = makeStyles({
         backgroundColor: "rgba(20,20,20)",
         width: "100%",
         boxShadow: "1px 1px 20px red",
-        height: "1200px"
+        height: "1400px"
     },
     card: {
         marginTop: "-200px",
@@ -52,7 +52,8 @@ const useStyles = makeStyles({
         background: "rgb(20, 20, 20)",
         background: "linear-gradient(90deg, rgba(10, 10, 10, 1) 4%, rgba(40, 40, 40, 1) 50%, rgba(10, 10, 10, 1) 96%)",
         padding: "40px 80px 80px 80px",
-        height: "1200px"
+        height: "1200px",
+        overflow: "auto"
     },
     cardHeader: {
         display: "flex",
@@ -162,12 +163,12 @@ const EventDetails = () => {
         avatar,
         date,
         description,
+        paragraph,
         eventName,
         featured,
         id,
         planet
     } = location.state
-    console.log(location)
     return (
         <>
             <Header/>
@@ -199,7 +200,7 @@ const EventDetails = () => {
 
                         </div>
                     </div>
-                    {true ? <div className={classes.featured}>
+                    {featured ? <div className={classes.featured}>
                         FEATURED EVENT
                     </div>: null}
                     <div className={classes.cardSubHeader}>
@@ -209,7 +210,9 @@ const EventDetails = () => {
                         {date}
                     </div>
                     <div className={classes.cardBody}>
-                        <div className={classes.cardContent}>
+                        {paragraph?<div>{paragraph}</div>: null}
+
+                        {description ?<><div className={classes.cardContent}>
                             {description.description}
                         </div>
                         <div className={classes.cardContent}>
@@ -217,7 +220,7 @@ const EventDetails = () => {
                         </div>
                         <div className={classes.cardContent}>
                             {description.details_2}
-                        </div>
+                        </div></>:null}
                     </div>
                 </div>
 

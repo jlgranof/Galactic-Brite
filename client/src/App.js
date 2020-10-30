@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Cookies from "js-cookie";
+import Cookies from "js-cookie"
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -34,6 +34,7 @@ function App() {
     useEffect(()=>{
         
         const generateSession = async () => {
+
                 const res = await fetch("/api/session/token/refresh", {
                     method: 'post',
                     headers: {
@@ -41,6 +42,7 @@ function App() {
                         'access': Cookies.get("access_token_cookie")
                     },
                 })
+
                 if (res.ok) {
                     const data = await res.json()
                     dispatch(setUser(data))
@@ -50,17 +52,18 @@ function App() {
             //preload ALL events in redux
             const preloadEvents = () => {
                 dispatch(fetchRandomEvents(10))
+                setLoading(false)
                 
             }
             const preloadFeaturedEvents = () => {
                 dispatch(fetchFeaturedEvents())
+                setLoading(false)
                 
                 
             }
             preloadFeaturedEvents()
             preloadEvents();
             generateSession();
-            setLoading(false)
     }, [loading])
     
     if(loading) return null

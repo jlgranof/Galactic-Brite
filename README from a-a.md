@@ -32,7 +32,6 @@ git clone https://github.com/appacademy-starters/react-project-starter.git --bra
 
 
 
-
 ***
 *IMPORTANT!*
    If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.

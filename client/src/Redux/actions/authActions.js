@@ -57,6 +57,7 @@ export const logout = () => async dispatch => {
     if (res.ok) {
         dispatch(removeUser());
     }
+    return res
 }
 
 

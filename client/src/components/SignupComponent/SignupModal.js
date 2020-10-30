@@ -23,12 +23,7 @@ import classNames from "classnames";
 
 
 const useStyles = makeStyles({
-    // centerContent: {
-    //     zIndex: 2,
-    //     gridColumn: "2/3",
-    //     gridRowStart: 2,
-    //     alignContent: "center",
-    // },
+
     inputGrid: {
         display: "grid",
         gridTemplateColumns: "1fr 6fr 1fr",
@@ -47,9 +42,10 @@ const useStyles = makeStyles({
         color: "white",
     },
     input: {
+        margin: "-10px",
         borderRadius: "5px",
         opacity: 1,
-        backgroundColor: "rgba(50, 50, 50, .2)",
+        backgroundColor: "rgba(40, 40, 40, .2)",
         border: "1px solid white",
         "&:hover": {
         },
@@ -78,7 +74,7 @@ const LoginComponent = () => {
                             inputValue={username}
                             setStateFunc={setUsername}
                             labelText="username..."
-                            id="password"
+                            id="username"
                             inputProps={{
                                 type: "text",
                                 endAdornment: (
@@ -87,7 +83,8 @@ const LoginComponent = () => {
                                             <PeopleAltIcon/>
                                         </Icon>
                                     </InputAdornment>
-                                )
+                                ),
+                                className: classes.input
                             }}
                         />
                         <CustomInput

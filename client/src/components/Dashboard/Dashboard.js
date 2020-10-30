@@ -20,8 +20,12 @@ import hanger from '../../assets/images/hanger.jpg'
 import { makeStyles } from "@material-ui/core/styles";
 import SwitchListSecondary from "./listComponent";
 import Fade from '@material-ui/core/Fade';
+import Card from './card';
+import BookmarkCarousel from './Carousel';
 
+// Thunks
 import { fetchBookmarkEventsThunk } from '../../Redux/actions/eventsActions';
+
 
 
 
@@ -48,9 +52,22 @@ const useStyles = makeStyles({
     },
     seeMe:{
         gridRowStart: '2',
-        textAlign: 'right',
         backgroundColor: 'white',
         zIndex: '100'
+    },
+    white:{
+        backgroundColor: 'white',
+        textAlign: 'right',
+    },
+    bookmark:{
+        display: 'flexbox',
+        textAlign: 'center',
+        alignContent: 'flexend'
+    },
+    avatar:{
+        height: '150px',
+        width: '150px',
+        borderRadius: '50%'
     }
 })
 
@@ -64,15 +81,20 @@ const TestPage = () => {
     const email = useSelector((state) => state.auth.email)
     const userName = useSelector((state) => state.auth.username)
     const [checked, setChecked] = useState([]);
-
-
+    const registerSlice = useSelector((state) => state.registerSlice)
     const dispatch = useDispatch()
 
     useEffect(() =>{
         if(id){
             dispatch(fetchBookmarkEventsThunk(id))
         }
-    })
+
+    },[id])
+
+    const cards = registerSlice ? registerSlice.map((ele)=>{
+        const randomNum = Math.floor(Math.random() * Math.floor(8));
+         return <Card name={ele.event_name} id={ele.id} randomNum={randomNum}/>
+        }): null
 
     useEffect(() => {
         const firstTimer = setTimeout(() => setGifLoading(() => false), 1400)
@@ -84,31 +106,35 @@ const TestPage = () => {
         }
     }, [gifLoading])
 
-    if (!id) history.push("/")
     return (
         <>
             <Header />
-            {gifLoading ?
+            {/* {gifLoading ?
                 <div>
                     <img className={classes.warZone} src={xWing} alt="fighter.gif" />
                 </div>
-                : null}
+                : null} */}
             {profileVisible ?
                 <>
                 <div className={classes.container}>
                     <div className={classes.seeMe}>
 
-                        <h1 >This works</h1>
+                        <div className={classes.white}>
+                        <img src={avatar } className={classes.avatar}></img>
                         <h3>{`${userName}`}</h3>
                         <h3>{`${email}`}</h3>
-                        <img src={avatar}></img>
                         <SwitchListSecondary checked={checked} setChecked={setChecked}/>
+                        </div>
+                        <h3 className={classes.bookmark}>Bookmaked Events</h3>
+                        <div>
+                            <BookmarkCarousel cards={cards}/>
+                        </div>
+                <div>
+                </div>
                     </div>
                 </div>
 
                 {/* card container */}
-                <div>
-                </div>
                 {/* <Fade in={true} timeout={1000}>
                     <img className={classNames(classes.hanger, classes.warZone)} src={hanger} alt="fighter.gif" />
                 </Fade> */}
