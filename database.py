@@ -18,6 +18,7 @@ with app.app_context():
   boba = User(username = 'Boba Fett', email = 'boba@clones.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTYj2Rw2Crz24sNcXZ9v9KfnlEZupa_ZdmMKQ&usqp=CAU')
   han = User(username = 'Han Solo', email = 'scruffynerfherder@smugglers.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS9TwNUBH0EbzmUt6OWZ4XhjIsiIQ84jf3tg&usqp=CAU')
   luke = User(username = 'Luke Skywalker', email = 'sluke@jediacademy.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSczQtK1E0AgyUchH_Ov7hj5xHnQr69LT7O2g&usqp=CAU')
+  rey = User(username = 'Rey', email = 'nowimaskywalker@jediacademy.com', avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQe0sZYKoaf065ZKjnl4G1qy1qCB6p8CNhQpw&usqp=CAU')
 
   party = Category(type = 'Surprise Party')
   production = Category(type = 'Live Productions')
@@ -33,6 +34,10 @@ with app.app_context():
   geonosis_execution = Event(name = 'Republic Leaders Execution', event_description = 'The evil Senator Amidala and the Jedis Skywalker and Kenobi have been caught!!!!! Their executions have been schedule to be held in the Petranaki Arena. Buy tickets to this execution. 3 high ranking Republic members! Once in a lifetime event!', host_id = 6, event_date = '17:00 hours, June 22, 19BBY', event_planet = 'Geonosis', event_picture_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSELfkGG_qoGhokNwcwmwSMR5ThNkXXM5iLyA&usqp=CAU', category_id = 3, is_featured = True)
   carbonite = Event(name = 'Carbonite Museum Grand Opening', event_description = 'Come to Cloud City in Bespin for the Grand Opening of the Carbonite Museum! For one night only, our main attraction is the notorious smuggler Han Solo.', host_id = 7, event_date = '20:00 hours, August 12, 3ABY', event_planet = 'Bespin', event_picture_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTqMzZ4SePebMG1Ff1VM2LVSC_mMCdG_FnVTR6G2eHidEV0RmeGX3Tn8sQpdQ&usqp=CAc', category_id = 5, is_featured = True)
   darth_plagueis = Event(name = 'Squid Lake by the Mon Calamari Ballet at Coruscant Opera House', event_description = 'In the beautiful Uscru District, lies the Wonderful Galaxies Opera House. The Galaxy renound Mon Calamarin Ballet is putting on a production of Squid Lake. If you have never seen a ballet, this is the one to attend! **Upgrade your tickets to sit in the box with Chancellor Palpentine. Who knows, maybe you will learn things the Jedi can\'t teach you!**', host_id = 2, event_date = '21:00 hours, February 1 19BBY', event_planet = 'Corusant', event_picture_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSWqj-k_7il4cl1r1vfVfACzbntLKR9NEGVcA&usqp=CAU', category_id = 2, is_featured = True)
+  kessel = Event(name = 'Kessel Run Tour', event_description = 'Join the legendary smuggler Han Solo on his tour of the Kessel Run! Ride in the Millenium Falcon, flown by Han Solo and his partner Chewie. The tour starts on Kessel and ends sourth of the Si\'Flaata Cluster. The gole is to move spice without getting caught by Imperial Ships. Good Luck and have fun!', host_id = 8, event_date = 'October 27, 10BBY @ 11:00', event_planet = 'Kessel', event_picture_url = 'https://www.thathashtagshow.com/wp-content/uploads/2020/03/chewie-falcon-4.jpg', category_id = 5, is_featured = True)
+  jedi = Event(name = 'Seminar at the Jedi Academy', event_description = 'Get a free lesson in exploring the force led by the one and only Luke Skywalker! The man who brought down the Empire. Open to all beings, even if you are not force sensitive. Surprise guests may include Jedi Ghosts!', host_id = 9, event_date = 'July 12, 23ABY @ 12:00', event_planet = 'Corusant', event_picture_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTZsvsoLWSwy8jxWt21XbIke_y6rKzHkB6zqw&usqp=CAU', category_id = 7, is_featured = True)
+  exegol = Event(name = 'Take Back the Galaxy', event_description = 'Calling all pilots. The Galaxy needs us. The last fragments of hope are on Exegol right now trying to defeat the Emperor and the Sith once and for all. Lightspeed to these coordinates and help take down as many ships as possible so we can witness the exectution of Darth Sidious.', host_id = 10, event_date = 'January 3, 35ABY @ 01:00', event_planet = 'Exegol', event_picture_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5EYbIK2tggl9gnUXxCs8aO9vg6fjhSVHMEQ&usqp=CAU', category_id = 3, is_featured = True)
+  senate = Event(name = 'Senate Meeting', event_description = 'Come one, Come all! This is the very last Galactic Senate assembly before it becomes the first ever Galactic Empire. LIBERTY WILL DIE WITH THUNDEROUS APPLAUSE.', host_id = 2, event_date = 'May 11, 19BBY @ 15:00', event_planet = 'Corusant', event_picture_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTeSdOBidrXnWDCQEFulZjvNEDpCkZwrEdq0w&usqp=CAU', category_id = 1, is_featured = True)
   event = Event(name = ' ', event_description = ' ', host_id = 1, event_date = ' ', event_planet = ' ', event_picture_url = ' ', category_id = 1, is_featured = True)
 
 
@@ -75,6 +80,7 @@ with app.app_context():
   baby_2 = Picture(url = 'https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Baby_Yoda_2.jpg')
   baby_3 = Picture(url = 'https://twtchr-img.s3-us-west-2.amazonaws.com/starwars/Baby_Yoda_3.jpg')
 
+  # users
   db.session.add(demo)
   db.session.add(palpatine)
   db.session.add(anakin)
@@ -84,6 +90,9 @@ with app.app_context():
   db.session.add(boba)
   db.session.add(han)
   db.session.add(luke)
+  db.session.add(rey)
+
+  # categories
   db.session.add(party)
   db.session.add(production)
   db.session.add(exectution)
@@ -91,12 +100,20 @@ with app.app_context():
   db.session.add(tour)
   db.session.add(launch)
   db.session.add(seminar)
+
+  # events
   db.session.add(order_66)
   db.session.add(podrace)
   db.session.add(death_star)
   db.session.add(geonosis_execution)
   db.session.add(carbonite)
   db.session.add(darth_plagueis)
+  db.session.add(kessel)
+  db.session.add(jedi)
+  db.session.add(exegol)
+  db.session.add(senate)
+
+  # picture_urls
   db.session.add(yoda_1)
   db.session.add(throne)
   db.session.add(space_battle_3)
