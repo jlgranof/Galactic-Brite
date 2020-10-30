@@ -33,20 +33,9 @@ const useStyles = makeStyles({
         margin: "0",
         boxSizing: "border-box"
     },
-    // body: {
-    //     backgroundColor: "rgb(40,40,40)",
-    //     position: "relative",
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     width: "100%",
-    //     minHeight: "500px",
-    //     top: "600px",
-
-    // },
     mainBody: {
         zIndex: 100,
-        position: "absolute",
+        position: "relative",
         display: "flex",
         justifyContent: "center",
         backgroundColor: "rgba(20,20,20)",
