@@ -20,8 +20,12 @@ import hanger from '../../assets/images/hanger.jpg'
 import { makeStyles } from "@material-ui/core/styles";
 import SwitchListSecondary from "./listComponent";
 import Fade from '@material-ui/core/Fade';
+import Card from './card';
 
+
+// Thunks
 import { fetchBookmarkEventsThunk } from '../../Redux/actions/eventsActions';
+
 
 
 
@@ -51,6 +55,9 @@ const useStyles = makeStyles({
         textAlign: 'right',
         backgroundColor: 'white',
         zIndex: '100'
+    },
+    white:{
+        backgroundColor: 'white'
     }
 })
 
@@ -64,15 +71,17 @@ const TestPage = () => {
     const email = useSelector((state) => state.auth.email)
     const userName = useSelector((state) => state.auth.username)
     const [checked, setChecked] = useState([]);
-
-
+    const registerSlice = useSelector((state) => state.registerSlice)
+    console.log(registerSlice)
     const dispatch = useDispatch()
 
     useEffect(() =>{
         if(id){
             dispatch(fetchBookmarkEventsThunk(id))
         }
-    })
+
+    },[id])
+
 
     useEffect(() => {
         const firstTimer = setTimeout(() => setGifLoading(() => false), 1400)
@@ -84,31 +93,39 @@ const TestPage = () => {
         }
     }, [gifLoading])
 
-    if (!id) history.push("/")
     return (
         <>
             <Header />
-            {gifLoading ?
+            {/* {gifLoading ?
                 <div>
                     <img className={classes.warZone} src={xWing} alt="fighter.gif" />
                 </div>
-                : null}
+                : null} */}
             {profileVisible ?
                 <>
                 <div className={classes.container}>
                     <div className={classes.seeMe}>
 
+                        <div className={classes.white}>
                         <h1 >This works</h1>
                         <h3>{`${userName}`}</h3>
                         <h3>{`${email}`}</h3>
                         <img src={avatar}></img>
+                        </div>
                         <SwitchListSecondary checked={checked} setChecked={setChecked}/>
+                        <div>
+                        {registerSlice ? registerSlice.map((ele)=>{
+                            const randomNum = Math.floor(Math.random() * Math.floor(8));
+                             return <Card name={ele.event_name} id={ele.id} randomNum={randomNum}/>
+
+                            }): null}
+                        </div>
+                <div>
+                </div>
                     </div>
                 </div>
 
                 {/* card container */}
-                <div>
-                </div>
                 {/* <Fade in={true} timeout={1000}>
                     <img className={classNames(classes.hanger, classes.warZone)} src={hanger} alt="fighter.gif" />
                 </Fade> */}
