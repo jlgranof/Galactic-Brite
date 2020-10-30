@@ -11,15 +11,15 @@ const useStyles = makeStyles({
         backgroundColor: 'black',
         justifyContent: "space-between",
         height: "150px",
-        color: "white",
-        textDecoration: "None"
+        
     },
     links: {
         display: 'flex',
         flexDirection: 'column',
         margin: '0 190px',
         padding: "15px",
-        color: "white"
+        color: "white",
+        textDecoration: "None"
     },
     logos: {
         top: "35px",
@@ -93,10 +93,10 @@ const Footer = () => {
                 </div>
                 
                 <div className={classes.alignGithub}>
-                    <Link href='https://github.com/jlgranof'>Jeff Granof</Link>
-                    <Link href='https://github.com/whitejamesthe2nd'>James White</Link>
-                    <Link href='https://github.com/alecbrando'>Alec Garcia</Link>
-                    <Link href='https://github.com/Kmcgee92'>Kasee McGee</Link>
+                    <a href='https://github.com/jlgranof'>Jeff Granof</a>
+                    <a href='https://github.com/whitejamesthe2nd'>James White</a>
+                    <a href='https://github.com/alecbrando'>Alec Garcia</a>
+                    <a href='https://github.com/Kmcgee92'>Kasee McGee</a>
                 </div>
             </div>
         </BottomNavigation>
