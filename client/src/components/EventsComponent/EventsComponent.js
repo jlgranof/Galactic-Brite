@@ -3,7 +3,7 @@ import { Redirect, useHistory } from 'react-router-dom'
 
 //redux
 import { useSelector, useDispatch } from 'react-redux'
-import {addBookmarkToUser} from '../../actions/eventsActions'
+import {addBookmarkToUser} from '../../Redux/actions/eventsActions'
 
 // assets
 import icon1 from '../../assets/images/icon.png'

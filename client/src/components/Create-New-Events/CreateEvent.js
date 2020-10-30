@@ -8,7 +8,7 @@ import coruscant from './Coruscant_03db43b4.jpeg'
 // core components
 import Header from '../Header/Header'
 import CustomInput from '../SupportComponents/CustomInput'
-import {createEventThunk} from '../../actions/eventsActions'
+import {createEventThunk} from '../../Redux/actions/eventsActions'
 import SimpleSelect from'./SimpleSelect'
 
 // @material-ui/core

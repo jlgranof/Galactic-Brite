@@ -21,7 +21,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import SwitchListSecondary from "./listComponent";
 import Fade from '@material-ui/core/Fade';
 
-import { fetchBookmarkEventsThunk } from '../../actions/eventsActions';
+import { fetchBookmarkEventsThunk } from '../../Redux/actions/eventsActions';
 
 
 
@@ -69,7 +69,9 @@ const TestPage = () => {
     const dispatch = useDispatch()
 
     useEffect(() =>{
-        dispatch(fetchBookmarkEventsThunk(id))
+        if(id){
+            dispatch(fetchBookmarkEventsThunk(id))
+        }
     })
 
     useEffect(() => {

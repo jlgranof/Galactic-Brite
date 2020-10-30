@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 from werkzeug.security import generate_password_hash
 
+
 from backend import app, db
 from backend.models import User, Category, Event, Picture
 

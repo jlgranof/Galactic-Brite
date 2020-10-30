@@ -6,7 +6,7 @@ import HeaderLogo from './HeaderLogo'
 import RightHeaderLinks from './RightHeaderLinks';
 //redux
 import { useDispatch } from 'react-redux'
-import { logout } from '../../actions/authActions'
+import { logout } from '../../Redux/actions/authActions'
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core
@@ -46,11 +46,6 @@ const useStyles = makeStyles({
         zIndex: 101,
         color: "white",
         position: "absolute",
-        // overflow: "hidden",
-        // display: "flex",
-        // borderImage: "linear-gradient(to right top, #490006, #3a050c, #2a070c, #1b0409, #000000)",
-        // background: "rgb(70,18,18)",
-        // background: "linear-gradient(90deg, rgba(70,18,18,1) 0%, rgba(131,2,2,1) 61%, rgba(0,0,0,1) 92%)",
         height: "60px",
         width: "51%",
         borderTop: "50px solid rgb(70,18,18)",
