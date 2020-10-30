@@ -63,6 +63,7 @@ const useStyles = makeStyles({
         paddingTop: "5px",
         color: "white"
     },
+
     color: {
         color: "white",
         "&:hover": {
@@ -78,6 +79,7 @@ const useStyles = makeStyles({
     style: {
         textDecoration: "none",
     }
+
 
 })
 
@@ -98,7 +100,7 @@ const Footer = () => {
                         <div className={classes.githubRed}>
                             <GitHubIcon className={classes.githubRed} />
                         </div>
-                        </Link>
+                     </Link>
                     
                 </div>
                 <div className={classes.sideGataltic}>
