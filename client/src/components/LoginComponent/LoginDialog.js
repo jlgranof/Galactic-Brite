@@ -15,16 +15,34 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 
 
+// @material-ui/core
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+    footer: {
+        display: "flex",
+        justifyContent: "space-between",
+    }
+})
+
 const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
+    const classes = useStyles()
     const dispatch = useDispatch()
-    const [email, setEmail] = useState("therealsithleader@gungan.com")
-    const [password, setPassword] = useState("password")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     const handleLogin = () => {
-        dispatch(login(email, password))
+        if (email != "" && password != ""){
+            dispatch(login(email, password))
+            setIsLoginOpen(false)
+
+        }
+    }
+    const handleDemo = () => {
+        
+        dispatch(login("therealsithleader@gungan.com", "password"))
         setIsLoginOpen(false)
     }
-
     const transitionToSignup = () => {
         setIsLoginOpen(false)
         setIsSignupOpen(true)
@@ -47,33 +65,34 @@ const LoginDialog = ({isLoginOpen, setIsLoginOpen, setIsSignupOpen}) => {
                     setPassword={setPassword}
                 />
             </DialogContent>
+                <div className={classes.footer}>
                 <Button
                     autoFocus
                     onClick={handleLogin}
-                    color="primary">
+                    style={{ color: "red" }}>
                     login
                 </Button>
-            <DialogActions>
+
                 <Button
                     autoFocus
-                    onClick={handleLogin}
-                    color="primary">
+                    onClick={handleDemo}
+                    style={{color: "red"}}
+                >
                     demo
                 </Button>
-                <Button
-                    onClick={() => setIsLoginOpen(false)}
-                    color="secondary"
-                    >
-                </Button>
-                    <i>don't have an</i> 
+                <div>
+                    <i>don't have an </i> 
                     <i>account?</i>
                     <Button
                         onClick={transitionToSignup}
-                        color="secondary"
+                        style={{ color: "red" }}
                         >
                     <i>Signup</i>
                     </Button>
-            </DialogActions>
+
+                </div>
+                </div>
+
         </Dialog>
     );
 };

@@ -163,12 +163,12 @@ const EventDetails = () => {
         avatar,
         date,
         description,
+        paragraph,
         eventName,
         featured,
         id,
         planet
     } = location.state
-    console.log(location)
     return (
         <>
             <Header/>
@@ -200,7 +200,7 @@ const EventDetails = () => {
 
                         </div>
                     </div>
-                    {true ? <div className={classes.featured}>
+                    {featured ? <div className={classes.featured}>
                         FEATURED EVENT
                     </div>: null}
                     <div className={classes.cardSubHeader}>
@@ -210,7 +210,9 @@ const EventDetails = () => {
                         {date}
                     </div>
                     <div className={classes.cardBody}>
-                        <div className={classes.cardContent}>
+                        {paragraph?<div>{paragraph}</div>: null}
+
+                        {description ?<><div className={classes.cardContent}>
                             {description.description}
                         </div>
                         <div className={classes.cardContent}>
@@ -218,7 +220,7 @@ const EventDetails = () => {
                         </div>
                         <div className={classes.cardContent}>
                             {description.details_2}
-                        </div>
+                        </div></>:null}
                     </div>
                 </div>
 

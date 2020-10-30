@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom'
-
 // import { Button } from './Button';
 // core components
 import HeaderLogo from './HeaderLogo'
@@ -240,7 +239,7 @@ const Header = () => {
                                     Dashboard
                                 </Button>
                                 <Button 
-                                onClick={() => history.push('/about')} 
+                                onClick={() => history.push('/aboutUs')} 
                                 className={classNames(classes.navItem)}>
                                     <PersonOutlineIcon/>
                                     About

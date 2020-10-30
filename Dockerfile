@@ -18,6 +18,7 @@ RUN ["npm", "run", "build", "--prefix", "client"]
 RUN ["cp", "-r", "client/build", "backend/static"]
 RUN ["cp", "-r", "backend/static/static/js", "backend/static"]
 RUN ["cp", "-r", "backend/static/static/css", "backend/static"]
+RUN ["cp", "-r", "backend/static/static/media", "backend/static"]
 
 # Setup Flask environment
 ENV FLASK_APP=backend

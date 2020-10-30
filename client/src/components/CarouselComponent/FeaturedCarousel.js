@@ -38,13 +38,12 @@ const FeaturedCarousel = () => {
         {width: 1200, itemsToShow: 4},
     ]
 
-    const everyComponent = [featuredEvents ? featuredEvents.map((event, i) => (
+    const everyComponent = featuredEvents ? featuredEvents.map((event, i) => (
         <FeaturedEventsComponent
             key={i}
             event={event}
         />
-    )) : <></>]
-    const list = [...everyComponent]
+    )) : <></>
     return (
         <>
             {featuredEvents ? <Carousel
@@ -52,8 +51,9 @@ const FeaturedCarousel = () => {
             itemPadding={[0, 10, 0, 10]}
             pagination={false}
             disableArrowsOnEnd={false}
+            className='rec-arrow'
             >
-                {list}
+                {everyComponent}
             </Carousel>: null }
         </>
     );

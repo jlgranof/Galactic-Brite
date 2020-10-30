@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
+import { useHistory } from 'react-router-dom'
 //redux
 import { useSelector, useDispatch } from 'react-redux'
 import { addBookmarkToUser } from '../../Redux/actions/eventsActions'
+
+// nodejs library that concatenates classes
+import classNames from "classnames";
 
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,38 +26,93 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 345,
+        maxWidth: 360,
         backgroundColor: "rgba(26,26,26,1)",
         color: "white",
         height: "500px",
-        margin: "60px 0 200px 0"
-
+        margin: "60px 0 200px 0",
+        paddingBottom: "40px",
+        "&:hover": {
+            transform: "scale(1.05)"
+        }
     },
     media: {
         color: "white",
         height: "200px",
         width: "100%",
+        opacity: "0.8",
+        "&:hover": {
+            opacity: 1,
+
+        }
     },
     header: {
-        color: "white"
+        color: "white",
+        padding: "5px"
     },
     avatar: {
         backgroundColor: red[500],
     },
     body: {
-        color: "white"
+        color: "grey",
+        transition: ".3s",
+        textAlign: "center",
+        padding: "20px",
+        "&:hover": {
+            color: "white",
+
+        }
+    },
+    date: {
+        color: "grey",
+        transition: ".3s",
+        textAlign: "center",
+        "&:hover": {
+            color: "white",
+
+        }
     },
     tags: {
 
+    },
+    icon: {
+        color: "red",
+        opacity: .7,
+        transition: ".2s",
+        "&:hover": {
+            opacity: 1,
+            transform: "scale(1.1)"
+        }
+    },
+    cardTextHover: {
+        fontSize: "20px",
+        fontFamily: "monospace",
+        color: "red",
+        opacity: ".5",
+        transition: ".2s",
+        "&:hover": {
+            opacity: 1,
+            transform: "scale(1.1)"
+        }
     }
 })
 
 
 
-const FeaturedEventsComponent = ({style, event}) => {
+const FeaturedEventsComponent = (props) => {
+
+    const {
+        style, 
+        event,
+        id,
+    } = props
+
     const dispatch = useDispatch()
     const classes = useStyles()
+    const history = useHistory()
     const user = useSelector(state => state.auth)
+    const registerSlice = useSelector(state => state.registerSlice)
+
     const [isBookmarked, setIsBookmarked] = useState(false)
 
 
@@ -74,18 +132,34 @@ const FeaturedEventsComponent = ({style, event}) => {
 
     }
 
+    const handleEventDetails = (e) => {
+        if (e.target.id === id) {
+            return
+        }
+        history.push({
+            pathname: '/event-details/random', state: {
+                avatar: event.event_picture_url,
+                date: event.event_date,
+                paragraph: event.event_description,
+                eventName: event.name,
+                featured: event.is_featured,
+                id: event.id,
+                planet: event.event_planet
+            }
+        })
+    }
+
     const handleBookmark = () => {
         if (user.id !== undefined) {
             setIsBookmarked(!isBookmarked)
-            if (isBookmarked) {
-                // dispatch(addBookmarkToUser())
-                // user id 
-                // name
+            if (registerSlice) {
+                
             }
         }
     }
     return (
-        <div {...style}>
+        <div 
+        {...style}>
             <Card className={classes.root}>
                 <CardHeader
                 className={classes.header}
@@ -96,10 +170,14 @@ const FeaturedEventsComponent = ({style, event}) => {
                 />
                 <div className={classes.tags}>
                     {isBookmarked ?
-                        <IconButton onClick={handleBookmark}>
+                        <IconButton 
+                        className={classes.icon}
+                        onClick={handleBookmark}>
                                 <BookmarkIcon style={{ color: "red" }} />
                         </IconButton>
-                            : <IconButton onClick={handleBookmark}>
+                            : <IconButton 
+                            className={classes.icon}
+                            onClick={handleBookmark}>
                                     <BookmarkBorderIcon style={{ color: "red" }} />
                         </IconButton>
                     }
@@ -109,23 +187,28 @@ const FeaturedEventsComponent = ({style, event}) => {
                         style={{ color: "red", opacity: ".8" }}
                     >
                         <span
+                            className={classNames(classes.cardLink, classes.cardTextHover)}
                             onClick={handleAddTicket}
                         >
                             Ticket
                         </span>
                     </Button>
                 </div>
-                <Typography variant="body2" color="textSecondary" className={classes.body}>
+                <Typography variant="body2" color="textSecondary" className={classes.date}>
                     {event.event_date}
                 </Typography >
-                <img 
-                    className={classes.media}
-                    src={event.event_picture_url}
-                />
-
-                    <Typography variant="body2" color="textSecondary" className={classes.body}>
+                    <img 
+                        onClick={handleEventDetails}
+                        className={classes.media}
+                        src={event.event_picture_url}
+                    />
+                    <Typography 
+                    onClick={handleEventDetails}
+                    variant="body2" 
+                    color="textSecondary" 
+                    className={classes.body}>
                         {event.event_description}
-                    </Typography >
+                    </Typography>
             </Card>
         </div>
     );
