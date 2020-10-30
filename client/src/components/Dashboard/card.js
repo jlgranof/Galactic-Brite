@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import DeleteIcon from '@material-ui/icons/Delete';
 import DescriptionIcon from '@material-ui/icons/Description';
+import {useDispatch} from 'react-redux'
+import { removeBookmarkThunk } from "../../Redux/actions/eventsActions";
 
 const useStyles = makeStyles({
   root: {
@@ -29,8 +31,16 @@ export default function ImgMediaCard(props) {
   const classes = useStyles();
   const {
     name,
+    eventId,
+    authId,
     randomNum
   } = props
+
+  const dispatch = useDispatch();
+
+  const handleClick = () =>{
+    dispatch(removeBookmarkThunk(eventId,authId))
+  }
 
   return (
     <Card className={classes.root}>
@@ -57,7 +67,7 @@ export default function ImgMediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={handleClick}>
         <DeleteIcon />
         </Button>
         <Button size="small" color="primary">

@@ -1,4 +1,4 @@
-import { CREATE_EVENT, DELETE_EVENT, GET_EVENTS } from '../actions/eventsActions'
+import { CREATE_EVENT, DELETE_EVENT, GET_EVENTS, REMOVE_BOOKMARK } from '../actions/eventsActions'
 import { GET_FEATURED_EVENTS } from '../actions/featuredActions'
 
 
