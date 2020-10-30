@@ -65,6 +65,7 @@ function App() {
     
     if(loading) return null
     return (
+        <>
         <BrowserRouter>
             <Switch>
                 <Route exact path="/users"><UserList /></Route>
@@ -81,8 +82,9 @@ function App() {
                 <Route path="/event-details/random"><EventDetails/></Route>
                 <Route component={PageNotFound}/>
             </Switch>
-            <Footer />
         </BrowserRouter>
+            <Footer />
+        </>
     );
 }
 

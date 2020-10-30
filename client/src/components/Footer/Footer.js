@@ -61,6 +61,23 @@ const useStyles = makeStyles({
         color: "white"
     },
 
+    color: {
+        color: "white",
+        "&:hover": {
+            color: 'red'
+        }
+    },
+    githubRed: {
+        color: "white",
+        "&:hover": {
+            color: 'red'
+        }
+    },
+    style: {
+        textDecoration: "none",
+    }
+
+
 })
 
 const Footer = () => {
@@ -69,14 +86,18 @@ const Footer = () => {
 
     return (
         <>
-        <BottomNavigation className={classes.root}>
+        <div className={classes.root}>
             <div className={classes.links}>
                 <div className={classes.footHead}>
                     <h3>Source Code</h3>
                 </div>
                 
                 <div className={classes.alignGithubLogo}>
-                    <Link href='https://github.com/jlgranof/Galactic-Brite'><GitHubIcon /></Link>
+                    <Link href='https://github.com/jlgranof/Galactic-Brite'>
+                        <div className={classes.githubRed}>
+                            <GitHubIcon className={classes.githubRed} />
+                        </div>
+                     </Link>
                     
                 </div>
                 <div className={classes.sideGataltic}>
@@ -93,13 +114,29 @@ const Footer = () => {
                 </div>
                 
                 <div className={classes.alignGithub}>
-                    <Link href='https://github.com/jlgranof'>Jeff Granof</Link>
-                    <Link href='https://github.com/whitejamesthe2nd'>James White</Link>
-                    <Link href='https://github.com/alecbrando'>Alec Garcia</Link>
-                    <Link href='https://github.com/Kmcgee92'>Kasee McGee</Link>
+                    <Link  style={{textDecoration: "none"}} href='https://github.com/jlgranof'>
+                        <div className={classes.color}>
+                            Jeff Granof    
+                        </div>
+                        </Link>
+                        <Link style={{ textDecoration: "none" }} href='https://github.com/whitejamesthe2nd'>
+                        <div className={classes.color}>
+                            James White
+                        </div>
+                        </Link>
+                        <Link style={{ textDecoration: "none" }} href='https://github.com/alecbrando'>
+                        <div className={classes.color}>
+                            Alec Garcia
+                        </div>
+                    </Link>
+                        <Link style={{ textDecoration: "none" }} href='https://github.com/Kmcgee92'>
+                        <div className={classes.color}>
+                            Kasey McGee
+                        </div>
+                    </Link>
                 </div>
             </div>
-        </BottomNavigation>
+        </div>
         </>
     )
 }
