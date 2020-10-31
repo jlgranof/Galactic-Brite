@@ -29,13 +29,11 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 const useStyles = makeStyles({
     headerCenter: {
         zIndex: 1000,
-        backgroundColor: "white",
         position: "absolute",
-        left: "50%",
-        marginLeft: "-50px",
+        left: "40.5%",
+        top: "-55px",
         width: "140px",
         height: "220px",
-        clipPath: "polygon(0% 0%, 99% 0%, 100% 100%, 71% 81%, 65% 63%, 49% 52%, 35% 61%, 27% 81%, 0 100%)"
     },
     headerWrapper: {
         position: "absolute",
