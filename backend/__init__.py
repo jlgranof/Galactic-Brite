@@ -24,7 +24,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
 app.config['JWT_COOKIE_CSRF_PROTECT'] = False
-app.config['JWT_SECRET_KEY'] = 'C1D55AF87585F574A7C7566ED281D'
+app.config['JWT_SECRET_KEY'] = os.environ.get("JWT_SECRET_KEY")
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(event_routes, url_prefix='/api/events')
 app.register_blueprint(session_routes, url_prefix='/api/session')

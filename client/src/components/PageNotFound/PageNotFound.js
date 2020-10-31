@@ -37,7 +37,7 @@ const PageNotFound = () => {
     const [isRedirect, setIsRedirect] = useState(false)
 
     useEffect(()=> {
-        const timer = setTimeout(()=> setIsRedirect(true), 4400)
+        const timer = setTimeout(()=> setIsRedirect(true), 5400)
         return (() => {clearTimeout(timer)})
     },[isRedirect])
 
