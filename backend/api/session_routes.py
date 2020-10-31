@@ -38,7 +38,6 @@ def login():
         return jsonify({'login': False}), 401
     response = User.query.filter_by(email=email).first()
     user = response.to_dict()
-    print(user)
     if not user:
         return jsonify({'message': 'No user found!'})
     if check_password_hash(response.hashed_password, password):
@@ -63,5 +62,3 @@ def logout():
     resp = jsonify({'logout': True})
     unset_jwt_cookies(resp)
     return resp, 200
-
-

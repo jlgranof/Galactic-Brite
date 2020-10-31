@@ -206,7 +206,7 @@ const Header = () => {
                             <Button variant="contained" className={classNames(classes.alignPlus)} onClick={() => history.push('/create-event')} activeclass="active">
                                 Make Event
                             </Button>
-                        <Button variant="contained" className={classNames(classes.storePlus)} to="/store" activeclass="active">
+                        <Button variant="contained" className={classNames(classes.storePlus)} onClick={()=> history.push('/store')}activeclass="active">
                             Store
                             </Button>
                         </div>
@@ -232,14 +232,14 @@ const Header = () => {
                     >
                         <nav className={classes.navMenu}>
                             <div className={classes.navMenuLinks}>
-                                <Button 
-                                onClick={() => history.push('/dashboard')} 
+                                <Button
+                                onClick={() => history.push('/dashboard')}
                                 className={classNames(classes.navItem)}>
                                     <DashboardIcon/>
                                     Dashboard
                                 </Button>
-                                <Button 
-                                onClick={() => history.push('/aboutUs')} 
+                                <Button
+                                onClick={() => history.push('/aboutUs')}
                                 className={classNames(classes.navItem)}>
                                     <PersonOutlineIcon/>
                                     About
@@ -260,4 +260,3 @@ const Header = () => {
 };
 
 export default Header;
-

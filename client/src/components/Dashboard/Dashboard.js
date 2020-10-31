@@ -25,6 +25,7 @@ import BookmarkCarousel from './Carousel';
 
 // Thunks
 import { fetchBookmarkEventsThunk } from '../../Redux/actions/eventsActions';
+import zIndex from '@material-ui/core/styles/zIndex';
 
 
 
@@ -48,16 +49,24 @@ const useStyles = makeStyles({
     },
     container:{
         display: 'grid',
-        gridTemplateRows: '230px 1fr 1fr',
+        gridTemplateRows: '230px 1fr ',
+        gridTemplateColumns: '3fr 10fr 1fr',
     },
     seeMe:{
+        margin: "200px 0",
+        padding: "50px",
         gridRowStart: '2',
+        gridColumnStart: '2',
         backgroundColor: 'white',
-        zIndex: '100'
+        zIndex: '100',
+        width: '75%',
+        boxShadow: '15px 15px 30px purple',
+        borderRadius: '10px',
     },
     white:{
+        borderRadius: '10px',
         backgroundColor: 'white',
-        textAlign: 'right',
+        textAlign: 'Center',
     },
     bookmark:{
         display: 'flexbox',
@@ -68,7 +77,8 @@ const useStyles = makeStyles({
         height: '150px',
         width: '150px',
         borderRadius: '50%'
-    }
+    },
+
 })
 
 const TestPage = () => {
@@ -91,9 +101,9 @@ const TestPage = () => {
 
     },[id])
 
-    const cards = registerSlice ? registerSlice.map((ele)=>{
+    const cards = registerSlice ? registerSlice.map((ele,i)=>{
         const randomNum = Math.floor(Math.random() * Math.floor(8));
-         return <Card name={ele.event_name} id={ele.id} randomNum={randomNum}/>
+        return <Card key={i} name={ele.event_name} id={ele.id} authId={id} eventId={ele.id} randomNum={randomNum}/>
         }): null
 
     useEffect(() => {
@@ -109,35 +119,29 @@ const TestPage = () => {
     return (
         <>
             <Header />
-            {/* {gifLoading ?
+            {gifLoading ?
                 <div>
                     <img className={classes.warZone} src={xWing} alt="fighter.gif" />
                 </div>
-                : null} */}
+                : null}
             {profileVisible ?
                 <>
+            <Fade in={true} timeout={1000}>
                 <div className={classes.container}>
                     <div className={classes.seeMe}>
-
                         <div className={classes.white}>
                         <img src={avatar } className={classes.avatar}></img>
-                        <h3>{`${userName}`}</h3>
-                        <h3>{`${email}`}</h3>
-                        <SwitchListSecondary checked={checked} setChecked={setChecked}/>
+                        <h3>{` UserName:${userName}`}</h3>
+                        <h3>{`Email:${email}`}</h3>
                         </div>
+                        <SwitchListSecondary checked={checked} setChecked={setChecked}/>
                         <h3 className={classes.bookmark}>Bookmaked Events</h3>
                         <div>
                             <BookmarkCarousel cards={cards}/>
                         </div>
-                <div>
-                </div>
                     </div>
                 </div>
-
-                {/* card container */}
-                {/* <Fade in={true} timeout={1000}>
-                    <img className={classNames(classes.hanger, classes.warZone)} src={hanger} alt="fighter.gif" />
-                </Fade> */}
+            </Fade>
                 </>
                 : null}
         </>

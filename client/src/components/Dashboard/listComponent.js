@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
 }));
-//please help me
 
 export default function SwitchListSecondary(moreProps) {
   const classes = useStyles();
@@ -42,7 +41,7 @@ export default function SwitchListSecondary(moreProps) {
         <ListItemIcon>
           <SubjectIcon />
         </ListItemIcon>
-        <ListItemText id="switch-list-label-wifi" primary="Quotes" />
+        <ListItemText id="switch-list-label-wifi" primary="Image Toggle" />
         <ListItemSecondaryAction>
           <Switch
             edge="end"
