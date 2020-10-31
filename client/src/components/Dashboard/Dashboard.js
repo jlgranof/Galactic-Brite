@@ -53,6 +53,8 @@ const useStyles = makeStyles({
         gridTemplateColumns: '3fr 10fr 1fr',
     },
     seeMe:{
+        margin: "200px 0",
+        padding: "50px",
         gridRowStart: '2',
         gridColumnStart: '2',
         backgroundColor: 'white',
@@ -75,7 +77,8 @@ const useStyles = makeStyles({
         height: '150px',
         width: '150px',
         borderRadius: '50%'
-    }
+    },
+
 })
 
 const TestPage = () => {
@@ -100,7 +103,7 @@ const TestPage = () => {
 
     const cards = registerSlice ? registerSlice.map((ele,i)=>{
         const randomNum = Math.floor(Math.random() * Math.floor(8));
-         return <Card key={i} name={ele.event_name} id={ele.id} authId={id} eventId={ele.id} randomNum={randomNum}/>
+        return <Card key={i} name={ele.event_name} id={ele.id} authId={id} eventId={ele.id} randomNum={randomNum}/>
         }): null
 
     useEffect(() => {
@@ -116,13 +119,14 @@ const TestPage = () => {
     return (
         <>
             <Header />
-            {/* {gifLoading ?
+            {gifLoading ?
                 <div>
                     <img className={classes.warZone} src={xWing} alt="fighter.gif" />
                 </div>
-                : null} */}
+                : null}
             {profileVisible ?
                 <>
+            <Fade in={true} timeout={1000}>
                 <div className={classes.container}>
                     <div className={classes.seeMe}>
                         <div className={classes.white}>
@@ -137,11 +141,7 @@ const TestPage = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* card container */}
-                {/* <Fade in={true} timeout={1000}>
-                    <img className={classNames(classes.hanger, classes.warZone)} src={hanger} alt="fighter.gif" />
-                </Fade> */}
+            </Fade>
                 </>
                 : null}
         </>
