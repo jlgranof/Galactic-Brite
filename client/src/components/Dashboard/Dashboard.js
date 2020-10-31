@@ -9,8 +9,7 @@ import Header from '../Header/Header'
 //redux
 import { useDispatch,useSelector } from "react-redux";
 
-// nodejs library that concatenates classes
-import classNames from "classnames";
+
 
 // assets
 import xWing from '../../assets/images/fighter.gif'
@@ -49,15 +48,16 @@ const useStyles = makeStyles({
     },
     container:{
         display: 'grid',
-        gridTemplateRows: '230px 1fr ',
+        gridTemplateRows: '80px 1fr ',
         gridTemplateColumns: '3fr 10fr 1fr',
     },
     seeMe:{
+        backgroundImage: `${hanger}`,
         margin: "200px 0",
         padding: "50px",
         gridRowStart: '2',
         gridColumnStart: '2',
-        backgroundColor: 'white',
+        backgroundColor: 'Black',
         zIndex: '100',
         width: '75%',
         boxShadow: '15px 15px 30px purple',
@@ -65,13 +65,17 @@ const useStyles = makeStyles({
     },
     white:{
         borderRadius: '10px',
-        backgroundColor: 'white',
+        backgroundColor: 'black',
+        color: 'white',
         textAlign: 'Center',
+        paddingBottom:'50px'
     },
     bookmark:{
         display: 'flexbox',
         textAlign: 'center',
-        alignContent: 'flexend'
+        alignContent: 'flexend',
+        color: 'white',
+        paddingBottom: '30px'
     },
     avatar:{
         height: '150px',
@@ -119,14 +123,14 @@ const TestPage = () => {
     return (
         <>
             <Header />
-            {gifLoading ?
+            {/* {gifLoading ?
                 <div>
                     <img className={classes.warZone} src={xWing} alt="fighter.gif" />
                 </div>
-                : null}
+                : null} */}
             {profileVisible ?
                 <>
-            <Fade in={true} timeout={1000}>
+            {/* <Fade in={true} timeout={1000}> */}
                 <div className={classes.container}>
                     <div className={classes.seeMe}>
                         <div className={classes.white}>
@@ -134,14 +138,14 @@ const TestPage = () => {
                         <h3>{` UserName:${userName}`}</h3>
                         <h3>{`Email:${email}`}</h3>
                         </div>
-                        <SwitchListSecondary checked={checked} setChecked={setChecked}/>
-                        <h3 className={classes.bookmark}>Bookmaked Events</h3>
+                        {/* <SwitchListSecondary checked={checked} setChecked={setChecked}/> */}
+                        <h1 className={classes.bookmark}>Bookmaked Events</h1>
                         <div>
                             <BookmarkCarousel cards={cards}/>
                         </div>
                     </div>
                 </div>
-            </Fade>
+            {/* </Fade> */}
                 </>
                 : null}
         </>

@@ -41,6 +41,8 @@ export default function SimpleSelect({ category, setCategory, planet, setPlanet,
   };
   return (
     <div>
+      <div>
+
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label"
           {...labelInputProps}>Category</InputLabel>
@@ -50,7 +52,7 @@ export default function SimpleSelect({ category, setCategory, planet, setPlanet,
           value={category}
           onChange={handleChangeCategory}
           {...inputProps}
-        >
+          >
           <MenuItem value={1}>Surprise Party</MenuItem>
           <MenuItem value={2}>Live Productions</MenuItem>
           <MenuItem value={3}>Live Executions</MenuItem>
@@ -60,6 +62,7 @@ export default function SimpleSelect({ category, setCategory, planet, setPlanet,
           <MenuItem value={7}>Seminars</MenuItem>
         </Select>
       </FormControl>
+      </div>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label"
           {...labelInputProps}>Planet</InputLabel>
@@ -80,6 +83,8 @@ export default function SimpleSelect({ category, setCategory, planet, setPlanet,
           <MenuItem value={'Endor'}>Endor</MenuItem>
         </Select>
       </FormControl>
+      <div>
+
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label"
           {...labelInputProps}>Month</InputLabel>
@@ -89,7 +94,7 @@ export default function SimpleSelect({ category, setCategory, planet, setPlanet,
           value={month}
           onChange={handleMonthChange}
           {...inputProps}
-        >
+          >
           <MenuItem value={'1'}>1</MenuItem>
           <MenuItem value={'2'}>2</MenuItem>
           <MenuItem value={'3'}>3</MenuItem>
@@ -113,7 +118,7 @@ export default function SimpleSelect({ category, setCategory, planet, setPlanet,
           value={day}
           onChange={handleDayChange}
           {...inputProps}
-        >
+          >
           <MenuItem value={'01'}>1</MenuItem>
           <MenuItem value={'02'}>2</MenuItem>
           <MenuItem value={'03'}>3</MenuItem>
@@ -156,10 +161,11 @@ export default function SimpleSelect({ category, setCategory, planet, setPlanet,
           value={year}
           onChange={handleYearChange}
           {...inputProps}
-        >
+          >
           {baseYearArray.map((ele, i) => <MenuItem key={i} value={ele}>{`${ele}`}</MenuItem>)}
         </Select>
       </FormControl>
+          </div>
     </div>
   );
 }
