@@ -1,6 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { BottomNavigation, Link, CardContent } from '@material-ui/core'
+import { Link } from '@material-ui/core'
 import { makeStyles } from "@material-ui/core/styles";
 import GitHubIcon from '@material-ui/icons/GitHub';
 
@@ -101,7 +100,6 @@ const Footer = () => {
                             <GitHubIcon className={classes.githubRed} />
                         </div>
                      </Link>
-                    
                 </div>
                 <div className={classes.sideGataltic}>
                     <h5>Galatic Brite</h5>
