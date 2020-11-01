@@ -18,7 +18,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles({
     container: {
         display:"grid",
-        gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+        gridTemplateColumns: "590px 1fr 1fr",
         gridTemplateRows: " 230px 2fr 1fr",
         width:"100vw",
         height:"100vh",
@@ -26,8 +26,11 @@ const useStyles = makeStyles({
         backgroundSize: '100% 100%'
     },
     middle: {
+        display:' flex',
         gridRow: "2/3",
-        gridColumn: "4/5"
+        gridColumnStart: '2',
+        alignItems:'Center',
+        textAlign:'Center'
     },
     colorMe:{
         // color: 'black',

@@ -112,7 +112,6 @@ export const removeBookmarkThunk = (eventId, userId) => {
     return async dispatch => {
         // fetch Delete event
         const body = {'id': eventId}
-        const id= eventId
         const res = await fetch(`/api/events/bookmarks/delete`, {
             method: 'DELETE',
             headers: {
@@ -141,7 +140,6 @@ export const createEventThunk = (event) => {
             body: JSON.stringify(event),
         });
         if (res.ok) {
-            const data = await res.json();
             dispatch(fetchFeaturedEvents());
         }
         return res;
