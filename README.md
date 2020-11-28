@@ -15,27 +15,14 @@ https://github.com/jlgranof/Galactic-Brite/wiki
 
 ---
 
-### Contributing Developer's Social Media
+### Meet the Team
 Jeff Granof
-
     GitHub: <https://github.com/jlgranof>
-
 James White
-
-    Twitter:
-    Facebook:
     GitHub: <https://github.com/whitejamesthe2nd>
-    Instagram:
-
 Alec Garcia
-
-    Twitter:
-    Facebook:
-    GitHub:
-    Instagram:
-
+    GitHub: <https://github.com/alecbrando>
 Kasey McGee
-
     Twitter: <https://twitter.com/Kmcgee92>
     Facebook: <https://www.facebook.com/kasey.mcgee.73/>
     GitHub: <https://github.com/Kmcgee92>
