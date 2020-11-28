@@ -27,8 +27,11 @@ Alec Garcia
     
 Kasey McGee
     Twitter: <https://twitter.com/Kmcgee92>
+    
     Facebook: <https://www.facebook.com/kasey.mcgee.73/>
+    
     GitHub: <https://github.com/Kmcgee92>
+    
     Instagram: <https://www.instagram.com/mcgeekasey/>
 
 -----
