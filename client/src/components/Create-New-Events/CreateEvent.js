@@ -16,40 +16,56 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
-    container: {
-        display:"grid",
-        gridTemplateColumns: "590px 1fr 1fr",
-        gridTemplateRows: " 230px 2fr 1fr",
-        width:"100vw",
-        height:"100vh",
-        backgroundImage: ` url(${coruscant})`,
-        backgroundSize: '100% 100%'
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gridTemplateColumns: "590px 1fr 1fr",
+    gridTemplateRows: " 230px 2fr 1fr",
+    width: "100vw",
+    height: "100vh",
+    backgroundImage: ` url(${coruscant})`,
+    backgroundSize: "100% 100%",
+  },
+  middle: {
+    paddingTop: "150px",
+    gridRow: "2/3",
+    gridColumnStart: "2",
+    alignItems: "Center",
+    textAlign: "Center",
+  },
+  colorMe: {
+      padding: "15px",
+    backgroundColor: "rgba(255,255,255,0.4)",
+    width: "800px",
+  },
+  textColor: {
+    color: "black",
+    fontWeight: "500",
+    zIndex: 2,
+  },
+  sizeMe: {
+    padding: "10px",
+    width: "400px",
+    backgroundColor: "rgba(255,255,255,0.4)",
+},
+sizeInput: {
+    width: "200px",
+},
+buttonStyle: {
+    width: "60%",
+    margin: "20px",
+    padding: "10px",
+    backgroundColor: "transparent",
+    color: "grey",
+    border: "1px solid grey",
+    "&:hover": {
+        fontWeight: "800",
+        color: "black",
+        boder: "1px solid white"
     },
-    middle: {
-        display:' flex',
-        gridRow: "2/3",
-        gridColumnStart: '2',
-        alignItems:'Center',
-        textAlign:'Center'
-    },
-    colorMe:{
-        // color: 'black',
-        backgroundColor:'rgba(255,255,255,0.4)',
-        width: '200px'
-    },
-    textColor:{
-        color:'black',
-        fontWeight: '500',
-        zIndex:2
-    },
-    sizeMe:{
-        width:'10rem',
-        backgroundColor:'rgba(255,255,255,0.4)',
-    },
-    sizeInput:{
-        width: '400px'
-    }
-})
+  },
+});
 
 
 const CreateEventForm = () => {
@@ -96,12 +112,6 @@ const CreateEventForm = () => {
                 {/* <img className={classes.deathStar} src={deathstar}></img> */}
                     <form method='post' action=''>
                         <div>
-                            <Button variant={'contained'} onClick={handleSubmit}>
-                            Create New Event
-                            </Button>
-                        </div>
-
-                        <div>
                             <CustomInput inputValue={name} labelText={'Name Event'} setStateFunc={setName}
                             inputProps={{ className: classes.colorMe}}
                             labelInputProps={{className: classes.textColor}}/>
@@ -137,6 +147,11 @@ const CreateEventForm = () => {
                             <CustomInput labelText={'Description'} setStateFunc={setDescription} multiline={true}
                             inputProps={{ className: classes.colorMe}}
                             labelInputProps={{className: classes.textColor}}/>
+                        </div>
+                        <div>
+                            <Button className={classes.buttonStyle} variant={'contained'} onClick={handleSubmit}>
+                            Create New Event
+                            </Button>
                         </div>
                     </form>
                 </div>
