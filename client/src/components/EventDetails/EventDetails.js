@@ -17,8 +17,8 @@ import classNames from "classnames";
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 
-// @material-ui/icons
 // material-ui/icons
+import IconButton from "@material-ui/core/IconButton";
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 
@@ -157,8 +157,11 @@ const useStyles = makeStyles({
 })
 
 const EventDetails = () => {
+    const dispatch = useDispatch()
     const classes = useStyles()
     const location = useLocation()
+    const [isBookmarked, setIsBookmarked] = useState(false);
+    const user = useSelector((state) => state.auth);
     const {
         avatar,
         date,
@@ -169,63 +172,88 @@ const EventDetails = () => {
         id,
         planet
     } = location.state
+
+    const handleBookmark = () => {
+      if (user.id !== undefined) {
+        setIsBookmarked(!isBookmarked);
+      }
+    };
+    useEffect(() => {
+        if (isBookmarked) {
+            const details = {
+                "event_name": eventName,
+                "user_id": user.id,
+                "is_registered": false
+            }
+            dispatch(addBookmarkToUser(details))
+        }
+    }, [isBookmarked])
+
     return (
-        <>
-            <Header/>
-            <img className={classes.img} src={eventDetailsPic}/>
+      <>
+        <Header />
+        <img className={classes.img} src={eventDetailsPic} />
 
+        <div className={classes.mainBody}>
+          <div className={classes.card}>
+            <div className={classes.cardHeader}>
+              <img className={classes.avatar} src={avatar} />
+              <div className={classes.cardTitle}>{eventName}</div>
+              <div className={classes.cardLinkbox}>
+                <div className={classes.cardLink}>
+                  {isBookmarked ? (
+                    <BookmarkIcon
+                      onClick={handleBookmark}
+                      className={classes.icon}
+                      style={{ color: "red" }}
+                    />
+                  ) : (
 
-            <div
-            className={classes.mainBody}
-            >
-                <div className={classes.card}>
-                    <div className={classes.cardHeader}>
-                        <img
-                        className={classes.avatar}
-                        src={avatar}
-                        />
-                        <div className={classes.cardTitle}>
-                            {eventName}
-                        </div>
-                        <div className={classes.cardLinkbox}>
-                            <div className={classes.cardLink}>
-                                <BookmarkBorderIcon 
-                                className={classes.icon}
-                                />
-                            </div>
-                            <div className={classNames(classes.cardLink, classes.cardTextHover)}>
-                                Buy a
-                                ticket
-                            </div>
+                      <BookmarkBorderIcon
+                        onClick={handleBookmark}
+                        className={classes.icon}
+                        style={{ color: "red" }}
+                      />
 
-                        </div>
-                    </div>
-                    {featured ? <div className={classes.featured}>
-                        FEATURED EVENT
-                    </div>: null}
-                    <div className={classes.cardSubHeader}>
-                        <div className={classes.planet}>
-                            Planet {planet}
-                        </div>
-                        {date}
-                    </div>
-                    <div className={classes.cardBody}>
-                        {paragraph?<div>{paragraph}</div>: null}
-
-                        {description ?<><div className={classes.cardContent}>
-                            {description.description}
-                        </div>
-                        <div className={classes.cardContent}>
-                            {description.details_1}
-                        </div>
-                        <div className={classes.cardContent}>
-                            {description.details_2}
-                        </div></>:null}
-                    </div>
+                  )}
                 </div>
-
+                <div
+                  className={classNames(
+                    classes.cardLink,
+                    classes.cardTextHover
+                  )}
+                >
+                  Buy a ticket
+                </div>
+              </div>
             </div>
-        </>
+            {featured ? (
+              <div className={classes.featured}>FEATURED EVENT</div>
+            ) : null}
+            <div className={classes.cardSubHeader}>
+              <div className={classes.planet}>Planet {planet}</div>
+              {date}
+            </div>
+            <div className={classes.cardBody}>
+              {paragraph ? <div>{paragraph}</div> : null}
+
+              {description ? (
+                <>
+                  <div className={classes.cardContent}>
+                    {description.description}
+                  </div>
+                  <div className={classes.cardContent}>
+                    {description.details_1}
+                  </div>
+                  <div className={classes.cardContent}>
+                    {description.details_2}
+                  </div>
+                </>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </>
     );
 };
 
