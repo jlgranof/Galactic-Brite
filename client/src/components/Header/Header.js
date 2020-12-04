@@ -185,6 +185,7 @@ const Header = () => {
     useEffect(() => {
         return setExpanded(false)
     }, [])
+
     const handleLogout = () => {
         setExpanded(false)
         dispatch(logout())
@@ -244,7 +245,7 @@ const Header = () => {
                                 </Button>
                                 <Button
                                     className={classNames(classes.navItem, classes.customSize)}
-                                    onClick={handleLogout}
+                                    onClick={()=>handleLogout()}
                                 >
                                         sign out
                                 </Button>

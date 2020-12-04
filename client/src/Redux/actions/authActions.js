@@ -41,6 +41,7 @@ export const login = (email, password) => {
 
         if (res.ok) {
             const data = await res.json();
+            Cookies.set("userActive", "true");
             dispatch(setUser(data))
         }
         return res;
@@ -55,6 +56,7 @@ export const logout = () => async dispatch => {
         }
     });
     if (res.ok) {
+        Cookies.remove("userActive");
         dispatch(removeUser());
     }
     return res
@@ -75,5 +77,6 @@ export const signup = (username, email, password) => async dispatch => {
         const { user } = await response.json();
         dispatch(createUser(user));
     }
+    return response;
 }
 
